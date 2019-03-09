@@ -1,6 +1,4 @@
-<?php
-require 'inc/bdd.php';
-?>
+
 <!DOCTYPE html>
 
 <html>
@@ -23,11 +21,11 @@ if(empty($_SESSION['pseudo']))
 {?>	
             <div class="codeco">
                <h1> 
-                   <form action="inscription.php" method="post">
+                   <form action="view/viewInscripForm.php" method="post">
                          <input type="submit" class="liens_h1" value="S'enregistrer">
                     </form>
                  
-                   <form action="connexion.php" method="post">
+                   <form action="controler/connexion.php" method="post">
                          <input type="submit" class="liens_h1" value="Se connecter">
                     </form>
                 </h1>
@@ -40,7 +38,7 @@ if(isset($_SESSION['pseudo']))
     ?>
         <div class="codeco">
                <h1> 
-                   <form action="deconnexion.php" method="post">
+                   <form action="controler/deconnexion.php" method="post">
                         <input type="submit" class="liens_h1" value="Se déconnecter">
                     </form>
                 </h1>
@@ -53,11 +51,12 @@ if(isset($_SESSION['pseudo']))
             <nav>
                 <ul class="menu">
                     <li><a href="index.php" class="accueil">Accueil</a></li>
-                    <li><a href="chapitres.php" class="Les chapitres">Les chapitres</a></li>
-                    <li><a href="contact.php">Contact</a></li>
+                    <li><a href="view/chapitres.php" class="Les chapitres">Les chapitres</a></li>
+                    <li><a href="controler/contact.php">Contact</a></li>
                 </ul>
             </nav>      
 </div>
+
     </body>
 
 </html>
