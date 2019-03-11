@@ -1,0 +1,137 @@
+
+body {
+  background-image: url(public/images/carte1.jpg);
+}
+/* Animation baleine */
+#cadre {
+  border: 1px solid white;
+}
+
+#bloc {
+  width: 50%;
+  height: 50%;
+  position: relative; /* Permettra de décaler le bloc */
+  left: 0px; /* Initialise la position gauche du bloc à déplacer */
+}
+/* fin animation */
+
+/* Animation kariB */
+#cadreContact {
+  border: 1px solid white;
+  height: 410px;
+}
+
+#blocContact {
+  width: 50%;
+  height: 50%;
+  position: relative; /* Permettra de décaler le bloc */
+  bottom: -100px; /* Initialise la position basse du bloc à déplacer */
+  margin: 0 auto;
+}
+/* fin animation */
+
+ /* Animation titre */
+
+html{
+  height: 100%;
+}
+
+body{
+  font-family: arial, sans-serif;
+}
+
+.container{
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  display: block;
+  position: absolute;
+  max-width: 225px;
+}
+
+h1{
+  color: #000000;
+  text-transform: uppercase;
+  font-size: 42px;
+  margin: 0;
+  line-height: 47px;
+  letter-spacing: 2px;
+}
+
+.title{
+  transform: translateX(-50%) rotate(-10deg);
+  display: block;
+  float: left;
+  left: 50%;
+  position: relative;
+  
+  span {
+    transform: skew(-10deg);
+    display: block;
+    float: left;
+    text-shadow: $shadow 1px 1px, $shadow 2px 2px, $shadow 3px 3px, $shadow 4px 4px, $shadow 5px 5px, $shadow 6px 6px;
+    min-width: 10px;
+    min-height: 10px;
+    position: relative;
+  }
+}
+
+ /* fin animation titre */
+
+.codeco {
+  display: flex;
+}
+
+.page_menu{
+  margin: 0 auto;
+}
+
+.menu {
+  display: flex;
+  text-decoration: none;
+  list-style: none ;
+}
+
+.menu li {
+  margin: 15px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #000000;
+  cursor: pointer;
+  font-size: 1.3em;
+}
+
+.menu li a:hover {
+  color: hsl(244, 100%, 59%);
+  border-bottom: 2px solid hsl(244, 100%, 59%);;
+}
+
+.liens_h1 {
+background-color: hsl(244, 100%, 59%);
+border-radius: 50%;
+color: #ffffff;
+border: 10px 10px 10px 10px;
+}
+
+.infos_sur_le_site {
+  text-align: center;
+  font-size: 3em;
+}
+
+
+#tour {
+  opacity: 0.7;
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+}
+#baleine {
+
+  top: 5px;
+  width: 50%;
+  height: 50%;
+
+  margin-top: 0;
+}

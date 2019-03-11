@@ -1,19 +1,16 @@
-<?php
-session_start();
-require 'model/model.php';
-?>
-<?php
-class Membres { 
 
-          $pseudo=($_POST['pseudo']);
-          $pass=($_POST['pass']);
-          $passverif =($_POST['passverif']);
-          $mail=($_POST['email']);
-          $pseudolenght=strlen($pseudo);
+<?php
+class pushMembres { 
 
+  private $_pseudo;
+  private $_pass;
+  private $_passVerif;
+  private $_mail;
+  
+         
     
     // on teste si le pseudo et le mail sont dispos
-public fonction checkInscription ()
+public function checkInscription ()
 { 
     $req = $bdd->prepare('SELECT pseudo FROM membres WHERE pseudo = ?');
     $req->execute(array($_POST['pseudo']));
@@ -46,7 +43,7 @@ public fonction checkInscription ()
         {
         $erreur= "Votre pseudo doit comporter moins de 60 caractères.Vous allez être redirigé(e)";
         }
-        if(!preg_match('/^[a-zA-Z0-9_]+$/', $_POST['pseudo']))
+        if(!preg_match('/^[a-zA-Z0-9_]+$/', $_pseudo))
         {
           $erreur = "Votre pseudo n'est pas valide.Veuillez utiliser seulement des caratères aplhanumériques.Vous allez être redirigé(e).";
         }
@@ -59,7 +56,7 @@ public fonction checkInscription ()
 
     if($erreur)
     {
-      header('Refresh:3;url=controler/inscription.php');
+      header('Refresh:3;url=view/viewInscripForm.php');
       echo $erreur;
     }
     else
@@ -68,10 +65,11 @@ public fonction checkInscription ()
     // si tout est bon on crypte le mot de passe
       $pass_hache = password_hash(htmlspecialchars($_POST['pass']), PASSWORD_DEFAULT);
 
-} // fin fonction checkInscription 
+} 
+}// fin fonction checkInscription 
 
 // puis on insère le nouveau membre
-    public fonction validInscription ()
+    public function validInscription ()
     { 
           $req = $bdd->prepare('INSERT INTO membres(pseudo, pass, email, date_inscription) VALUES(:pseudo, :pass, :email, now())');
 
@@ -90,5 +88,5 @@ public fonction checkInscription ()
             }
     }// fin de la fonction validInscription 
   }
-}
+
 ?>

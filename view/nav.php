@@ -1,4 +1,6 @@
+<?php
 
+?>
 <!DOCTYPE html>
 
 <html>
@@ -6,7 +8,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="../public/css/style.css" />
 
         <title>Billet simple pour l'Alaska</title>
 
@@ -25,7 +27,7 @@ if(empty($_SESSION['pseudo']))
                          <input type="submit" class="liens_h1" value="S'enregistrer">
                     </form>
                  
-                   <form action="controler/connexion.php" method="post">
+                   <form action="view/viewConnecForm.php" method="post">
                          <input type="submit" class="liens_h1" value="Se connecter">
                     </form>
                 </h1>
@@ -50,9 +52,9 @@ if(isset($_SESSION['pseudo']))
 <div class="container_menu">
             <nav>
                 <ul class="menu">
-                    <li><a href="index.php" class="accueil">Accueil</a></li>
-                    <li><a href="view/chapitres.php" class="Les chapitres">Les chapitres</a></li>
-                    <li><a href="controler/contact.php">Contact</a></li>
+                    <li><a href="../index.php" class="accueil">Accueil</a></li>
+                    <li><a href="./view/chapitres.php" class="Les chapitres">Les chapitres</a></li>
+                    <li><a href="./controler/contact.php">Contact</a></li>
                 </ul>
             </nav>      
 </div>

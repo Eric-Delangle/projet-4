@@ -1,7 +1,18 @@
 <?php
-require ('../model/inscripForm.php');
-$form = new inscripForm($data);
+require_once ('../model/formInscConnec.php');
+require ('../view/nav.php');
+require_once ('../model/pushmembre.php');
+$inscForm = new FormInscConnec ($data);
+/*$newMember = new Membre();*/
 
-echo $form->input('pseudo');
-echo $form->input('pass');
-echo $form->submit();
+echo $inscForm->input('pseudo');
+echo $inscForm->input('pass1');
+echo $inscForm->input('passverif');
+echo $inscForm->input('email');
+echo $inscForm->submit();
+$inscForm->inscMembre($data);
+$_pseudo->checkInscription();
+$_pass->checkInscription();
+$_passVerif->checkInscription();
+$_mail->checkInscription();
+
