@@ -1,12 +1,21 @@
 <?php
 require_once ('../view/nav.php');
+require ('../controler/bdd.php');
+require ('../model/formInscConnec.php');
+$contForm = new FormInscConnec ($data);
 echo "Contact";
 echo '<div id="cadreContact"><div id="blocContact"><img src="../public/images/karib1.png" id="kariB"/></div></div>';
 ?>
-<!DOCTYPE html>
-
 <html>
     <body>
+    <div class="bloc_form">
+        <?php
+            echo $contForm->input('pseudo',"Votre pseudo");
+            echo $contForm->input('mail',"Votre email");
+            echo $contForm->input('message',"Votre message");
+            echo $contForm->submit();
+        ?>
+    </div>
         <script src="../public/js/animationContact.js"></script>
     </body>
 </html>

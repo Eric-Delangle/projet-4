@@ -82,8 +82,15 @@ h1{
   display: flex;
 }
 
-.page_menu{
+.page_menu {
   margin: 0 auto;
+}
+
+.bloc_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
 }
 
 .menu {
