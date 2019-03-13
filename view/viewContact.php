@@ -2,7 +2,6 @@
 require_once ('../view/nav.php');
 require ('../controler/bdd.php');
 require ('../model/formInscConnec.php');
-require ('../public/js/evenementsdom.js');
 $contForm = new FormInscConnec ($data);
 echo "Contact";
 echo '<div id="cadreContact"><div id="blocContact"><img src="../public/images/karib1.png" id="kariB"/></div></div>';

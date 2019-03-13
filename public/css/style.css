@@ -1,6 +1,7 @@
 
 body {
   background-image: url(public/images/carte1.jpg);
+  outline: 0;
 }
 /* Animation baleine */
 #cadre {
@@ -78,6 +79,8 @@ h1{
 
  /* fin animation titre */
 
+/* style de la nav */
+
 .codeco {
   display: flex;
 }
@@ -91,6 +94,11 @@ h1{
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
+}
+
+#bloc_form_contact {
+  margin-right: 820px;
+  margin-top: -300px;
 }
 
 .menu {
@@ -112,7 +120,6 @@ h1{
 
 .menu li a:hover {
   color: hsl(244, 100%, 59%);
-  border-bottom: 2px solid hsl(244, 100%, 59%);;
 }
 
 .liens_h1 {
@@ -121,19 +128,15 @@ border-radius: 50%;
 color: #ffffff;
 border: 10px 10px 10px 10px;
 }
+/* fin style de la nav */
+
+/* style du centre de la page */
 
 .infos_sur_le_site {
   text-align: center;
   font-size: 3em;
 }
 
-
-#tour {
-  opacity: 0.7;
-  width: 100%;
-  height: 100%;
-  margin-top: 0;
-}
 #baleine {
 
   top: 5px;
@@ -141,4 +144,24 @@ border: 10px 10px 10px 10px;
   height: 50%;
 
   margin-top: 0;
+}
+
+.accueil {
+  display: none;
+}
+
+/* style de la page chapitre */
+
+#editeur {
+  width: 500px; // La largeur de l'éditeur
+  height: 200px; // La hauteur de l'éditeur
+  border: 1px solid black; // Une bordure pour bien voir l'éditeur
+  padding: 5px; // Une petite marge intérieure
+  overflow: auto; // Cette propriété sert à envoyer le texte à la ligne au cas où il dépasse la largeur définie avant
+}
+
+.editButton {
+  background-color: hsl(244, 100%, 59%);
+  
+  color: #ffffff;
 }

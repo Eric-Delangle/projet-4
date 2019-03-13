@@ -17,6 +17,8 @@ class FormInscConnec
     public function input($name,$placeholder) {
         return $this->paragraph('<input type="text" name="'.$name.'" placeholder="'.$placeholder.'" style="text-align:center">');
     }
+// la je crée un champ textarea
+   
     /*
 // fonction ajout d'un membre
         // on teste si le pseudo et le mail sont dispos

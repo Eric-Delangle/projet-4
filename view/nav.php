@@ -52,9 +52,9 @@ if(isset($_SESSION['pseudo']))
 <div class="container_menu">
             <nav>
                 <ul class="menu">
-                    <li><a href="../index.php" class="accueil">Accueil</a></li>
-                    <li><a href="./view/chapitres.php" class="Les chapitres">Les chapitres</a></li>
-                    <li><a href="./controler/contact.php">Contact</a></li>
+                    <li><a href="../index.php" id="accueil" class="accueil">Accueil</a></li>
+                    <li><a href="./view/viewChapitres.php" class="Les chapitres">Les chapitres</a></li>
+                    <li><a href="./view/viewContact.php">Contact</a></li>
                 </ul>
             </nav>      
 </div>

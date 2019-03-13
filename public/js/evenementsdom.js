@@ -1,0 +1,1 @@
+document.getElementById('accueil').style.display = 'block';
