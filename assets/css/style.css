@@ -1,7 +1,6 @@
 
 body {
-  background-image: url(public/images/carte1.jpg);
-  outline: 0;
+  outline-style: none;
 }
 /* Animation baleine */
 #cadre {

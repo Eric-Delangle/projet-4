@@ -1,7 +1,7 @@
 <?php
-require_once ('../controler/bdd.php');
-require_once ('../model/formInscConnec.php');
-require ('../view/nav.php');
+require (CONTROLER.'bdd.php');
+require (VIEW.'nav.php');
+require (MODEL.'FormInscConnec.php');
 
 $inscForm = new FormInscConnec ($data);
 ?>
@@ -12,14 +12,28 @@ $inscForm = new FormInscConnec ($data);
                 echo 'Inscrivez vous afin que nous puissions échanger plus facilement !';
                 echo $inscForm->input('pseudo',"Votre pseudo");
                 echo $inscForm->input('pass',"Votre mot de passe");
-                echo $inscForm->input('passVerif',"Encore une fois");
+                echo $inscForm->input('passVerif',"Encore votre mot de passe");
                 echo $inscForm->input('mail',"Votre email");
                 echo $inscForm->submit();
-            // $inscForm->checkInscription($data);
-            //  $inscForm->inscMembre($data);
+                
+                if(isset($_POST['valider'])){
+                    $pseudo=$_POST['pseudo'];
+                    $pass=$_POST['pass'];
+                    $passVerif=$_POST['passVerif'];
+                    $mail=$_POST['mail'];
+
+                    $membre = new Pushmembres();
+                    $Pushmembres->checkInscription();
+                    $Pushmembres->validInscription();
+                    echo 'Salut '. $pseudo. '<br/>Bienvenue sur mon site !';
+                    }
+                
+
+                
             ?>
         </div>
         <script>document.getElementById('accueil').style.display = 'block';</script>
+        <script>document.getElementById('enregistrer').style.display = 'none';</script>
     </body>
 </html>
 

@@ -1,9 +1,11 @@
 <?php
-require_once ('controler/bdd.php');
-require ('view/indexView.php');
-?>
-<html>
-    <body>
-        <script>document.getElementById('accueil').style.display = 'none';</script>
-    </body>
-</html>
+include_once ('config.php');
+Myautoload::start();
+// declaration de ma variable $request pour les redirections
+$request = $_GET['r'];
+
+// creation de l'objet routeur et appel de sa fonction rendeControler()
+$rooter = new Rooter($request);
+$rooter->renderControler();
+
+
