@@ -17,7 +17,6 @@ class Myautoload {
         define('CONTROLER', ROOT.'controler/');
         define('VIEW', ROOT.'view/');
         define('MODEL', ROOT.'model/');
-        define('CLASSES', ROOT.'classes/');
 
         define('ASSETS', HOST.'assets/');
     }
@@ -25,10 +24,11 @@ class Myautoload {
     public static function autoload($class) {
         if(file_exists(MODEL.$class.'.php')) {
             include_once(MODEL.$class.'.php');
-        } else if (file_exists(CLASSES.$class.'.php')) {
-            include_once(CLASSES.$class.'.php');
-        }else if (file_exists(CONTROLER.$class.'.php')) {
+        } 
+        else if(file_exists(CONTROLER.$class.'.php')) {
             include_once(CONTROLER.$class.'.php');
+        } else {
+            echo 'OOOoohhh erreur 404 !';
         }
     }
 }

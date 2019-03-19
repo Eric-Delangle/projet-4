@@ -1,35 +1,37 @@
 
 <?php
-class PushMembres { 
+require_once (MODEL.'DataBase.php');
+/*
+* Class InscMember
+*
+*create a new member 
+*/
+class InscMembre { 
 
   private $_pseudo;
   private $_pass;
   private $_passVerif;
   private $_mail;
   
+// on teste si le pseudo et le mail sont dispos
+
+    public function checkInscription ()
+    { 
+        $db = new DataBase('ericd995946', 'vaosjv8xde', 'ericd995946');
+        $donnees = $db->query('SELECT pseudo FROM membres WHERE pseudo = ?',[])->fetch();
+        
+        if ($donnees)
+            {
+              $erreur = "Ce pseudo est déja utilisé.Vous allez être redirigé(e)";
+            }
+        $donnees = $db->query('SELECT email FROM membres WHERE email = ?',[])->fetch();
          
-    
-    // on teste si le pseudo et le mail sont dispos
-public function checkInscription ()
-{ 
-    $req = $bdd->prepare('SELECT pseudo FROM membres WHERE pseudo = ?');
-    $req->execute(array($_POST['pseudo']));
-    $donnees = $req->fetch();
-
         if ($donnees)
-        {
-          $erreur = "Ce pseudo est déja utilisé.Vous allez être redirigé(e)";
-        }
-    $req = $bdd->prepare('SELECT email FROM membres WHERE email = ?');
-    $req->execute(array($_POST['email']));
-    $donnees = $req->fetch();
+            {
+            $erreur = "Cet email est déja utilisé.Vous allez être redirigé(e)";
+            }
 
-        if ($donnees)
-        {
-          $erreur = "Cet email est déja utilisé.Vous allez être redirigé(e)";
-        }
-
-    // puis on fait toute une batterie de test
+// puis on fait toute une batterie de test
 
         if(empty($_POST['pseudo']) OR empty($_POST['pass']) OR empty($_POST['passverif']) OR empty($_POST['email']))
         {
@@ -52,20 +54,20 @@ public function checkInscription ()
           $erreur = "Vos mots de passe ne sont pas identiques.Vous allez être redirigé(e)";
         }
 
-    // si il y a une erreur on l'indique par le message adéquat et on redirige vers le formulaire
+// si il y a une erreur on l'indique par le message adéquat et on redirige vers le formulaire
 
-    if($erreur)
-    {
-      header('Refresh:3;url=view/viewInscripForm.php');
-      echo $erreur;
-    }
-    else
-    {
+        if($erreur)
+        {
+          header('Refresh:3;url=view/viewInscripForm.php');
+          echo $erreur;
+        }
+        else
+        {
 
-    // si tout est bon on crypte le mot de passe
-      $pass_hache = password_hash(htmlspecialchars($_POST['pass']), PASSWORD_DEFAULT);
+        // si tout est bon on crypte le mot de passe
+          $pass_hache = password_hash(htmlspecialchars($_POST['pass']), PASSWORD_DEFAULT);
 
-} 
+    } 
 }// fin fonction checkInscription 
 
 // puis on insère le nouveau membre

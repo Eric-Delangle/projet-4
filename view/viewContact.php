@@ -5,7 +5,7 @@ require (VIEW.'nav.php');
 
 $contForm = new FormInscConnec ($data);
 echo "Contact";
-echo '<div id="cadreContact"><div id="blocContact"><img src="<?php echo ASSETS;?>images/karib1.png" id="kariB"/></div></div>';
+echo '<div id="cadreContact"><div id="blocContact"><img src="assets/images/karib1.png" id="kariB"/></div></div>';
 ?>
 <html>
     <body>
@@ -23,7 +23,7 @@ echo '<div id="cadreContact"><div id="blocContact"><img src="<?php echo ASSETS;?
             }
         ?>
     </div>
-        <script src="../assets/js/animationContact.js"></script>
+        <script src="assets/js/animationContact.js"></script>
         <script>document.getElementById('accueil').style.display = 'block';</script>
         <script>document.getElementById('contact').style.display = 'none';</script>
     </body>

@@ -1,5 +1,7 @@
 <?php
+
 include_once ('config.php');
+
 Myautoload::start();
 // declaration de ma variable $request pour les redirections
 $request = $_GET['r'];

@@ -2,7 +2,8 @@
 require (CONTROLER.'bdd.php');
 require (VIEW.'nav.php');
 require (MODEL.'FormInscConnec.php');
-
+require (MODEL.'InscMembre.php');
+require_once (MODEL.'DataBase.php');
 $inscForm = new FormInscConnec ($data);
 ?>
 <html>
@@ -14,22 +15,10 @@ $inscForm = new FormInscConnec ($data);
                 echo $inscForm->input('pass',"Votre mot de passe");
                 echo $inscForm->input('passVerif',"Encore votre mot de passe");
                 echo $inscForm->input('mail',"Votre email");
-                echo $inscForm->submit();
-                
-                if(isset($_POST['valider'])){
-                    $pseudo=$_POST['pseudo'];
-                    $pass=$_POST['pass'];
-                    $passVerif=$_POST['passVerif'];
-                    $mail=$_POST['mail'];
-
-                    $membre = new Pushmembres();
-                    $Pushmembres->checkInscription();
-                    $Pushmembres->validInscription();
-                    echo 'Salut '. $pseudo. '<br/>Bienvenue sur mon site !';
-                    }
-                
-
-                
+                echo $inscForm->submit(); 
+                $membre = new InscMembre();
+                $membre->checkInscription();
+                $db = new DataBase();
             ?>
         </div>
         <script>document.getElementById('accueil').style.display = 'block';</script>
