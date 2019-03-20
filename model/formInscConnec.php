@@ -10,12 +10,16 @@ class FormInscConnec
     private $data;
     public $paragraph = 'p';
 
-    public function __construct($data){
+    public function __construct($data = array()){
         $this->$data = $data;
     }
 // pour englober mes inputs dans des paragraphes
     private function paragraph ($html) {
         return "<{$this->paragraph}>{$html}</{$this->paragraph}>";
+    }
+// Pour récuperer le contenu de mes champs si ils sont définis
+    private function getValue($index) {
+        return isset($this->data[$index]) ? $this->data[$index] : null;
     }
 // je crée maon premier input
     public function input($name,$placeholder) {

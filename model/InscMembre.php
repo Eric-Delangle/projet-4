@@ -1,6 +1,8 @@
 
 <?php
-require_once (MODEL.'DataBase.php');
+require_once ('DataBase.php');
+//require_once (CONTROLER.'controlInscMembre');
+
 /*
 * Class InscMember
 *
@@ -15,18 +17,18 @@ class InscMembre {
   
 // on teste si le pseudo et le mail sont dispos
 
-    public function checkInscription ()
+    public function checkInscription()
     { 
         $db = new DataBase('ericd995946', 'vaosjv8xde', 'ericd995946');
-        $donnees = $db->query('SELECT pseudo FROM membres WHERE pseudo = ?',[])->fetch();
+        $datas = $db->query('SELECT pseudo FROM membres WHERE pseudo',[$_GET['pseudo']],true);
         
-        if ($donnees)
+        if ($datas)
             {
               $erreur = "Ce pseudo est déja utilisé.Vous allez être redirigé(e)";
             }
-        $donnees = $db->query('SELECT email FROM membres WHERE email = ?',[])->fetch();
+        $datas = $db->query('SELECT email FROM membres WHERE email',[$_GET['mail']],true);
          
-        if ($donnees)
+        if ($datas)
             {
             $erreur = "Cet email est déja utilisé.Vous allez être redirigé(e)";
             }
@@ -58,7 +60,7 @@ class InscMembre {
 
         if($erreur)
         {
-          header('Refresh:3;url=view/viewInscripForm.php');
+          header('Refresh:3;url=../index.php?r=inscription');
           echo $erreur;
         }
         else
@@ -71,11 +73,10 @@ class InscMembre {
 }// fin fonction checkInscription 
 
 // puis on insère le nouveau membre
-    public function validInscription ()
-    { 
-          $req = $bdd->prepare('INSERT INTO membres(pseudo, pass, email, date_inscription) VALUES(:pseudo, :pass, :email, now())');
-
-        $req->execute(array(
+    public function validInscription()
+    {     $db = $this->$db;
+          $datas = $db->prepare('INSERT INTO membres(pseudo, pass, email, date_inscription) VALUES(:pseudo, :pass, :email, now())',true);
+          $datas->execute(array(
 
             'pseudo' => $_POST['pseudo'],
 
@@ -89,6 +90,5 @@ class InscMembre {
             header ('location: view/index.php');
             }
     }// fin de la fonction validInscription 
-  }
-
+}
 ?>

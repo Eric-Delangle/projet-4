@@ -8,15 +8,17 @@ $inscForm = new FormInscConnec ($data);
 <html>
     <body>
         <div class="bloc_form">
-            <?php
-                echo 'Connectez vous afin que nous puissions échanger plus facilement !';
-                echo $inscForm->input('pseudo',"Votre pseudo");
-                echo $inscForm->input('pass',"Votre mot de passe");
-         
-                echo $inscForm->submit();
+        <form action="controlConnec.php" method="post">
+                <?php
+                    echo 'Connectez vous afin que nous puissions échanger plus facilement !';
+                    echo $inscForm->input('pseudo',"Votre pseudo");
+                    echo $inscForm->input('pass',"Votre mot de passe");
+            
+                    echo $inscForm->submit();
 
-                
-            ?>
+                    
+                ?>
+            </form>
         </div>
         <script>document.getElementById('accueil').style.display = 'block';</script>
         <script>document.getElementById('connecter').style.display = 'none';</script>

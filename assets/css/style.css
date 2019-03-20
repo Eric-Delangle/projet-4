@@ -126,6 +126,7 @@ background-color: hsl(244, 100%, 59%);
 border-radius: 50%;
 color: #ffffff;
 border: 10px 10px 10px 10px;
+outline-style: none;
 }
 /* fin style de la nav */
 
