@@ -1,8 +1,12 @@
 <?php
-require (CONTROLER.'bdd.php');
+/*
+require_once (MODEL.'DataBase.php');
 require (VIEW.'nav.php');
 require (MODEL.'FormInscConnec.php');
-
+require_once (MODEL.'connecAdmin.php');
+require_once (MODEL.'controlConnec.php');
+*/
+require_once (MODEL.'FormInscConnec.php');
 $inscForm = new FormInscConnec ($data);
 ?>
 <html>
@@ -10,7 +14,7 @@ $inscForm = new FormInscConnec ($data);
         <div class="bloc_form">
         <form action="controlConnec.php" method="post">
                 <?php
-                    echo 'Connectez vous afin que nous puissions échanger plus facilement !';
+                    echo 'Bienvenue Mr Forteroche, connectez vous afin de pouvoir administrer votre blog.';
                     echo $inscForm->input('pseudo',"Votre pseudo");
                     echo $inscForm->input('pass',"Votre mot de passe");
             

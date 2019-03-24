@@ -1,5 +1,6 @@
 <?php
 require_once ('config.php');
+require_once (MODEL.'DataBase.php');
 ?>
 <!DOCTYPE html>
 
@@ -22,13 +23,9 @@ require_once ('config.php');
 if(empty($_SESSION['pseudo']))
 {?>	
             <div class="codeco">
-               <h1> 
-                   <form action="index.php?r=inscription" method="post">
-                         <input type="submit" id="enregistrer" class="liens_h1" value="S'enregistrer">
-                    </form>
-                 
-                   <form action="index.php?r=connection" method="post">
-                         <input type="submit" id="connecter" class="liens_h1" value="Se connecter">
+               <h1>
+                   <form action="connection" method="post">
+                         <input type="submit" id="connecter" class="liens_h1" value="Administration">
                     </form>
                 </h1>
             </div>
@@ -52,9 +49,9 @@ if(isset($_SESSION['pseudo']))
 <div class="container_menu">
             <nav>
                 <ul class="menu">
-                    <li><a href="index.php?r=home" id="accueil" class="accueil">Accueil</a></li>
-                    <li><a href="index.php?r=chapitres" id="chapitres" class="Les chapitres">Les chapitres</a></li>
-                    <li><a href="index.php?r=contact" id="contact">Contact</a></li>
+                    <li><a href="home" id="accueil" class="accueil">Accueil</a></li>
+                    <li><a href="chapitres" id="chapitres" class="Les chapitres">Les chapitres</a></li>
+                    <li><a href="contact" id="contact">Contact</a></li>
                 </ul>
             </nav>      
 </div>

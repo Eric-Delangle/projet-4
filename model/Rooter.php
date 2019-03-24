@@ -5,7 +5,8 @@
 *create roads and find controler
 */
 Class Rooter {
-    private $request;
+    
+    public $request;
 
     public function __construct($request) {
         $this->request = $request;
@@ -23,13 +24,13 @@ Class Rooter {
             include (CONTROLER.'controlContact.php');
         }
         
-        else if ($this->request == 'inscription') {
-            include (CONTROLER.'controlInsc.php');
-        }
-        
          else if ($this->request == 'connection') {
             include (CONTROLER.'controlConnec.php');
         }
+
+         else if ($this->request == 'edition') {
+             include (CONTROLER.'editChapitres.php');
+         }
         
          else {
             echo 'OOOoooohh petite erreur 404';

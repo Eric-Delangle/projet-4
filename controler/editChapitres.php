@@ -1,19 +1,10 @@
 <?php
-require ('../controler/bdd.php');
+session_start();
+require_once (MODEL.'DataBase.php');
+echo'bah remerde !';
 ?>
-<html>
-    <head>
-        <script src="../public/js/editeur.js"></script>
-    </head>
+</html>
     <body>
-        <div id="edit">
-            <input type="button" class="editButton" value="G" style="font-weight:bold;" onclick="commande('bold');" /> 
-            <input type="button" class="editButton" value="I" style="font-style:italic;" onclick="commande('italic');"/> 
-            <input type="button" class="editButton" value="S" style="text-decoration:underline;" onclick="commande('underline');"/> 
-            <input type="button" class="editButton" value="Lien" onclick="commande('createLink');"/>
-            <input type="button" class="editButton" value="Image" onclick="commande('insertImage');"/>
-            <div id="editeur" contentEditable ></div> 
-        </div> 
-        
+        <script src = "https://cloud.tinymce.com/5/tinymce.min.js? apiKey = mibp5q8fc9tq6xnkjnimgpa1u02x01d45v2wt4mczl0uorhb "> </script>
     </body>
 </html>

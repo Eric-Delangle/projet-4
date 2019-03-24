@@ -1,7 +1,8 @@
 <?php
 require (VIEW.'nav.php');
+require_once (MODEL.'DataBase.php');
 echo "Chapitres";
-
+//$datas = $db->query('SELECT * FROM articles');
 ?>
 <html>
     <body>
@@ -9,3 +10,11 @@ echo "Chapitres";
         <script>document.getElementById('chapitres').style.display = 'none';</script>
     </body>
 </html>
+
+
+
+
+
+
+
+

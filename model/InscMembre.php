@@ -1,8 +1,6 @@
 
 <?php
 require_once ('DataBase.php');
-//require_once (CONTROLER.'controlInscMembre');
-
 /*
 * Class InscMember
 *
@@ -14,6 +12,7 @@ class InscMembre {
   private $_pass;
   private $_passVerif;
   private $_mail;
+  public $bd;
   
 // on teste si le pseudo et le mail sont dispos
 
@@ -60,8 +59,9 @@ class InscMembre {
 
         if($erreur)
         {
-          header('Refresh:3;url=../index.php?r=inscription');
+          //header('Refresh:3;url=../index.php?r=inscription');
           echo $erreur;
+
         }
         else
         {
@@ -70,12 +70,13 @@ class InscMembre {
           $pass_hache = password_hash(htmlspecialchars($_POST['pass']), PASSWORD_DEFAULT);
 
     } 
-}// fin fonction checkInscription 
+  }// fin fonction checkInscription 
 
 // puis on insère le nouveau membre
     public function validInscription()
-    {     $db = $this->$db;
-          $datas = $db->prepare('INSERT INTO membres(pseudo, pass, email, date_inscription) VALUES(:pseudo, :pass, :email, now())',true);
+    {     
+      var_dump($db);
+          $db->prepare('INSERT INTO membres(pseudo, pass, email, date_inscription) VALUES(:pseudo, :pass, :email, now())',true);
           $datas->execute(array(
 
             'pseudo' => $_POST['pseudo'],
@@ -87,7 +88,7 @@ class InscMembre {
             $_SESSION ['pseudo']=$_POST['pseudo'];
             $_SESSION ['pass']=$_POST['pass'];
             {
-            header ('location: view/index.php');
+            header ('location:../index.php?r=home');
             }
     }// fin de la fonction validInscription 
 }
