@@ -31,51 +31,26 @@ body {
 /* fin animation */
 
  /* Animation titre */
-
-html{
-  height: 100%;
-}
-
-body{
-  font-family: arial, sans-serif;
-}
-
-.container{
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  display: block;
-  position: absolute;
-  max-width: 225px;
-}
-
-h1{
-  color: #000000;
-  text-transform: uppercase;
-  font-size: 42px;
-  margin: 0;
-  line-height: 47px;
-  letter-spacing: 2px;
-}
-
-.title{
-  transform: translateX(-50%) rotate(-10deg);
-  display: block;
-  float: left;
-  left: 50%;
+ .ml6 {
   position: relative;
-  
-  span {
-    transform: skew(-10deg);
-    display: block;
-    float: left;
-    text-shadow: $shadow 1px 1px, $shadow 2px 2px, $shadow 3px 3px, $shadow 4px 4px, $shadow 5px 5px, $shadow 6px 6px;
-    min-width: 10px;
-    min-height: 10px;
-    position: relative;
-  }
+  font-weight: 900;
+  font-size: 2.3em;
 }
 
+.ml6 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+.ml6 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+ 
  /* fin animation titre */
 
 /* style de la nav */
@@ -165,3 +140,21 @@ outline-style: none;
   
   color: #ffffff;
 }
+
+/* hauteur du titre */
+
+#title {
+  display: none;
+  margin-top: -200px;
+  justify-content: center;
+}
+/*
+ #ableu {
+   color:  hsl(244, 100%, 59%);
+ }
+ */
+ /* h1 de chapitres */
+
+ #chap {
+   text-align: center;
+ }

@@ -1,7 +1,11 @@
 <?php
 session_start();
 require_once (MODEL.'DataBase.php');
-echo'bah remerde !';
+
+
+  
+
+echo"Bienvenue ".$_SESSION['pseudo']." dans l'interface d'administration de votre blog";
 ?>
 </html>
     <body>

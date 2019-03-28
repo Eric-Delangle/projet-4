@@ -12,6 +12,7 @@ Class Rooter {
         $this->request = $request;
     }
     public function renderControler() {
+
         if ($this->request == 'home') {
             include (CONTROLER.'home.php');
         }
@@ -31,9 +32,10 @@ Class Rooter {
          else if ($this->request == 'edition') {
              include (CONTROLER.'editChapitres.php');
          }
-        
+
          else {
-            echo 'OOOoooohh petite erreur 404';
+            echo 'OOOoooohh grosse erreur 404';
         }
+        
     }
 }

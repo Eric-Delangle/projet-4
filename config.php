@@ -27,9 +27,12 @@ class Myautoload {
         } 
         else if(file_exists(CONTROLER.$class.'.php')) {
             include_once(CONTROLER.$class.'.php');
-        } else {
+        } 
+        
+        else {
             echo 'OOOoohhh erreur 404 !';
         }
+        
     }
 }
 

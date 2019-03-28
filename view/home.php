@@ -41,11 +41,11 @@ session_start();
     ?>
     
     <!-- animation titre -->
-    <section class="container">
-        <h1>
-            <span class="title">Billet simple</span>
-            <span class="title">pour</span>
-            <span class="title">l'Alaska</span>
+   <section id="title">
+        <h1 class="ml6">
+            <span class="text-wrapper">
+            <span class="letters">Billet simple pour l'<span id="ableu">A</span>laska</span>
+            </span>
         </h1>
     </section>
     <!-- fin animation titre -->
@@ -57,8 +57,10 @@ session_start();
     			
     	
 </div>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="assets/js/animation.js"></script>
+<script src="assets/js/titre.js"></script>
     </body>
 
 </html>

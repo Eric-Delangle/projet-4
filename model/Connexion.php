@@ -1,42 +1,56 @@
 <?php
+
 require_once (MODEL.'DataBase.php');
-require_once (CONTROLER.'editChapitres.php');
+//require_once (CONTROLER.'editChapitres.php');
 require_once (CONTROLER.'controlConnec.php');
+
+$admin = new Connexion($datas);
+$admin->connecMembre('pseudo', 'pass');
+var_dump($admin);
 
 class Connexion {
 
-    private function __constructor() { 
-       
+    public $datas;
+    public $db;
+
+    public function __construct() {
+       $this->datas = $datas;
+       $this->db = $db;
+
     }
 
-    public function connecMembre($data){
-        $req = new DataBase('ericd995946');
-       // if (!empty($_POST['pseudo']) AND !empty($_POST['pass'])) {// Recupération des données
-                var_dump($req);
-            $req->prepare('SELECT id,pass FROM membres WHERE pseudo = :pseudo', true);
-            $req->execute(array('pseudo' => $_POST['pseudo']));
-            $membre = $req->fetch();
-            var_dump($membre);
-            header('location: edition');
-          //  $isPasswordCorrect = password_verify($_POST['pass'], $membre['pass']);
-      //  }
+    public function connecMembre($datas){
+        
+        if(isset($_POST['pseudo']) && isset($_POST['pass'])) {
 
-      //  if ($isPasswordCorrect) {
+            $db = new DataBase('membres');
+            $db->query('SELECT id,pass,pseudo FROM membres', 'membres',true);
+        // lignes qui me pose problème
+        var_dump($admin);
+            $db->$req->fetch();
+            $isPasswordCorrect = password_verify($_POST['pass'], $admin->pass);
 
-        //    session_start();
-         //   $_SESSION['id']=$membre['id'];
-         //   $_SESSION['pseudo']=$_POST['pseudo'];
-          //  $_SESSION['pass']=$_POST['pass'];
-          //  header('location: edition');
-        // } 
+//var_dump($isPasswordCorrect);
+//var_dump($db);
+//var_dump($admin);
 
-/*
-           else
-        {
-            header('Refresh:3;url=connection');
-            echo 'Vos identifiants ne sont pas valides,vous allez être redirigé(e)';
-        }
-       */
+                if ($isPasswordCorrect) {
+
+                    
+                    session_start();
+                    $_SESSION['pseudo']=$_POST['pseudo'];
+                    $_SESSION['pass']=$_POST['pass'];
+                    header('location: edition');
+                }
+        
+            }
+        else {
+
+            echo 'On refait !';
+           // var_dump($datas);
+          //  var_dump($isPasswordCorrect);
+           // var_dump($pass);
+            }
+        
     }
 }
-    
