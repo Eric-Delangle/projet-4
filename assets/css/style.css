@@ -97,11 +97,16 @@ body {
 }
 
 .liens_h1 {
-background-color: hsl(244, 100%, 59%);
+background-color: #645b55;
 border-radius: 50%;
+height: 30px;
 color: #ffffff;
 border: 10px 10px 10px 10px;
 outline-style: none;
+}
+
+.liens_h1:hover {
+  background-color: hsl(244, 100%, 59%);
 }
 /* fin style de la nav */
 
@@ -136,7 +141,7 @@ outline-style: none;
 }
 
 .editButton {
-  background-color: hsl(244, 100%, 59%);
+  background-color: #645b55;
   
   color: #ffffff;
 }
@@ -157,4 +162,17 @@ outline-style: none;
 
  #chap {
    text-align: center;
+ }
+
+ /* Page editChapitres.php */
+
+ .messageDeBienvenue {
+   text-align: center;
+ }
+
+ /* les liens */
+
+ .disposition {
+   display: flex;
+   justify-content: space-between;
  }

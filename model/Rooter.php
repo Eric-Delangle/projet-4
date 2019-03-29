@@ -29,10 +29,18 @@ Class Rooter {
             include (CONTROLER.'controlConnec.php');
         }
 
+        else if ($this->request == 'deconnexion') {
+            include (CONTROLER.'deconnexion.php');
+        }
+
          else if ($this->request == 'edition') {
              include (CONTROLER.'editChapitres.php');
          }
 
+         else if ($this->request == 'changer_identifiants') {
+            include (CONTROLER.'changePseudoPass.php');
+        }
+         
          else {
             echo 'OOOoooohh grosse erreur 404';
         }
