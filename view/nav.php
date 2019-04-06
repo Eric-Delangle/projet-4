@@ -37,8 +37,8 @@ if(isset($_SESSION['pseudo']))
     ?>
         <div class="codeco">
                <h1> 
-                   <form action="<?php echo CONTROLER;?>deconnexion.php" method="post">
-                        <input type="submit" class="liens_h1" value="Se déconnecter">
+                   <form action="deconnexion" method="post">
+                        <input type="submit" id ="deconn" class="liens_h1" value="Se déconnecter">
                     </form>
                 </h1>
             </div>

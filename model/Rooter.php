@@ -40,7 +40,14 @@ Class Rooter {
          else if ($this->request == 'changer_identifiants') {
             include (CONTROLER.'changePseudoPass.php');
         }
+
+        else if ($this->request == 'change_pseudo') {
+            include (CONTROLER.'change_pseudo.php');
+        }
          
+        else if ($this->request == 'change_pass') {
+            include (CONTROLER.'change_pass.php');
+        }
          else {
             echo 'OOOoooohh grosse erreur 404';
         }

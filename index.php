@@ -1,6 +1,7 @@
 <?php
-
+include ('model/Rooter.php');
 include_once ('config.php');
+
 
 Myautoload::start();
 // declaration de ma variable $request pour les redirections

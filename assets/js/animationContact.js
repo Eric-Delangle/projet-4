@@ -1,19 +1,19 @@
 const bloc = document.getElementById("blocContact");
 const cadre = document.getElementById("cadreContact");
-const vitesse = 3; // Valeur du déplacement en pixels
+const vitesse = 5; // Valeur du déplacement en pixels
 // Conversion en nombre du diamètre du bloc (valeur de la forme "XXpx")
-const hauteurBloc = parseFloat(getComputedStyle(bloc).height);
+const largeurBloc = parseFloat(getComputedStyle(bloc).width);
 let animationId = null; // Identifiant de l'animation
 
 // Déplace le bloc sur sa gauche jusqu'au bord du cadre
 function deplacerBloc() {
     // Conversion en nombre de la position gauche du bloc (valeur de la forme "XXpx")
-    const xBloc = parseFloat(getComputedStyle(bloc).bottom);
+    const xBloc = parseFloat(getComputedStyle(bloc).right);
     // Conversion en nombre de la largeur du cadre (valeur de la forme "XXpx")
-    const xMax = parseFloat(getComputedStyle(cadre).height);
-    if (xBloc + hauteurBloc <= xMax) { // Si le bloc n'est pas encore au bout du cadre
+    const xMax = parseFloat(getComputedStyle(cadre).width);
+    if (xBloc + largeurBloc <= xMax) { // Si le bloc n'est pas encore au bout du cadre
         // Déplacement du bloc
-        bloc.style.bottom = (xBloc + vitesse) + "px";
+        bloc.style.right = (xBloc + vitesse) + "px";
         // Demande au navigateur d'appeler deplacerBloc dès que possible
         animationId = requestAnimationFrame(deplacerBloc);
     } else {
@@ -23,3 +23,8 @@ function deplacerBloc() {
 }
 
 animationId = requestAnimationFrame(deplacerBloc); // Début de l'animation    
+
+// Animation titre
+
+
+  // fin animation titre

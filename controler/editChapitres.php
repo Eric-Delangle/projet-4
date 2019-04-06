@@ -1,9 +1,15 @@
 <?php
+//require_once (VIEW.'nav.php');
 session_start();
+if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
+{
+    echo 'Bonjour ' . $_SESSION['pseudo'];
+}
 require_once (MODEL.'DataBase.php');
-require_once (CONTROLER.'changePseudoPass.php');
+//require_once (CONTROLER.'changePseudoPass.php');
 ?>
   
+
 </html>
 <head>
    <meta charset="utf-8" />
@@ -23,8 +29,11 @@ require_once (CONTROLER.'changePseudoPass.php');
             <input type="submit" id="changer_identifiants" class="liens_h1" value="Changer d'identifiants">
          </form>  
       </div>
+      <?php require_once (VIEW.'nav.php');?>
   <h1 class="messageDeBienvenue"><?php echo "Bienvenue  ".$_SESSION['pseudo']." dans l'interface d'administration de votre blog."?></h1>;
     <textarea></textarea>
-
+    <script>document.getElementById('connecter').style.display = 'none';</script>
+    <script>document.getElementById('deconn').style.display = 'none';</script>
+    <script>document.getElementById('accueil').style.display = 'block';</script>
     </body>
 </html>

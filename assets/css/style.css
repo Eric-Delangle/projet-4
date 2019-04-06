@@ -18,15 +18,13 @@ body {
 /* Animation kariB */
 #cadreContact {
   border: 1px solid white;
-  height: 310px;
 }
 
 #blocContact {
   width: 50%;
   height: 50%;
-  position: relative; /* Permettra de décaler le bloc */
-  bottom: -100px; /* Initialise la position basse du bloc à déplacer */
-  margin: 0 auto;
+  position: absolute; /* Permettra de décaler le bloc */
+   right: 0px;/* Initialise la position basse du bloc à déplacer */
 }
 /* fin animation */
 
@@ -97,7 +95,7 @@ body {
 }
 
 .liens_h1 {
-background-color: #645b55;
+background-color: hsl(244, 100%, 59%);
 border-radius: 50%;
 height: 30px;
 color: #ffffff;
@@ -106,7 +104,7 @@ outline-style: none;
 }
 
 .liens_h1:hover {
-  background-color: hsl(244, 100%, 59%);
+  background-color: #645b55;
 }
 /* fin style de la nav */
 
@@ -176,3 +174,47 @@ outline-style: none;
    display: flex;
    justify-content: space-between;
  }
+
+ /* page de changement d'identifiants */
+
+ h2 {
+   text-align: center;
+ }
+
+ /* page chapitre */
+#connecter {
+  font-size: 0.5em;
+}
+
+ #cadre_chapitres {
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   margin-top: 100px;
+  }
+
+  .centrage_chapitre {
+    width: 30%;
+    margin: 30px 80px;
+  }
+
+  #explication {
+    text-align: center;
+  }
+
+  /* page de contact */
+
+  #bloc_form_contact {
+    margin: 0 auto;
+  }
+
+  #bloc_form_contact input {
+    width: 50%;
+    height: 30px;
+  }
+
+  #bloc_form_contact textarea {
+    width: 50%;
+    height: 100px;
+  }

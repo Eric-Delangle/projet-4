@@ -5,7 +5,6 @@ require_once (VIEW.'nav.php');
 require_once (CONTROLER.'controlMail.php');
 
 $contForm = new FormInscConnec ($data);
-echo "Contact";
 echo '<div id="cadreContact"><div id="blocContact"><img src="assets/images/karib1.png" id="kariB"/></div></div>';
 ?>
 <html>
@@ -13,7 +12,7 @@ echo '<div id="cadreContact"><div id="blocContact"><img src="assets/images/karib
     <div id="bloc_form_contact" class="bloc_form">
         <form action="controlMail.php" method="post">
             <?php
-                echo $contForm->input('pseudo',"Votre pseudo");
+                echo $contForm->input("pseudo","Votre pseudo");
                 echo $contForm->input('mail',"Votre email");
                 echo $contForm->textarea('message',"Votre message");
                 echo $contForm->submit();
@@ -23,5 +22,6 @@ echo '<div id="cadreContact"><div id="blocContact"><img src="assets/images/karib
         <script src="assets/js/animationContact.js"></script>
         <script>document.getElementById('accueil').style.display = 'block';</script>
         <script>document.getElementById('contact').style.display = 'none';</script>
+        <script>document.getElementById('connecter').style.display = 'none';</script>
     </body>
 </html>

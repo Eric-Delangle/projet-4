@@ -1,4 +1,6 @@
 <?php
+
+
 //ini_set('display_errors','on');
 //error_reporting(E_ALL);
 
@@ -29,6 +31,10 @@ class Myautoload {
             include_once(CONTROLER.$class.'.php');
         } 
         
+        else if(file_exists(VIEW.$class.'.php')) {
+            include_once(VIEW.$class.'.php');
+        } 
+
         else {
             echo 'OOOoohhh erreur 404 !';
         }
