@@ -1,6 +1,6 @@
 <?php
 require_once (MODEL.'FormInscConnec.php');
-require_once (CONTROLER.'controlContact.php');
+//require_once (CONTROLER.'controlContact.php');
 $contForm = new FormInscConnec ($data);
 
 //code de l'envoi de mail -->

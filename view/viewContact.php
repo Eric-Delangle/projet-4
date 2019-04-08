@@ -1,6 +1,6 @@
 <?php
 require_once (MODEL.'FormInscConnec.php');
-require_once (CONTROLER.'controlContact.php');
+//require_once (CONTROLER.'controlContact.php');
 require_once (VIEW.'nav.php');
 require_once (CONTROLER.'controlMail.php');
 

@@ -30,7 +30,7 @@ class DataBase {
     
     public function query($statement) {
         $db = $this->getPDO()->query($statement);
-        $datas = $db->fetchAll(PDO::FETCH_OBJ);
+        $datas = $db->fetch(PDO::FETCH_ASSOC);
         return $datas;
     }
    

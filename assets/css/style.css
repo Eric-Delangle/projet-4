@@ -181,7 +181,8 @@ outline-style: none;
    text-align: center;
  }
 
- /* page chapitre */
+ /* page chapitre partie */
+
 #connecter {
   font-size: 0.5em;
 }
@@ -201,6 +202,14 @@ outline-style: none;
 
   #explication {
     text-align: center;
+  }
+
+  #chapterPosition {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: 0 auto;
   }
 
   /* page de contact */

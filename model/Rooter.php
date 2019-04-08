@@ -22,7 +22,11 @@ Class Rooter {
         }
         
         else if ($this->request == 'contact') {
-            include (CONTROLER.'controlContact.php');
+            include (VIEW.'viewContact.php');
+        }
+
+        else if ($this->request == 'envoi') {
+            include (CONTROLER.'controlMail.php');
         }
         
          else if ($this->request == 'connection') {
