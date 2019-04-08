@@ -48,6 +48,14 @@ Class Rooter {
         else if ($this->request == 'change_pass') {
             include (CONTROLER.'change_pass.php');
         }
+
+        else if ($this->request == 'saveChapter') {
+            include (CONTROLER.'saveChapter.php');
+        }
+
+        else if ($this->request == 'chapterOne') {
+            include (CONTROLER.'chapter_1.php');
+        }
          else {
             echo 'OOOoooohh grosse erreur 404';
         }

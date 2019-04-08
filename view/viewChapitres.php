@@ -45,7 +45,7 @@ echo '<p id="explication">Découvrez le chapitre en survolant le livre.</p>';
 										<ul class='page'>
 											<li></li>
 											<li>
-												<a class="btn" href="#">Lire le chapitre</a>
+												<a class="btn"href="chapterOne"> Lire le chapitre</a>
 											</li>
 											<li></li>
 											<li></li>

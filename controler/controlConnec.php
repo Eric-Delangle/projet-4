@@ -8,16 +8,12 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo'])) {
     header('location: edition');
 }
 
-if (empty($_POST['pseudo']) && empty($_POST['pass'])) {
-  echo 'Tous les champs doivent ëtre remplis !';
-}
-
 elseif (isset($_POST['pseudo']) && isset($_POST['pass'])) {
  
    $login = new DataBase('members');
    $req = $login->prepare('SELECT * FROM members WHERE pseudo = :pseudo', (array('pseudo' => $_POST['pseudo'])), 'members',true);
 
-  
+   
    $isPasswordCorrect = password_verify($_POST['pass'], $req['pass']);
 
       if ($isPasswordCorrect) {
@@ -35,5 +31,8 @@ elseif (isset($_POST['pseudo']) && isset($_POST['pass'])) {
             echo 'Vos identifiants ne sont pas valides.';
            
          }
-   
+
+      if (empty($_POST['pseudo']) && empty($_POST['pass'])) {
+   echo 'Tous les champs doivent ëtre remplis !';
+   }
 }
