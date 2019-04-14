@@ -50,7 +50,7 @@ if(isset($_SESSION['pseudo']))
             <nav>
                 <ul class="menu">
                     <li><a href="home" id="accueil" class="accueil">Accueil</a></li>
-                    <li><a href="chapitres" id="chapitres" class="Les chapitres">Les chapitres</a></li>
+                    <li><a href="chapters" id="chapters" class="Les chapitres">Les chapitres</a></li>
                     <li><a href="contact" id="contact">Contact</a></li>
                 </ul>
             </nav>      

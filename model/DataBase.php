@@ -28,9 +28,9 @@ class DataBase {
         return $this->pdo;
     }
     
-    public function query($statement) {
+    public function query($statement, $class_name) {
         $db = $this->getPDO()->query($statement);
-        $datas = $db->fetch(PDO::FETCH_ASSOC);
+        $datas = $db->fetchAll(PDO::FETCH_CLASS, $class_name);
         return $datas;
     }
    

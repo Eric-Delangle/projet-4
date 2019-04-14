@@ -1,4 +1,5 @@
-
+let lettreA = document.getElementById("ableu");
+lettreA.style.color =  "blue";
 let titre = document.getElementById('title');
 titre.style.display = 'bloc';
 titre.style.display = 'flex';

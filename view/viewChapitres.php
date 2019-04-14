@@ -1,10 +1,10 @@
 <?php
 require (VIEW.'nav.php');
-require_once (MODEL.'DataBase.php');
+//require_once (MODEL.'DataBase.php');
 
 echo '<h1 id="chap" class="type typewriter">Ici commence notre histoire...</h1>';
 echo '<p id="explication">Découvrez le chapitre en survolant le livre.</p>';
-//$datas = $db->query('SELECT * FROM articles');
+
 ?>
 <html>
     <head>
@@ -45,7 +45,7 @@ echo '<p id="explication">Découvrez le chapitre en survolant le livre.</p>';
 										<ul class='page'>
 											<li></li>
 											<li>
-												<a class="btn"href="chapterOne"> Lire le chapitre</a>
+												<a class="btn" href="chapter?id=1"> Lire le chapitre</a>
 											</li>
 											<li></li>
 											<li></li>
@@ -65,11 +65,12 @@ echo '<p id="explication">Découvrez le chapitre en survolant le livre.</p>';
 										<figcaption>
 											<h1>Chapitre 1</h1>
 											<span>par Jean Forteroche</span>
-											<p>Oh God, what have I done? When the lights go out, it's nobody's...</p>
+											<p><?php $extrait = new Chapter(); $extrait->getExtrait();?></p>
 										</figcaption>
 									</figure>
 								</li>
 					</ul>
+				
 				</div>
 
 				<div class="centrage_chapitre">
@@ -95,7 +96,7 @@ echo '<p id="explication">Découvrez le chapitre en survolant le livre.</p>';
 										<ul class='page'>
 											<li></li>
 											<li>
-												<a class="btn" href="#">Lire le chapitre</a>
+												<a class="btn" href="chapter?id=2">Lire le chapitre</a>
 											</li>
 											<li></li>
 											<li></li>
@@ -146,7 +147,7 @@ echo '<p id="explication">Découvrez le chapitre en survolant le livre.</p>';
 									<ul class='page'>
 										<li></li>
 										<li>
-											<a class="btn" href="#">Lire le chapitre</a>
+											<a class="btn" href="chapter?id=3">Lire le chapitre</a>
 										</li>
 										<li></li>
 										<li></li>
@@ -196,7 +197,7 @@ echo '<p id="explication">Découvrez le chapitre en survolant le livre.</p>';
 										<ul class='page'>
 											<li></li>
 											<li>
-												<a class="btn" href="#">Lire le chapitre</a>
+												<a class="btn" href="chapter?id=4">Lire le chapitre</a>
 											</li>
 											<li></li>
 											<li></li>
@@ -246,7 +247,7 @@ echo '<p id="explication">Découvrez le chapitre en survolant le livre.</p>';
 										<ul class='page'>
 											<li></li>
 											<li>
-												<a class="btn" href="#">Lire le chapitre</a>
+												<a class="btn" href="chapter?id=5">Lire le chapitre</a>
 											</li>
 											<li></li>
 											<li></li>
@@ -296,7 +297,7 @@ echo '<p id="explication">Découvrez le chapitre en survolant le livre.</p>';
 										<ul class='page'>
 											<li></li>
 											<li>
-												<a class="btn" href="#">Lire le chapitre</a>
+												<a class="btn" href="chapter?id=6">Lire le chapitre</a>
 											</li>
 											<li></li>
 											<li></li>
@@ -346,7 +347,7 @@ echo '<p id="explication">Découvrez le chapitre en survolant le livre.</p>';
 										<ul class='page'>
 											<li></li>
 											<li>
-												<a class="btn" href="#">Lire le chapitre</a>
+												<a class="btn" href="chapter?id=7">Lire le chapitre</a>
 											</li>
 											<li></li>
 											<li></li>
@@ -396,7 +397,7 @@ echo '<p id="explication">Découvrez le chapitre en survolant le livre.</p>';
 										<ul class='page'>
 											<li></li>
 											<li>
-												<a class="btn" href="#">Lire le chapitre</a>
+												<a class="btn" href="chapter?id=8">Lire le chapitre</a>
 											</li>
 											<li></li>
 											<li></li>
@@ -425,7 +426,7 @@ echo '<p id="explication">Découvrez le chapitre en survolant le livre.</p>';
     	</div>
 
         <script>document.getElementById('accueil').style.display = 'block';</script>
-        <script>document.getElementById('chapitres').style.display = 'none';</script>
+        <script>document.getElementById('chapters').style.display = 'none';</script>
         <script>document.getElementById('connecter').style.display = 'none';</script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="assets/js/animChapitres.js"></script>

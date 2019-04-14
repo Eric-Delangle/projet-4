@@ -17,7 +17,7 @@ Class Rooter {
             include (CONTROLER.'home.php');
         }
         
-        else if ($this->request == 'chapitres') {
+        else if ($this->request == 'chapters') {
             include (CONTROLER.'controlChapitre.php');
         }
         
@@ -57,8 +57,11 @@ Class Rooter {
             include (CONTROLER.'saveChapter.php');
         }
 
-        else if ($this->request == 'chapterOne') {
-            include (CONTROLER.'chapter_1.php');
+        else if ($this->request == 'chapter') {
+            include (CONTROLER.'chapters.php');
+        }
+        else if ($this->request == 'controlcomments') {
+            include (CONTROLER.'controlcomments.php');
         }
          else {
             echo 'OOOoooohh grosse erreur 404';
