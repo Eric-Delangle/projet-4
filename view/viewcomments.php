@@ -1,6 +1,8 @@
 <?php
 require_once (CONTROLER.'controlcomments.php');
 $commentForm = new FormInscConnec ($data);
+$com = new Crudcomments();// j'instancie mon objet Crudcomments
+
 
 
 ?>
@@ -10,13 +12,14 @@ $commentForm = new FormInscConnec ($data);
               Ajouter un commentaire
             <hr />
          <div id="bloc_comments">
-			 <form action="controlcomments" method="post">
+			 <form action="<?php $_GET['id'] ?>" method="post">
                 <?php
                     echo $commentForm->input('auth',"Votre nom/pseudo");
                     echo $commentForm->textarea('contenuComment',"Votre message");
                     echo $commentForm->submit();
                 ?>
             </form>
+            
 		</div>
           </h3>
 				</section>
@@ -26,15 +29,11 @@ $commentForm = new FormInscConnec ($data);
 					<hr />
 				</h3>
         <div id="vuecom">
-          <p id="com"><?php $datas->auth;?></p>
+          <p id="com"><?php affichCom();?></p>
+          <hr />
 			  	<p id="pasdecom">
           <?php 
-          if($datas) {
-         
-            var_dump($datas);
-          }else { 
-           ?> <p><?php ;?>Aucun commentaire n'a encore été publié sur cet article.</p><?php
-          }
+       
           ?>
 		  	</div>
 	  	</section>

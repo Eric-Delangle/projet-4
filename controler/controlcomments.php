@@ -1,12 +1,22 @@
 <?php
-$com = new DataBase('comments');
-$com->prepare("INSERT INTO comments (auth, comment) VALUES(:nameComment, :contenuComment, now())", (array('auth' => $_POST['nameComment'], 'comment' => $_POST['contenuComment'])), 'comments', true);
+
+$db = new DataBase('comments');
 
 
+// Affichage des commentaires
 
+function affichCom() {
+     $com = new Crudcomments();
+     $com->showComments();// j'appelle la methode pour afficher les comms;
+     
+     
+    // var_dump($_GET['id']);
+     
+}
 
-
-
-
-
+ // inserer un com
+      if (isset($_POST['auth']) && isset($_POST['contenuComment'])) { 
+          $inscom = new Crudcomments();
+          $inscom->createComment('id');
+      }
 

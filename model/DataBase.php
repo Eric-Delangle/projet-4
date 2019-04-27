@@ -28,9 +28,14 @@ class DataBase {
         return $this->pdo;
     }
     
-    public function query($statement, $class_name) {
+    public function query($statement, $class_name,$one = false) { // instancier une classe ou pas
         $db = $this->getPDO()->query($statement);
-        $datas = $db->fetchAll(PDO::FETCH_CLASS, $class_name);
+        if($one) {
+            $datas = $db->fetchAll(PDO::FETCH_CLASS, $class_name);// la si je donne un nom de classe dans ma requete, ça me l'instancie en meme temps
+        } else {
+            $datas = $db->fetchAll(PDO::FETCH_OBJ);// la je ne donne pas de nom de classe ça me récupère un objet que je vais pouvoir parcourir
+        }
+        
         return $datas;
     }
    
@@ -38,6 +43,7 @@ class DataBase {
         $req = $this->getPDO()->prepare($statement);
         $req->execute($attributes);
         $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+       // $req->closecursor();
         if($one) {
             $datas = $req->fetch();
         } else {
