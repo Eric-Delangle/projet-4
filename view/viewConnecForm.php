@@ -1,6 +1,6 @@
 <?php
 require_once (MODEL.'FormInscConnec.php');
-$inscForm = new FormInscConnec ($data);
+$inscForm = new \projet4\FormInscConnec ($data);
 ?>
 <html>
     <body>

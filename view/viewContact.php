@@ -4,7 +4,7 @@ require_once (MODEL.'FormInscConnec.php');
 require_once (VIEW.'nav.php');
 require_once (CONTROLER.'controlMail.php');
 
-$contForm = new FormInscConnec ($data);
+$contForm = new \projet4\FormInscConnec ($data);
 echo '<div id="cadreContact"><div id="blocContact"><img src="assets/images/karib1.png" id="kariB"/></div></div>';
 ?>
 <html>

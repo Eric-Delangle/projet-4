@@ -24,6 +24,7 @@ class Myautoload {
     }
 
     public static function autoload($class) {
+        $class = str_replace('projet4\\', '', $class);
         if(file_exists(MODEL.$class.'.php')) {
             include_once(MODEL.$class.'.php');
         } 

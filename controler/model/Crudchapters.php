@@ -5,7 +5,7 @@ class CRUD for use all sql's commands
 */
 
 class Crudchapters  {
-  
+   // require_once (MODEL.'Chapter.php');
 
    private $id;
 
@@ -17,23 +17,19 @@ class Crudchapters  {
 
    
     public function geturl() {
-       $id_chap = 'chapter?id='.$this->id; 
-       return $id_chap;
-        
+        return 'chapter?id='.$this->id;
     }
 
     public function getExtrait($id) {
 
         $db = new \projet4\DataBase('chapters');
-        $this->geturl();
-        // en dessous si je met $id ou id_chapter c'est toujours l'extrait du 1er chapitre
-        foreach($db->query("SELECT * FROM chapters WHERE id_chapter = $id ", true) as $post) {  
+        foreach($db->query("SELECT * FROM chapters WHERE id_chapter = id_chapter", true) as $post) {  
         $html = '<p>'.substr($post->contents, 219, 400).'...</p>';
         return $html;
     }  
     }
 
-    public function chapitre($id) {
+    public function chapitre($data) {
     ?>
     <div class="extraitChap">
     <?php
@@ -44,21 +40,12 @@ class Crudchapters  {
         <?php
     }
 
-    public function titre($id) {
-        $db = new \projet4\DataBase('chapters');
-        $this->geturl();
-        foreach($db->query("SELECT title FROM chapters WHERE id_chapter = id_chapter") as $post) {  
-        $titre = $post->title;
-        var_dump($post);
-        return $titre;
-        }
-    }
    /* fin de test */
 
     public function showChapters ($id) {
         $db = new \projet4\DataBase('chapters');
       
-        foreach($db->query("SELECT *, DATE_FORMAT(date_parution, '%d/%m/%Y')AS date_parution_fr FROM chapters WHERE id_chapter = $id ", '\projet4\Chapter',true) as $post);
+        foreach($db->query("SELECT *, DATE_FORMAT(date_parution, '%d/%m/%Y')AS date_parution_fr FROM chapters WHERE id_chapter = $this->id ", '\projet4\Chapter',true) as $post);
      // var_dump($post);
        echo $post->title;
        echo $post->contents;

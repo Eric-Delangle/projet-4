@@ -55,8 +55,13 @@ require_once (MODEL.'DataBase.php');
 
             <textarea name='contents' id ='contents'></textarea>
             <input type="submit" id="save_chapter" class="liens_h1" value="Sauvegarder">
+            
          </form>
 
+         <form action="majChapter" method="POST" name="majarticle">
+            <input type="submit" id="maj_chapter" class="liens_h1" value="Mettre à jour">
+       </form>
+         
     <script>document.getElementById('connecter').style.display = 'none';</script>
     <script>document.getElementById('deconn').style.display = 'none';</script>
     <script>document.getElementById('accueil').style.display = 'block';</script>

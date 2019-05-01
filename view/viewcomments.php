@@ -1,7 +1,7 @@
 <?php
 require_once (CONTROLER.'controlcomments.php');
-$commentForm = new FormInscConnec ($data);
-$com = new Crudcomments();// j'instancie mon objet Crudcomments
+$commentForm = new \projet4\FormInscConnec ($data);
+$com = new \projet4\Crudcomments();// j'instancie mon objet Crudcomments
 
 
 

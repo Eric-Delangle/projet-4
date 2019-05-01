@@ -4,7 +4,7 @@ require_once (MODEL.'DataBase.php');
 //require_once (CONTROLER.'editChapitres.php');
 require_once (CONTROLER.'controlConnec.php');
 
-$admin = new \projet4\Connexion($datas);
+$admin = new Connexion($datas);
 $admin->connecMembre('pseudo', 'pass');
 var_dump($admin);
 
@@ -23,7 +23,7 @@ class Connexion {
         
         if(isset($_POST['pseudo']) && isset($_POST['pass'])) {
 
-            $db = new \projet4\DataBase('membres');
+            $db = new DataBase('membres');
             $db->query('SELECT id,pass,pseudo FROM membres', 'membres',true);
         // lignes qui me pose problème
         var_dump($admin);
