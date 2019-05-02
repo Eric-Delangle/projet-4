@@ -1,12 +1,12 @@
 <?php
 
-$db = new DataBase('comments');
+$db = new \projet4\DataBase('comments');
 
 
 // Affichage des commentaires
 
 function affichCom() {
-     $com = new Crudcomments();
+     $com = new \projet4\Crudcomments();
      $com->showComments();// j'appelle la methode pour afficher les comms;
      
      
@@ -16,7 +16,7 @@ function affichCom() {
 
  // inserer un com
       if (isset($_POST['auth']) && isset($_POST['contenuComment'])) { 
-          $inscom = new Crudcomments();
+          $inscom = new \projet4\Crudcomments();
           $inscom->createComment('id');
       }
 
