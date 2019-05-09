@@ -11,7 +11,7 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo'])) {
 elseif (isset($_POST['pseudo']) && isset($_POST['pass'])) {
  
    $login = new \projet4\DataBase('members');
-   $req = $login->prepare('SELECT * FROM members WHERE pseudo = :pseudo', (array('pseudo' => $_POST['pseudo'])), 'members', true);
+   $req = $login->prepare('SELECT * FROM members WHERE pseudo = :pseudo');
 
    
    $isPasswordCorrect = password_verify($_POST['pass'], $req['pass']);

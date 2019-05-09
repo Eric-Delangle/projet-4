@@ -1,7 +1,8 @@
 <?php
 require_once (CONTROLER.'controlcomments.php');
 $commentForm = new \projet4\FormInscConnec ($data);
-$com = new \projet4\Crudcomments($_GET['id']);// j'instancie mon objet Crudcomments
+$com = new \projet4\Crudcomments();// j'instancie mon objet Crudcomments
+
 
 
 ?>
@@ -28,7 +29,7 @@ $com = new \projet4\Crudcomments($_GET['id']);// j'instancie mon objet Crudcomme
 					<hr />
 				</h3>
         <div id="vuecom">
-          <p id="com"><?php var_dump(affichCom());?></p>
+          <p id="com"><?php affichCom();?></p>
           <hr />
 			  	<p id="pasdecom">
           <?php 

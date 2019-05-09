@@ -24,7 +24,7 @@ class Connexion {
         if(isset($_POST['pseudo']) && isset($_POST['pass'])) {
 
             $db = new \projet4\DataBase('membres');
-            $db->query('SELECT id,pass,pseudo FROM membres', 'membres',true);
+            $db->query('SELECT id,pass,pseudo FROM membres');
         // lignes qui me pose problème
         var_dump($admin);
             $db->$req->fetch();

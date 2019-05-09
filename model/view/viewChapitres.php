@@ -17,23 +17,12 @@ echo '<h1 id="chap" class="type typewriter">Ici commence notre histoire...</h1>'
 	</head>
     
     <body>
-
-
-
-	<div id="table">
-		<?php tableau(); ?>
-	</div>
-
-
-
-	</div>
-		<!--
 	
 		<div id="cadre_chapitres">
 			<div class="extraitChap">
-				<span>< </span><br><a class="liens_h1" href="chapter?id=1"> Lire le chapitre</a>
+				<span><?php titre(); ?> </span><br><a class="liens_h1" href="chapter?id=<?php url(); ?>"> Lire le chapitre</a>
 				<p><?php
-				 
+				 // getExt();
 				// var_dump($chapter->getExtrait($id));
 					
 						?>	  
@@ -43,14 +32,14 @@ echo '<h1 id="chap" class="type typewriter">Ici commence notre histoire...</h1>'
 			<hr />
 			
 			<div class="extraitChap">
-				<span> </span><br><a class="liens_h1" href="chapter?id=2"> Lire le chapitre</a>
+				<span><?php titre(); ?> </span><br><a class="liens_h1" href=""> Lire le chapitre</a>
 				<p>
 				
 						
 				</p>
 				<hr />
 			</div>
-			
+			<!--
 			<div class="extraitChap">
 				<span>Chapitre n°3: </span><br><a class="liens_h1" href="chapter?id=3"> Lire le chapitre</a>
 				<p><?php
@@ -115,11 +104,11 @@ echo '<h1 id="chap" class="type typewriter">Ici commence notre histoire...</h1>'
 						<hr />
 				</p>
 			</div>
-
+-->
 	
 
   	</div>
-	-->
+	
         <script>document.getElementById('accueil').style.display = 'block';</script>
         <script>document.getElementById('chapters').style.display = 'none';</script>
         <script>document.getElementById('connecter').style.display = 'none';</script>

@@ -61,6 +61,7 @@ Class Rooter {
         else if ($this->request == 'chapter') {
             include (CONTROLER.'controlchapters.php');
         }
+        
         else if ($this->request == 'controlcomments') {
             include (CONTROLER.'controlcomments.php');
         }

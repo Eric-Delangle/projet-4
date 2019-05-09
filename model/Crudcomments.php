@@ -6,12 +6,20 @@ class CRUD for comments view and use all sql's comments commands
 */
 class Crudcomments {
 
+    public $id;
+    
+
+    public function __construct($id){
+        $this->id = $id;
+       
+    }
         
- public function showComments () {
+
+ public function showComments() {
      $db = new DataBase('comments');
-        foreach($db->query("SELECT *,DATE_FORMAT(date_comment, '%d/%m/%Y à %Hh%i minutes')AS date_comment_fr  FROM comments WHERE id_chap = $_GET[id] ORDER BY date_comment", true) as $post){ 
+        foreach($db->query("SELECT *,DATE_FORMAT(date_comment, '%d/%m/%Y à %Hh%i minutes')AS date_comment_fr  FROM comments ORDER BY date_comment WHERE id_chap = $_GET[id]") as $post){ 
           
-      
+      var_dump($post);
          if(!empty($post->auth)) { 
            
             echo '<p class="aligntext">Auteur: '.$post->auth.'</p><br />';
@@ -19,10 +27,11 @@ class Crudcomments {
             echo '<p class="aligntext">Ecrit le : '.$post->date_comment_fr.'</p><hr />'; 
             
         }
-    }
+    
         if(empty($post->auth)) {
             echo 'Aucun commentaire n\'a encore été posté sur cet article.';
         }
+    }
     
 }
     

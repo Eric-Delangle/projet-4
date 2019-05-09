@@ -228,6 +228,7 @@ text-align: center;
     flex-wrap: wrap;
     width: 60%;
     margin: 0 auto;
+    text-align: center;
   }
 
   .aligntext {
@@ -245,6 +246,14 @@ text-align: center;
 
   .extraitChap span {
     font-size: 2em;
+  }
+
+  #table {
+  text-align: center;
+  }
+  #tableau {
+   width: 70%;
+   margin: 0 auto;
   }
   /* page de contact */
 

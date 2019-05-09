@@ -34,10 +34,10 @@ class DataBase {
         return $datas;
     }
    
-    public function prepare($attributes, $class_name,$one = false) {
+    public function prepare($attributes) {
         $req = $this->getPDO()->prepare($statement);
         $req->execute($attributes);
-        $datas = $req->fetchAll(PDO::FETCH_CLASS, $class_name);
+        $datas = $req->fetchAll(PDO::FETCH_OBJ);
         if($one) {
             $datas = $req->fetch();
         } else {
