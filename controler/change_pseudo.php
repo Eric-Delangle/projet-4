@@ -9,23 +9,17 @@ require_once (CONTROLER.'functions.php');
 
    if (!empty($_POST['pseudo'])) {
  
-    $admin = new DataBase('members');
+    $admin = new \projet4\DataBase('members');
     
     $req = $admin->prepare("UPDATE members SET pseudo = ? WHERE pseudo = pseudo", array($_POST['pseudo']), 'members', false);
-    echo 'Votre pseudo a bien été enregistré.';
+   
     
-    session_start();
-  /*
-    $_SESSION['id']=$req['id'];
-    $_SESSION['pseudo']=$_POST['pseudo'];
-    $_SESSION['pass']=$_POST['pass'];
-    */
     header('location: edition');
-    //echo 'Votre pseudo a bien été enregistré.';
+    echo 'Votre pseudo a bien été enregistré.';// ça s'affiche pas
     
    }
 
    else {
-       echo 'prob de pseudo';
+       echo 'prob de pseudo';// ça non plus
    }
 //}

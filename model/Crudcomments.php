@@ -17,21 +17,23 @@ class Crudcomments {
 
  public function showComments() {
      $db = new DataBase('comments');
-        foreach($db->query("SELECT *,DATE_FORMAT(date_comment, '%d/%m/%Y à %Hh%i minutes')AS date_comment_fr  FROM comments ORDER BY date_comment WHERE id_chap = $_GET[id]") as $post){ 
+
+     $id_chap = $_GET['id'];
+        foreach($db->query("SELECT *,DATE_FORMAT(date_comment, '%d/%m/%Y à %Hh%i minutes')AS date_comment_fr  FROM comments WHERE id_chap = '".$id_chap."' " ) as $post){ 
           
-      var_dump($post);
+    
          if(!empty($post->auth)) { 
            
             echo '<p class="aligntext">Auteur: '.$post->auth.'</p><br />';
             echo '<p class="aligntext">Commentaire: '.$post->comment.'</p><br />';
-            echo '<p class="aligntext">Ecrit le : '.$post->date_comment_fr.'</p><hr />'; 
-            
+            echo '<p class="aligntext">Ecrit le : '.$post->date_comment_fr.'</p><br />'; 
+            echo '<input type="submit" class="liens_h1" value="Signaler" name="signal" /><hr />';
+            }
         }
-    
         if(empty($post->auth)) {
-            echo 'Aucun commentaire n\'a encore été posté sur cet article.';
-        }
-    }
+                echo 'Aucun commentaire n\'a encore été posté sur ce chapitre.';
+            }
+    
     
 }
     
@@ -41,7 +43,7 @@ class Crudcomments {
         return $req;
     }
 
-    public function createComment ($id) { // c'est la que je dois sans doute choisir dans quel table je met tel comm
+    public function createComment ($id) { 
         $db = new DataBase('comments');
 
         if (!empty($_POST['auth']) && !empty($_POST['contenuComment'])) {

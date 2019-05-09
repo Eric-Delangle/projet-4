@@ -194,7 +194,7 @@ text-align: center;
   font-size: 0.5em;
 }
 
- #cadre_chapitres {
+ .cadre_chapitres {
    border: 1px solid grey;
    border-radius: 15px 15px 15px 15px;
    width: 90%;
@@ -205,9 +205,10 @@ text-align: center;
    margin: 50px auto;
    padding: 10px 20px;
    text-decoration: none;
+   text-align: center;
   }
 
-  #cadre_chapitres a {
+  .cadre_chapitres a {
     text-decoration: none;
     cursor: pointer;
     padding: 2px 20px;
@@ -233,11 +234,6 @@ text-align: center;
 
   .aligntext {
     text-align: center;
-  }
-
-  #precsuiv {
-    display: flex;
-    justify-content: space-around;
   }
   
   .extraitChap {
@@ -286,4 +282,15 @@ text-align: center;
   #bloc_comments textarea {
     width: 100%;
     height: 100px;
+  }
+/* Disposition de mes liens chapitre suivant et chapitre precedent */
+
+  #divSuivPrec { 
+    display: flex;
+    justify-content: space-around;
+  }
+
+  /* trucs divers */
+  .erreur {
+    text-align: center;
   }

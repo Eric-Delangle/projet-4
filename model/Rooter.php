@@ -69,7 +69,7 @@ Class Rooter {
             include (CONTROLER.'majChapter.php');
         }
          else {
-            echo 'OOOoooohh grosse erreur 404';
+            echo '<p class="erreur">OOOoooohh grosse erreur 404</p>';
         }
         
     }

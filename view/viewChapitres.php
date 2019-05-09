@@ -20,10 +20,12 @@ echo '<h1 id="chap" class="type typewriter">Ici commence notre histoire...</h1>'
 
 
 
-	<div id="table">
+	<div class="cadre_chapitres">
+	
 		<?php tableau(); ?>
+	
 	</div>
-
+	
 
 
 	</div>

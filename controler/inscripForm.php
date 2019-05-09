@@ -1,4 +1,7 @@
 <?php
+
+namespace projet4;
+
 class InscripForm
 {
     private $data;

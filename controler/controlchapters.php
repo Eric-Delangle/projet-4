@@ -6,13 +6,15 @@ require_once (VIEW.'viewcomments.php');
 
 
 // aller au chapitre suivant
- if(isset($_POST['suivant']) AND $_POST['go']=='suivant') { 
- getNextId();
+ if(isset($_POST['Chapitre_suivant'])) { 
+    $after = new \projet4\Crudchapters($_GET['id']);
+    $after->getNextId();
 }
 
 // aller au chapitre precedent
-if(isset($_POST['precedent']) AND $_POST['return']=='precedent') { 
- getLastId();
+if(isset($_POST['Chapitre_precedent'])) { 
+   $before = new \projet4\Crudchapters($_GET['id']);
+   $before->getLastId();
  }
  
     // afficher le chapitre
@@ -21,20 +23,15 @@ if(isset($_POST['precedent']) AND $_POST['return']=='precedent') {
       $read->showChapters();
        require (VIEW.'viewcomments.php');
     }
-    
-    // afficher les commentaires
-    function readCom(){
-      $comm = new \projet4\Crudcomments($_GET['id']);
-      $comm->showComments();
-    }
-   
      
      ?>
     
   </div>
   <div id='precsuiv'>
-		<input type="submit" class="liens_h1" value="precedent" name="return" />
-		<input type="submit" class="liens_h1" value="suivant" name="go" />
+   <form id="divSuivPrec" method="POST" action="">
+         <input type="submit" class="liens_h1" value="Chapitre precedent" name="Chapitre_precedent" />
+         <input type="submit" class="liens_h1" value="Chapitre suivant" name= "Chapitre_suivant" />
+      </form>
   </div>
 
 

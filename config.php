@@ -37,7 +37,7 @@ class Myautoload {
         } 
 
         else {
-            echo 'OOOoohhh erreur 404 !';
+            echo '<p class="erreur">OOOoohhh erreur 404 !</p>';
         }
         
     }

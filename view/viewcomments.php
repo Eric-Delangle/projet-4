@@ -28,7 +28,7 @@ $com = new \projet4\Crudcomments($_GET['id']);// j'instancie mon objet Crudcomme
 					<hr />
 				</h3>
         <div id="vuecom">
-          <p id="com"><?php var_dump(affichCom());?></p>
+          <p id="com"><?php readCom();?></p>
           <hr />
 			  	<p id="pasdecom">
           <?php 

@@ -4,23 +4,25 @@ require_once (VIEW.'nav.php');
 require_once (MODEL.'DataBase.php');
 require_once (CONTROLER.'controlConnec.php');
 
-if (isset($_SESSION['ouvert'])== true) {
+//if (isset($_SESSION['ouvert'])== true) {
    
  
 
    if (isset($_POST['pass'])) {
 
-    $admin = new DataBase('members');
+    $admin = new \projet4\DataBase('members');
 
     $passe_hache = password_hash(htmlspecialchars($_POST['pass']), PASSWORD_DEFAULT);
     
       
 
-     $login = $admin->prepare('INSERT INTO members (pass) VALUES (:pass)', array(':pass' => $passe_hache), "DataBase", true);
+     $login = $admin->prepare("UPDATE members SET pass = ? WHERE pass = pass", array('pass'=> $passe_hache), 'members', false);
+     
+     echo 'Votre pass a été changé';
    
    }
 
    else {
        echo 'prob de pass';
    }
-}
+//}

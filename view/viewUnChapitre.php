@@ -1,8 +1,8 @@
 <?php
 require_once (CONTROLER.'controlchapters.php');
 ?>
-<div id="table">
+<div class="cadre_chapitres">
 		<?php readChap();
-		readCom();
+		
 		?>
 	</div>

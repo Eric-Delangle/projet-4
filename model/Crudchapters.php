@@ -39,8 +39,8 @@ class Crudchapters  {
             <td><?php echo '<p>'.substr($post->contents, 219, 400).'...</p>';?></td> 
             <td> <?php echo '<a class="liens_h1" href="chapter?id=' .$post->id_chapter. '">';?>Lire le chapitre</a></td>
             </tr>
-            <hr />
         </table>
+        <hr />
       <?php
         }
     }
@@ -59,8 +59,35 @@ class Crudchapters  {
             </div> 
 <?php
      
+     }
     }
-}
+
+    
+    public function createChapter ($chapter_number, $title, $contents, $date_parution) {
+        $db = new \projet4\DataBase('chapters');
+        $req = $db->prepare('INSERT INTO chapters(chapter_number, title, contents, date_parution) VALUES(:chapter_number, :chapter_title, :contents, now())', (array('chapter_number' => $_POST['chapter_number'],'chapter_title' => $_POST['chapter_title'], 'contents' => $_POST['contents'])), 'chapters', true);
+    }
+
+
+    public function updateChatper() {
+        $db = new \projet4\DataBase('chapters');
+        $req = $db->prepare('UPDATE chapters(chapter_number, title, contents, date_parution) VALUES(:chapter_number, :chapter_title, :contents, now())', (array('chapter_number' => $_POST['chapter_number'],'chapter_title' => $_POST['chapter_title'], 'contents' => $_POST['contents'])), 'chapters', true);
+        var_dump($req);
+    }
+
+    public function getLastId() {
+           
+        $id  = $_GET['id'];
+        $id--;
+        return $id;
+    }
+
+    public function getNextId() {
+            
+        $id  = $_GET['id'];
+        $id++;
+        return $id;
+        }
 }
 /*
     public function getExtrait() {

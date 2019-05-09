@@ -20,3 +20,8 @@ function affichCom() {
           $inscom->createComment('id');
       }
 
+ // afficher les commentaires
+ function readCom(){
+    $comm = new \projet4\Crudcomments($_GET['id']);
+    $comm->showComments();
+  }

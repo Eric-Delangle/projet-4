@@ -21,7 +21,7 @@ if (isset($_SESSION['ouvert'])== true) {
             <div class="bloc_form">
                 <form action="change_pseudo" method="post">
                         <?php
-                            $change = new FormInscConnec($data);
+                            $change = new \projet4\FormInscConnec($data);
                             echo 'Quel pseudo voulez vous utiliser pour vous connecter à votre blog.';
                             echo $change->input('pseudo',"Votre nouveau pseudo");
                             echo $change->submit();

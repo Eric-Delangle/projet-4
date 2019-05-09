@@ -1,3 +1,3 @@
 <?php
-$maj = new Crudchapters();
-$maj->updateChaper($id);
+$maj = new \projet4\Crudchapters($_GET['id']);
+$maj->updateChapter();

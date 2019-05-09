@@ -1,6 +1,6 @@
 <?php
 namespace projet4;
-use PDO;
+
 class DataBase {
 
     private $db_name;
@@ -34,30 +34,15 @@ class DataBase {
         return $datas;
     }
    
-/*
-     // le query test
-        public function query($statement, $class_name,$one = false) { // instancier une classe ou pas
-        $db = $this->getPDO()->query($statement);
-        if($one) {
-            $datas = $db->fetchAll(PDO::FETCH_CLASS, $class_name);// la si je donne un nom de classe dans ma requete, ça me l'instancie en meme temps
-        } else {
-            $datas = $db->fetchAll(PDO::FETCH_OBJ);// la je ne donne pas de nom de classe ça me récupère un objet que je vais pouvoir parcourir
-        }
-        
-        return $datas;
-    }
-*/
-    public function prepare($statement, $attributes, $class_name, $one = false) {
+    public function prepare($attributes, $class_name,$one = false) {
         $req = $this->getPDO()->prepare($statement);
         $req->execute($attributes);
-        $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
-      
+        $datas = $req->fetchAll(PDO::FETCH_CLASS, $class_name);
         if($one) {
             $datas = $req->fetch();
         } else {
             $datas = $req->fetchAll();
         }
-        
         return $datas;
         
     }

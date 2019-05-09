@@ -1,56 +1,48 @@
 <?php
 namespace projet4;
-require_once (MODEL.'DataBase.php');
-//require_once (CONTROLER.'editChapitres.php');
-require_once (CONTROLER.'controlConnec.php');
 
-$admin = new \projet4\Connexion($datas);
-$admin->connecMembre('pseudo', 'pass');
-var_dump($admin);
 
 class Connexion {
 
-    public $datas;
-    public $db;
+    public $identifiant;
+    public $pass;
+    
 
-    public function __construct() {
-       $this->datas = $datas;
-       $this->db = $db;
+    public function __construct($identifiant, $pass) {
+       $this->identifiant = htmlspecialchars($identifiant);
+       $this->pass = htmlspecialchars($pass);
 
     }
 
-    public function connecMembre($datas){
+    public function connecMembre(){
+
+        if(empty($_POST['pseudo']) && empty($_POST['pass'])) {
+            echo '<p class="erreur">Tous les champs doivent être remplis !</p>';
+        }
         
-        if(isset($_POST['pseudo']) && isset($_POST['pass'])) {
+        else if(isset($_POST['pseudo']) && isset($_POST['pass'])) { 
+     
+            $db = new DataBase('members');
+            $admin =  $db->prepare("SELECT * FROM members WHERE pseudo = :pseudo", (array('pseudo' => $_POST['pseudo'])), 'members', true);
+      ?>
+         
 
-            $db = new \projet4\DataBase('membres');
-            $db->query('SELECT id,pass,pseudo FROM membres');
-        // lignes qui me pose problème
-        var_dump($admin);
-            $db->$req->fetch();
-            $isPasswordCorrect = password_verify($_POST['pass'], $admin->pass);
-
-//var_dump($isPasswordCorrect);
-//var_dump($db);
-//var_dump($admin);
-
+            <?php
+            $isPasswordCorrect = password_verify($_POST['pass'], $admin['pass']);
+        
                 if ($isPasswordCorrect) {
-
                     
                     session_start();
-                    $_SESSION['pseudo']=$_POST['pseudo'];
-                    $_SESSION['pass']=$_POST['pass'];
+                    $_SESSION['pseudo']=$admin['pseudo'];
+                    $_SESSION['pass']=$admin['pass'];
                     header('location: edition');
                 }
-        
-            }
-        else {
 
-            echo 'On refait !';
-           // var_dump($datas);
-          //  var_dump($isPasswordCorrect);
-           // var_dump($pass);
-            }
-        
+
+                else {
+                    echo '<p class="erreur">Votre identifiant ou votre mot de passe ne correspond pas !</p>';
+                
+                 }    
+        }
     }
 }
