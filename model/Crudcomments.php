@@ -27,7 +27,7 @@ class Crudcomments {
             echo '<p class="aligntext">Auteur: '.$post->auth.'</p><br />';
             echo '<p class="aligntext">Commentaire: '.$post->comment.'</p><br />';
             echo '<p class="aligntext">Ecrit le : '.$post->date_comment_fr.'</p><br />'; 
-            echo '<input type="submit" class="liens_h1" value="Signaler" name="signal" /><hr />';
+            echo '<form action="viewEdit.php" method="POST"><input type="button" class="liens_h1" value="Signaler" name="signal" /></form><hr />';
             }
         }
         if(empty($post->auth)) {
@@ -68,4 +68,29 @@ class Crudcomments {
     public function deleteComment ($id) {
 
     }
+
+    public function signalCom() {
+        $db = new DataBase('comments');
+        foreach($db->query("SELECT signalement,DATE_FORMAT(date_comment, '%d/%m/%Y à %Hh%i minutes')AS date_comment_fr  FROM comments WHERE id_chap = '".$id_chap."' " ) as $post){ 
+        $this->signalement = 1;
+        var_dump($this->signalement);
+        }
+        /*
+        if(isset($_POST['Signaler'])) {
+            $this->signalement = 1;
+            var_dump($$this->signalement);
+            echo 'Ce commentaire a bien été signalé.';
+            // j'affiche le message dans l'interface d'administration
+        } else {
+            // rien du tout
+        }*/
+    }
+
+    // signalement d'un commentaire 
+    /* avec un boolen,si le commentaire n'est pas signalé bool(false) et si il l'est bool(true)
+    Ajouter une colonne dans les commentaires qui aura pour valeur True, oui, 1 ou autre chose au choix.
+     Quand cette valeur est ok j'affiche les commentaires grâce à une condition qui teste cette valeur,
+      dans le cas contraire il ne s'affiche pas et apparaîtra dans la partie administration. 
+    Le bouton "signaler" à pour effet de changer la valeur.
+    */
 }

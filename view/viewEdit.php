@@ -58,11 +58,12 @@ require_once (CONTROLER.'editChapitres.php');
          <!-- la va apparaitre la div de modification des chapitres ou des commentaires -->
        <div class="cadre_chapitres">
             <p>La j'affiche ce que je veux gérer.</p>
-               <div class="gestion">
-
+         
+               <div class="gestion_chap">
+               
                </div>
-               <div class="gestion">
-                  
+               <div class="gestion_com">
+               <p><?php $signal = new \projet4\Crudcomments($_GET['id_chapter']);$signal->signalCom(); ?></p>
                </div>
        </div>
 

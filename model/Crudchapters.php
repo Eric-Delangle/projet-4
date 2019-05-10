@@ -76,18 +76,27 @@ class Crudchapters  {
     }
 
     public function getLastId() {
-           
-        $id  = $_GET['id'];
-        $id--;
-        return $id;
+    
+        $id  = $this->id_chapter; 
+        $id--; 
+        if($id == 0) {
+         // ne fait rien
+        }else { 
+        echo '<script language="Javascript"> document.location.replace("chapter?id='.$id.'");  </script>';
+        }
     }
 
     public function getNextId() {
-            
-        $id  = $_GET['id'];
+           // penser a faire une condition pour pas aller plus loin que le dernier chapitre
+        $id  = $this->id_chapter;
         $id++;
-        return $id;
+        
+        if($id == null) { // c'est pas null qu'il faut mettre
+            // ne fait rien
+        }else{ 
+        echo '<script language="Javascript"> document.location.replace("chapter?id='.$id.'");  </script>';
         }
+    }
 }
 /*
     public function getExtrait() {
