@@ -31,7 +31,7 @@ if(empty($_SESSION['pseudo']))
             </div>
     <?php
 }
-
+/*
 if(isset($_SESSION['pseudo']))
 {
     ?>
@@ -44,6 +44,7 @@ if(isset($_SESSION['pseudo']))
             </div>
     <?php
 }
+*/
 ?>
 <br/>
 <div class="container_menu">
