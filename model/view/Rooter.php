@@ -1,5 +1,4 @@
 <?php
-
 /*
 * Class Rooter
 *
@@ -59,19 +58,13 @@ Class Rooter {
         }
 
         else if ($this->request == 'chapter') {
-            include (CONTROLER.'controlchapters.php');
+            include (CONTROLER.'chapters.php');
         }
-        
         else if ($this->request == 'controlcomments') {
             include (CONTROLER.'controlcomments.php');
         }
-
-        else if ($this->request == 'majChapter') {
-            include (CONTROLER.'majChapter.php');
-        }
-       
          else {
-            echo '<p class="erreur">OOOoooohh grosse erreur 404</p>';
+            echo 'OOOoooohh grosse erreur 404';
         }
         
     }

@@ -1,5 +1,6 @@
 <?php
 require_once (CONTROLER.'editChapitres.php');
+//require_once (CONTROLER.'controlcomments.php');
 ?>
 </html>
 <head>
@@ -63,7 +64,7 @@ require_once (CONTROLER.'editChapitres.php');
                
                </div>
                <div class="gestion_com">
-               <p><?php $signal = new \projet4\Crudcomments($_GET['id_chapter']);$signal->signalCom(); ?></p>
+                  <p><?php ?></p>
                </div>
        </div>
 
