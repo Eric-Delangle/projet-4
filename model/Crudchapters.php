@@ -25,42 +25,23 @@ class Crudchapters  {
     public function affichTable(){  // la j'affiche la page chapters avec tous ses chapitres les uns sous les autres
         $db = new \projet4\DataBase('chapters');
       
-        foreach($db->query("SELECT *, DATE_FORMAT(date_parution, '%d/%m/%Y')AS date_parution_fr FROM chapters",true) as $post){
+        $allChapters = $db->query("SELECT *, DATE_FORMAT(date_parution, '%d/%m/%Y')AS date_parution_fr 
+        FROM chapters", true);
+       return $allChapters;
        
-       ?>
-            <table id="tableau">
-            <tr>
-            <th></th>
-            <th id="tableau"></th> 
-            <th></th>
-            </tr>
-            <tr>
-            <td><?php print_r($post->title); ?></td>
-            <td><?php echo '<p>'.substr($post->contents, 219, 400).'...</p>';?></td> 
-            <td> <?php echo '<a class="liens_h1" href="chapter?id=' .$post->id_chapter. '">';?>Lire le chapitre</a></td>
-            </tr>
-        </table>
-        <hr />
-      <?php
+     
         }
-    }
-   
+    
 
     public function showChapters() { // la au click sur le lien j'affiche le chapitre demandé
         $db = new \projet4\DataBase('chapters');
       
-        foreach($db->query("SELECT *, DATE_FORMAT(date_parution, '%d/%m/%Y')AS date_parution_fr FROM chapters WHERE id_chapter = $_GET[id]",true) as $post) { 
-            ?>
-            <div id="chapterPosition">
-                <?php
-                    echo $post->title; 
-                    echo $post->contents; 
-                ?>
-            </div> 
-<?php
+        $chap = $db->query("SELECT *, DATE_FORMAT(date_parution, '%d/%m/%Y')AS date_parution_fr 
+        FROM chapters WHERE id_chapter = $_GET[id]",true); 
+         return $chap;
      
      }
-    }
+    
 
     
     public function createChapter ($chapter_number, $title, $contents, $date_parution) {
@@ -82,19 +63,22 @@ class Crudchapters  {
         if($id == 0) {
          // ne fait rien
         }else { 
-        echo '<script language="Javascript"> document.location.replace("chapter?id='.$id.'");  </script>';
+        header('location: chapter?id='.$id.'');
         }
     }
 
     public function getNextId() {
+        
            // penser a faire une condition pour pas aller plus loin que le dernier chapitre
         $id  = $this->id_chapter;
         $id++;
+        var_dump($id);
         
         if($id == null) { // c'est pas null qu'il faut mettre
             // ne fait rien
         }else{ 
         echo '<script language="Javascript"> document.location.replace("chapter?id='.$id.'");  </script>';
         }
+        
     }
 }

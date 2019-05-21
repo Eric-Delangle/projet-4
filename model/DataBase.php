@@ -1,5 +1,6 @@
 <?php
 namespace projet4;
+
 use PDO;
 class DataBase {
 
@@ -31,15 +32,17 @@ class DataBase {
    
     public function query($statement, $one = false) {
         $db = $this->getPDO()->query($statement);
-        if($one){ // ça c'est pour pas qu'il me fasse systematiquement de fetch si la requete n'en a pas besoin
+
+      if($one){ 
         $datas = $db->fetchAll(PDO::FETCH_OBJ);
-        }
-        return $datas;
+      }else {
+        $datas = $db->fetch(PDO::FETCH_OBJ);
     }
-   
+    return $datas;
+}
 /*
      // le query test
-        public function query($statement, $class_name,$one = false) { // instancier une classe ou pas
+        public function query($statement, $class_name, $one = false) { // instancier une classe ou pas
         $db = $this->getPDO()->query($statement);
         if($one) {
             $datas = $db->fetchAll(PDO::FETCH_CLASS, $class_name);// la si je donne un nom de classe dans ma requete, ça me l'instancie en meme temps

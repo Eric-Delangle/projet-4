@@ -1,31 +1,25 @@
 <?php
 
+//require(VIEW.'viewcomments.php');
+
+// j'instancie mes deux classes
+  $commentForm = new \projet4\FormInscConnec ($data);
+  
 
 // inserer un com
- 
+
   if (!empty($_POST['auth']) && !empty($_POST['contenuComment'])) {
-    $inscom = new \projet4\Crudcomments($_GET['id']);
-    $inscom->createComment('id');
+    $inscomm = new \projet4\Crudcomments($_GET['id']);
+     $inscomm->createComment('id');
   }
 
  // afficher les commentaires
-
-    $comm = new \projet4\Crudcomments($_GET['id']);
-    $com = $comm->getComments($_GET['id']); 
-    
-?>
-   <pre><?= var_dump($com); ?></pre> 
-   <?php
+    $vueComm = new \projet4\Crudcomments($_GET['id']);
+    $com = $vueComm->getComments($_GET['id']);
     return $com;
-
- 
+     
 // signaler un commentaire
 
-  if($_POST['signaler']) {
-    $signal = new \projet4\Crudcomments($_GET['id']);
-    $signal->signalCom();
-    }
-  
   
  
 
