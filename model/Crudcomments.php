@@ -8,16 +8,18 @@ class Crudcomments
 {
 
     public $id;
-    
+    public $id_comment;
 
     public function __construct($id){
-        $this->id = $_GET['id'];  
+        $this->id = $id;  
+        $this->id_comment = $id_comment;
     }
         
 
     public function getComments($id_chap) {
 
         $id_chap = $_GET['id'];
+       // var_dump($id_chap);
         $db = new \projet4\DataBase('comments');
         $com = $db->query("SELECT *,DATE_FORMAT(date_comment, '%d/%m/%Y à %Hh%i minutes')
         AS date_comment_fr  FROM comments WHERE id_chap = '".$id_chap."' ", true); 
@@ -40,14 +42,25 @@ class Crudcomments
 
     }
 
-    public function signalCom() {
-        $id_chap = $this->id;
-        $pdo = new PDO('mysql:dbname=ericd995946;host=91.216.107.162', 'ericd995946', 'vaosjv8xde');
-        $pdo-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $pdo->query("UPDATE comments SET signalement = 1 WHERE id_chap = '".$id_chap."' "); // des que je lui met le where ca marche pas
-      var_dump($id_chap);
-       echo 'Ce commentaire a bien été signalé.';
-         header('Refresh:3;url=chapters');
+    public function signalCom($id_chap) {
+
+     
+        $alert = new \projet4\DataBase('comments');
+      /*
+        $kelcom = $alert->query("SELECT id_comment FROM comments WHERE id_chap = '".$_GET['id']."' AND id_comment = '".$_GET['id_comment']."' ", true );
+        //  var_dump($kelcom);
     
+     
+  
+    // if($com == 0) { 
+    */
+       $signal = $alert->onlyquery("UPDATE comments SET signalement = 1 WHERE id_comment = '".$_GET['id']."' "); // des que je lui met le where ca marche pas
+      return $signal;
+    // }
+      // header("Refresh:3;url=chapter?id=$_GET[id]");
+     
     }
-}
+      
+  }
+
+

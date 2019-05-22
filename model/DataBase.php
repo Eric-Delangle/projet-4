@@ -40,6 +40,15 @@ class DataBase {
     }
     return $datas;
 }
+
+    public function onlyquery($statement) {
+        $db = $this->getPDO()->query($statement);
+        $datas = $db->execute();
+        return $datas;
+   
+    }
+
+
 /*
      // le query test
         public function query($statement, $class_name, $one = false) { // instancier une classe ou pas

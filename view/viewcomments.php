@@ -34,7 +34,7 @@ require(VIEW.'viewUnChapitre.php'); // la ça m'affiche bien le chapitre avant l
                     echo '<p class="aligntext">Auteur: ' .$vue->auth. ' </p><br />';
                     echo '<p class="aligntext">Commentaire: '.$vue->comment.' </p><br />';
                     echo '<p class="aligntext">Ecrit le : '.$vue->date_comment_fr.'</p><br />';
-                    echo '<form action="signal" method="post">
+                    echo '<form action="signal?id='.$vue->id_comment.' " method="post">
                             <input type="submit" class="liens_rouges" value="Signaler" name="signaler"/>
                           </form><hr />';
                    
