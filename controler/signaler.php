@@ -9,7 +9,7 @@ if($_POST['signaler']) {
         if($alert == true) { 
         
             echo 'Ce commentaire a été signalé';
-            header("Refresh:3;url=chapters");// la il me renvoi a l'id du commentaire pas celui du chapitre
+            header("Refresh:3;url=chapters");
         } else { 
             echo 'Ce commentaire n\'a pas été signalé';
             header("Refresh:3;url=chapters");

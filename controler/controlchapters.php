@@ -16,18 +16,14 @@ $read = new \projet4\Crudchapters($_GET['id']);
 // aller au chapitre suivant
 
    if(isset($_POST['Chapitre_suivant'])) { 
-      $apres = new \projet4\Crudchapters($_GET['id']);
-     $id = $apres->getNextId();
-     var_dump($id);
-     return $id;
-     
+      
+      $read->getNextId();   
    }
 
 // aller au chapitre precedent
 
    if(isset($_POST['Chapitre_precedent'])) { 
       $read->getLastId();
-   
    }  
 
 

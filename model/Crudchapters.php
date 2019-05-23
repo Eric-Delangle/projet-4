@@ -61,14 +61,18 @@ class Crudchapters  {
         $id = $this->id;
         $id--;
         return $id;
+     var_dump($id);
+
      
     }
 
     public function getNextId() {
-        
-           // penser a faire une condition pour pas aller plus loin que le dernier chapitre
+        echo 'fait chier';
+       /*
+       
         $id = $this->id;
         $id++;
-        return $id;
+     return $id;
+*/
     }
 }

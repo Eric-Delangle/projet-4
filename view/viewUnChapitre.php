@@ -12,8 +12,9 @@ require(CONTROLER.'controlchapters.php');
 </div>
 
 <div id='precsuiv'>
-      <form id="divSuivPrec" method="POST" action="chapter?id=' <?= $id ?>' ">
+      <form id="divSuivPrec" method="POST" action="<?php echo 'chapter?id=' .$id; ?>">
             <input type="submit" class="liens_h1" value="Chapitre precedent" name="Chapitre_precedent" />
             <input type="submit" class="liens_h1" value="Chapitre suivant" name= "Chapitre_suivant" />
       </form>
+
   </div>
