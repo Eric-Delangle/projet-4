@@ -1,10 +1,7 @@
 <?php
+// ce controleur affiche tous les chapitres les uns sous les autres
 require_once (VIEW.'viewChapitres.php');
-
-require_once (CONTROLER.'functions.php');
-
-
-function tableau(){
+// afficher tous les chapitres
   $all = new \projet4\Crudchapters($_GET['id']);
-  $all->affichTable();
-}
+  $allChap = $all->affichTable();
+  return $allChap;

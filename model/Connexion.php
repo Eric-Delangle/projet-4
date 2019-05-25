@@ -16,7 +16,7 @@ class Connexion {
 
     public function connecMembre(){
 
-        if(empty($_POST['pseudo']) && empty($_POST['pass'])) {
+        if(empty(htmlspecialchars($_POST['pseudo'])) && empty(htmlspecialchars($_POST['pass']))) {
             echo '<p class="erreur">Tous les champs doivent être remplis !</p>';
         }
         
@@ -46,3 +46,4 @@ class Connexion {
         }
     }
 }
+

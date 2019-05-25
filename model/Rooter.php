@@ -25,10 +25,6 @@ Class Rooter {
         else if ($this->request == 'contact') {
             include (VIEW.'viewContact.php');
         }
-
-        else if ($this->request == 'envoi') {
-            include (CONTROLER.'controlMail.php');
-        }
         
          else if ($this->request == 'connection') {
             include (CONTROLER.'controlConnec.php');
@@ -69,7 +65,19 @@ Class Rooter {
         else if ($this->request == 'majChapter') {
             include (CONTROLER.'majChapter.php');
         }
+
+        else if ($this->request == 'modifcom') {
+            include (CONTROLER.'modifcom.php');
+        }
        
+        else if ($this->request == 'mail') {
+            include (CONTROLER.'controlMail.php');
+        }
+
+        else if ($this->request == 'signal') {
+            include (CONTROLER.'signaler.php');
+        }
+        
          else {
             echo '<p class="erreur">OOOoooohh grosse erreur 404</p>';
         }

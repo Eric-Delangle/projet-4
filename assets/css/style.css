@@ -305,3 +305,31 @@ text-align: center;
   .erreur {
     text-align: center;
   }
+
+  /* Interface admin */
+
+  .cadre_interface {
+    border: 1px solid grey;
+   border-radius: 15px 15px 15px 15px;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   justify-content: center;
+   margin: 0 auto;
+   padding: 10px 20px;
+   text-decoration: none;
+   text-align: center;
+  }
+  }
+
+
+  #comSign {
+    width: 50%;
+    margin: 0 auto;
+   }
+
+   .lien_sign_com {
+     display: flex;
+     justify-content: center;
+     text-decoration: none;
+   }

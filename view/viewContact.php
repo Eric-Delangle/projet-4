@@ -15,7 +15,9 @@ echo '<div id="cadreContact"><div id="blocContact"><img src="assets/images/karib
                 echo $contForm->input("pseudo","Votre pseudo");
                 echo $contForm->input('mail',"Votre email");
                 echo $contForm->textarea('message',"Votre message");
-                echo $contForm->submit();
+                echo '<form action="mail" method="post">
+                            <input type="submit" class="liens_h1" value="Envoyer" name="envoyer"/>
+                          </form>';
             ?>
         </form>
     </div>

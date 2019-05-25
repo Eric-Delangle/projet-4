@@ -1,6 +1,7 @@
 <?php
-require_once (CONTROLER.'editChapitres.php');
-//require_once (CONTROLER.'controlcomments.php');
+require(CONTROLER.'editChapitres.php');
+//require(CONTROLER.'modifcom.php');
+
 ?>
 </html>
 <head>
@@ -26,10 +27,7 @@ require_once (CONTROLER.'editChapitres.php');
          <form  action="deconnexion" method="post">
             <input type="submit" id="deconnexion" class="liens_h1" value="Vous déconnecter">
          </form>
-
-         <form  action="changer_identifiants" method="post">
-            <input type="submit" id="changer_identifiants" class="liens_h1" value="Changer d'identifiants">
-         </form>  
+ 
       </div>
       <?php require_once (VIEW.'nav.php');?>
   <h1 class="messageDeBienvenue"><?php echo "Bienvenue  ".$_SESSION['pseudo']." dans l'interface d'administration de votre blog."?></h1>
@@ -47,7 +45,16 @@ require_once (CONTROLER.'editChapitres.php');
                    <input type="number" name="chapter_number" placeholder="Numéro du chapitre" value="" required>                 
                </div>
 
-            <textarea name='contents' id ='contents'></textarea>
+            <textarea name='contents' id ='contents'>
+               <?php var_dump($modif);
+               if($modif) { 
+                  var_dump($modif);
+                     echo '<p class="aligntext">Auteur: ' .$mod->auth. ' </p><br />';
+                     echo '<p class="aligntext">Commentaire: '.$mod->comment.' </p><br />';
+                     echo '<p class="aligntext">Ecrit le : '.$mod->date_comment_fr.'</p><br />';
+                   }
+               ?>
+            </textarea>
             <input type="submit" id="save_chapter" class="liens_h1" value="Sauvegarder">
             
          </form>
@@ -56,18 +63,28 @@ require_once (CONTROLER.'editChapitres.php');
             <input type="submit" id="maj_chapter" class="liens_h1" value="Mettre à jour">
        </form>
 
-         <!-- la va apparaitre la div de modification des chapitres ou des commentaires -->
-       <div class="cadre_chapitres">
-            <p>La j'affiche ce que je veux gérer.</p>
-         
-               <div class="gestion_chap">
-               
-               </div>
-               <div class="gestion_com">
-                  <p><?php ?></p>
-               </div>
+         <!-- la va apparaitre la div de modification ou de suppression des commentaires -->
+       <div class="cadre_interface">
+          <?php foreach($datas as $data) { 
+               echo ' 
+               <table id="comSign">
+               <tr>
+               <th></th>
+               <th id="tableau"></th>
+               <th></th>
+               </tr>
+               <tr>
+               <td>Attention ce commentaire a été signalé: ' .$data->comment.' </td>
+               <td class="lien_sign_com" id="modifCom"> <form action="modifcom?id='.$data->id_comment.'" method="post"> <input type="submit" class="liens_rouges" value="Modifier" name="modifier"/></form></td><br />
+               <td class="lien_sign_com" id="supCom"> <form action="modifcom?id='.$data->id_comment.'" method="post"> <input type="submit" class="liens_rouges" value="Supprimer" name="supprimer"/></form></td><hr />
+               </tr>
+               </table>
+               ';
+           }
+           ?>
        </div>
 
+       
     <script>document.getElementById('connecter').style.display = 'none';</script>
     <script>document.getElementById('deconn').style.display = 'none';</script>
     <script>document.getElementById('accueil').style.display = 'block';</script>

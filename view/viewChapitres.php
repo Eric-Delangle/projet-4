@@ -1,11 +1,7 @@
 <?php
+// cette view affiche tous les chapitres les uns sous les autres
 require (VIEW.'nav.php');
-//require_once (MODEL.'Crudchapters.php');
-//require_once (MODEL.'Chapter.php');
-require_once (CONTROLER.'controlChapitre.php');
-//require_once (CONTROLER.'controlchapters.php');
-//$liste = new Crudchapters();
-
+//require(CONTROLER.'controlChapitre.php');
 echo '<h1 id="chap" class="type typewriter">Ici commence notre histoire...</h1>';
 ?>
 <html>
@@ -22,8 +18,25 @@ echo '<h1 id="chap" class="type typewriter">Ici commence notre histoire...</h1>'
 
 	<div class="cadre_chapitres">
 	
-		<?php tableau(); ?>
-	
+        <?php require_once(CONTROLER.'controlChapitre.php');
+        foreach($allChap as $AllChapters) { 
+            echo ' 
+            <table id="tableau">
+            <tr>
+            <th></th>
+            <th id="tableau"></th>
+            <th></th>
+            </tr>
+            <tr>
+            <td>'.$AllChapters->title.'</td>
+            <td>'.substr($AllChapters->contents, 219, 400). '...</p></td>
+            <td> <a class="liens_h1" href="chapter?id=' .$AllChapters->id_chapter. '">Lire le chapitre</a></td><hr />
+            </tr>
+        </table>';
+        
+        }
+    
+        ?>
 	</div>
 	
 
