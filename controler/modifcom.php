@@ -25,7 +25,14 @@ if($_POST['supprimer']) {
  if($_POST['modifier']) { 
     $modifcom = new \projet4\Crudcomments($_GET['id']);
     // je recupere les comms
-    $modif = $modifcom->getSignComments();
-    var_dump($modif);
-    return $modif;  
+    $modifs = $modifcom->getSignComments();
+  // var_dump($modifs);
+
+    foreach($modifs as $modif) {
+     var_dump($modif);
+        return $modif;
+          // $modif me retourne rien si j'ai plusieurs coms de signalés
+    }
+   
+    
  }

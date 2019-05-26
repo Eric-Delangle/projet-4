@@ -46,12 +46,12 @@ require(CONTROLER.'editChapitres.php');
                </div>
 
             <textarea name='contents' id ='contents'>
-               <?php var_dump($modif);
-               if($modif) { 
-                  var_dump($modif);
-                     echo '<p class="aligntext">Auteur: ' .$mod->auth. ' </p><br />';
-                     echo '<p class="aligntext">Commentaire: '.$mod->comment.' </p><br />';
-                     echo '<p class="aligntext">Ecrit le : '.$mod->date_comment_fr.'</p><br />';
+               <?php //var_dump($modif);
+               if($modif) { // $modif me retourne rien si j'ai plusieurs coms de signalés
+                 var_dump($modif);
+                     echo '<p class="aligntext">Auteur: ' .$modif->auth. ' </p><br />';
+                     echo '<p class="aligntext">Commentaire: '.$modif->comment.' </p><br />';
+                     echo '<p class="aligntext">Ecrit le : '.$modif->date_comment_fr.'</p><br />';
                    }
                ?>
             </textarea>
