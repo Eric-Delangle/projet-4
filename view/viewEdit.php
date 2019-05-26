@@ -1,0 +1,92 @@
+<?php
+require(CONTROLER.'editChapitres.php');
+//require(CONTROLER.'modifcom.php');
+
+?>
+</html>
+<head>
+   <meta charset="utf-8" />
+   <link rel="stylesheet" href="<?php echo ASSETS;?>css/style.css" />
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src = "https://cloud.tinymce.com/5/tinymce.min.js? apiKey = mibp5q8fc9tq6xnkjnimgpa1u02x01d45v2wt4mczl0uorhb "> </script>
+  
+   <script>tinymce.init({
+      selector: 'textarea',
+      init_instance_callback : function(editor) {
+         var freeTiny = document.querySelector('.tox .tox-notification--in');
+         freeTiny.style.display = 'none';
+      }
+   });
+   
+ </script>
+
+</head>
+
+    <body>
+       <div class="disposition">
+         <form  action="deconnexion" method="post">
+            <input type="submit" id="deconnexion" class="liens_h1" value="Vous déconnecter">
+         </form>
+ 
+      </div>
+      <?php require_once (VIEW.'nav.php');?>
+  <h1 class="messageDeBienvenue"><?php echo "Bienvenue  ".$_SESSION['pseudo']." dans l'interface d'administration de votre blog."?></h1>
+
+
+         <form action="saveChapter" method="POST" name="addarticle">
+         <div>
+                <div>
+                 <div class="label_for">  Titre :</div>
+                   <input id="chapter_title" name="chapter_title" type="text"  placeholder="Titre du chapitre" value="" required>
+                </div>
+
+               <div>
+                <div class="label_for">  Chapitre :</div>
+                   <input type="number" name="chapter_number" placeholder="Numéro du chapitre" value="" required>                 
+               </div>
+
+            <textarea name='contents' id ='contents'>
+               <?php var_dump($modif);
+               if($modif) { 
+                  var_dump($modif);
+                     echo '<p class="aligntext">Auteur: ' .$mod->auth. ' </p><br />';
+                     echo '<p class="aligntext">Commentaire: '.$mod->comment.' </p><br />';
+                     echo '<p class="aligntext">Ecrit le : '.$mod->date_comment_fr.'</p><br />';
+                   }
+               ?>
+            </textarea>
+            <input type="submit" id="save_chapter" class="liens_h1" value="Sauvegarder">
+            
+         </form>
+
+         <form action="majChapter" method="POST" name="majarticle">
+            <input type="submit" id="maj_chapter" class="liens_h1" value="Mettre à jour">
+       </form>
+
+         <!-- la va apparaitre la div de modification ou de suppression des commentaires -->
+       <div class="cadre_interface">
+          <?php foreach($datas as $data) { 
+               echo ' 
+               <table id="comSign">
+               <tr>
+               <th></th>
+               <th id="tableau"></th>
+               <th></th>
+               </tr>
+               <tr>
+               <td>Attention ce commentaire a été signalé: ' .$data->comment.' </td>
+               <td class="lien_sign_com" id="modifCom"> <form action="modifcom?id='.$data->id_comment.'" method="post"> <input type="submit" class="liens_rouges" value="Modifier" name="modifier"/></form></td><br />
+               <td class="lien_sign_com" id="supCom"> <form action="modifcom?id='.$data->id_comment.'" method="post"> <input type="submit" class="liens_rouges" value="Supprimer" name="supprimer"/></form></td><hr />
+               </tr>
+               </table>
+               ';
+           }
+           ?>
+       </div>
+
+       
+    <script>document.getElementById('connecter').style.display = 'none';</script>
+    <script>document.getElementById('deconn').style.display = 'none';</script>
+    <script>document.getElementById('accueil').style.display = 'block';</script>
+    </body>
+</html>
