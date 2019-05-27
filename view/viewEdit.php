@@ -46,14 +46,7 @@ require(CONTROLER.'editChapitres.php');
                </div>
 
             <textarea name='contents' id ='contents'>
-               <?php //var_dump($modif);
-               if($modif) { // $modif me retourne rien si j'ai plusieurs coms de signalés
-                 var_dump($modif);
-                     echo '<p class="aligntext">Auteur: ' .$modif->auth. ' </p><br />';
-                     echo '<p class="aligntext">Commentaire: '.$modif->comment.' </p><br />';
-                     echo '<p class="aligntext">Ecrit le : '.$modif->date_comment_fr.'</p><br />';
-                   }
-               ?>
+          
             </textarea>
             <input type="submit" id="save_chapter" class="liens_h1" value="Sauvegarder">
             
@@ -75,7 +68,7 @@ require(CONTROLER.'editChapitres.php');
                </tr>
                <tr>
                <td>Attention ce commentaire a été signalé: ' .$data->comment.' </td>
-               <td class="lien_sign_com" id="modifCom"> <form action="modifcom?id='.$data->id_comment.'" method="post"> <input type="submit" class="liens_rouges" value="Modifier" name="modifier"/></form></td><br />
+               <td class="lien_sign_com" id="modifCom"> <form action="modifcom?id='.$data->id_comment.'" method="post"> <input type="submit" class="liens_rouges" value="Rétablir" name="retablir"/></form></td><br />
                <td class="lien_sign_com" id="supCom"> <form action="modifcom?id='.$data->id_comment.'" method="post"> <input type="submit" class="liens_rouges" value="Supprimer" name="supprimer"/></form></td><hr />
                </tr>
                </table>

@@ -38,18 +38,6 @@ Class Rooter {
              include (CONTROLER.'editChapitres.php');
          }
 
-         else if ($this->request == 'changer_identifiants') {
-            include (CONTROLER.'changePseudoPass.php');
-        }
-
-        else if ($this->request == 'change_pseudo') {
-            include (CONTROLER.'change_pseudo.php');
-        }
-         
-        else if ($this->request == 'change_pass') {
-            include (CONTROLER.'change_pass.php');
-        }
-
         else if ($this->request == 'saveChapter') {
             include (CONTROLER.'saveChapter.php');
         }
@@ -57,9 +45,9 @@ Class Rooter {
         else if ($this->request == 'chapter') {
             include (CONTROLER.'controlchapters.php');
         }
-       
-        else if ($this->request == 'signal') {
-            include (CONTROLER.'signaler.php');
+        
+        else if ($this->request == 'controlcomments') {
+            include (CONTROLER.'controlcomments.php');
         }
 
         else if ($this->request == 'majChapter') {

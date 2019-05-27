@@ -46,7 +46,7 @@ class Crudcomments
 
     public function updateComment($id) {
      $db = new \projet4\DataBase('comments');
-     $db->query("UPDATE comments SET signalement = 0 WHERE id_comment = '".$id."' ", true);
+     $db->onlyquery("UPDATE comments SET signalement = 0 WHERE id_comment = '".$id."' ");
     }
 
     public function deleteComment($id) {
@@ -60,18 +60,10 @@ class Crudcomments
 
      
         $alert = new \projet4\DataBase('comments');
-      /*
-        $kelcom = $alert->query("SELECT id_comment FROM comments WHERE id_chap = '".$_GET['id']."' AND id_comment = '".$_GET['id_comment']."' ", true );
-        //  var_dump($kelcom);
-    
-     
-  
-    // if($com == 0) { 
-    */
-       $signal = $alert->onlyquery("UPDATE comments SET signalement = 1 WHERE id_comment = '".$_GET['id']."' "); // des que je lui met le where ca marche pas
+      
+       $signal = $alert->onlyquery("UPDATE comments SET signalement = 1 WHERE id_comment = '".$_GET['id']."' "); 
       return $signal;
-    // }
-      // header("Refresh:3;url=chapter?id=$_GET[id]");
+    
      
     }
       
