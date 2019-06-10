@@ -104,6 +104,9 @@ outline-style: none;
 cursor: pointer;
 width: 150px;
 text-align: center;
+text-decoration: none;
+padding: 10px;
+line-height: 0;
 }
 
 .liens_rouges {
@@ -123,6 +126,7 @@ text-align: center;
 
 .liens_h1 a {
   font-size: 0.5em;
+  text-decoration: none;
 }
 /* fin style de la nav */
 
@@ -259,8 +263,18 @@ text-align: center;
   text-align: center;
   }
   #tableau {
-   width: 70%;
    margin: 0 auto;
+   border: 1px solid grey;
+   border-radius: 15px 15px 15px 15px;
+   width: 90%;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   justify-content: center;
+   margin: 50px auto;
+   padding: 10px 20px;
+   text-decoration: none;
+   text-align: center;
   }
   /* page de contact */
 
@@ -312,16 +326,25 @@ text-align: center;
     border: 1px solid grey;
    border-radius: 15px 15px 15px 15px;
    display: flex;
-   flex-direction: column;
    flex-wrap: wrap;
    justify-content: center;
-   margin: 0 auto;
+   margin: 0 20px;
    padding: 10px 20px;
    text-decoration: none;
    text-align: center;
   }
+  
+  .cadre {
+    border: 1px solid grey;
+    border-radius: 15px 15px 15px 15px;
   }
 
+  .cadre_tyni {
+    border: 1px solid grey;
+    border-radius: 15px 15px 15px 15px;
+    margin: 0 20px;
+    padding: 10px 10px;
+  }
 
   #comSign {
     width: 50%;
@@ -333,3 +356,20 @@ text-align: center;
      justify-content: center;
      text-decoration: none;
    }
+
+#vueChapMaj {
+  text-align: center;
+}
+#vueComSign {
+  text-align: center;
+}
+
+#cadre_comSign {
+  border: 1px solid grey;
+  border-radius: 15px 15px 15px 15px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 10px auto;
+  padding: 10px;
+}

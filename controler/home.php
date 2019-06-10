@@ -1,6 +1,6 @@
 <?php
-require (VIEW.'nav.php');
-require (VIEW.'home.php');
+require ('view/nav.php');
+require ('view/home.php');
 
 
 

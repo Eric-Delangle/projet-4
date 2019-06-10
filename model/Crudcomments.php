@@ -4,69 +4,85 @@ namespace projet4;
 /*
 class CRUD for comments view and use all sql's comments commands
 */
-class Crudcomments
+class Crudcomments extends \projet4\Crudchapters
 {
-
+    
     public $id;
-    public $id_comment;
+    protected $chap_number;
 
-    public function __construct($id){
+public function __construct($id, $chap_number){
         $this->id = $id;  
-        $this->id_comment = $id_comment;
+        $this->chap_number = $chap_number;  
+      
+
     }
-        
 
-    public function getComments($id_chap) {
+// je récupère la liste de tous les commentaires
+public function getComments($id_chap) {
 
-        $id_chap = $_GET['id'];
-       // var_dump($id_chap);
-        $db = new \projet4\DataBase('comments');
-        $com = $db->query("SELECT *,DATE_FORMAT(date_comment, '%d/%m/%Y à %Hh%i minutes')
-        AS date_comment_fr  FROM comments WHERE id_chap = '".$id_chap."' ", true); 
-        return $com;
+    $id_chap = $_GET['id'];
+    $db = new \projet4\DataBase('comments');
+    $com = $db->prepare("SELECT *,DATE_FORMAT(date_comment, '%d/%m/%Y à %Hh%i minutes')
+    AS date_comment_fr  FROM comments WHERE chapter_number = '".$id_chap."' ", []); 
+    return $com;
     }
  
-// la je recupère les coms signalés pour les modifier
- public function getSignComments() {
+// je recupère les coms signalés pour les modifier
+public function getSignComments() {
 
     $db = new \projet4\DataBase('comments');
-    $signCom = $db->query("SELECT * FROM comments WHERE signalement = 1", true ); 
-   // var_dump($signCom);
-       return $signCom;
+    $signCom = $db->prepare("SELECT * FROM comments WHERE signalement = 1", []); 
+    return $signCom;       
+    }
+
+// je crée un commentaire
+public function createComment ($id) { 
+
+    $db = new \projet4\DataBase('comments');
+    $db->prepare('INSERT INTO comments (id_chap, auth, comment, date_comment)
+     VALUES (:id_chap, :auth, :comment, now())',
+        (array(
+            'id_chap' => $_GET['id'],
+            'auth' => $_POST['auth'],
+            'comment' => $_POST['contenuComment']
+            )
+         ),
+     []
+    );
 }
-
-    public function createComment ($id) { 
-
-        $db = new \projet4\DataBase('comments');
-        $db->prepare('INSERT INTO comments (id_chap, auth, comment, date_comment) VALUES (:id_chap, :auth, :comment, now())',
-        (array('id_chap' => $_GET['id'], 'auth' => $_POST['auth'], 'comment' => $_POST['contenuComment'])), 'comments', false);
-            echo 'Votre commentaire a bien été enregistré';     
-    }
-
-
-    public function updateComment($id) {
-     $db = new \projet4\DataBase('comments');
-     $db->onlyquery("UPDATE comments SET signalement = 0 WHERE id_comment = '".$id."' ");
-    }
-
-    public function deleteComment($id) {
-        $id = $_GET['id'];
-    $db = new \projet4\DataBase('comments');
-    $db->onlyquery("DELETE  FROM comments WHERE id_comment = '".$id."' ");
-       
-    }
-
-    public function signalCom($id_chap) {
-
-     
-        $alert = new \projet4\DataBase('comments');
-      
-       $signal = $alert->onlyquery("UPDATE comments SET signalement = 1 WHERE id_comment = '".$_GET['id']."' "); 
-      return $signal;
     
-     
+// je rétablis le commentaire signalé
+public function updateComment($id) {
+
+    $db = new \projet4\DataBase('comments');
+    $db->query("UPDATE comments SET signalement = 0 WHERE id_comment = '".$id."' ");
     }
-      
-  }
 
+// je supprime le commentaire signalé
+public function deleteComment($id) {
 
+    $id = $_GET['id'];
+    $db = new \projet4\DataBase('comments');
+    $db->query("DELETE  FROM comments WHERE id_comment = '".$id."' ");   
+    }
+
+// je signale un commentaire
+public function signalCom($id) {
+  
+  
+    $alert = new \projet4\DataBase('comments');
+    $signal = $alert->prepare("UPDATE comments SET signalement = 1
+    WHERE id_comment = '".$_GET['id']."' ",[]);
+    ?>
+    <script language="javascript">
+         alert("Ce commentaire a bien été signalé.");
+    </script>
+     
+    <?php
+    
+    header("Refresh:1;url=chapter?id=".$chap_number);
+   
+   // return $signal;
+    }
+
+}

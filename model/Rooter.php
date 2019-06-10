@@ -15,13 +15,61 @@ Class Rooter {
     public function renderControler() {
 
         if ($this->request == 'home') {
-            include (CONTROLER.'home.php');
+            include (CONTROLLER.'home.php');
+        }
+        if ($this->request == 'chapters') {
+            include (CONTROLLER.'frontend.php');
+            showAllChap();
+        }
+        else if ($this->request == 'chapter') {
+            include (CONTROLLER.'frontend.php');
+            showOneChap();
+        }
+        else if ($this->request == 'commentaire') {
+            include (CONTROLLER.'frontend.php');
+            creatCom($_GET['id']);
+        }
+        else if ($this->request == 'signal') {
+            include (CONTROLLER.'backend.php');
+            signal();
+        }
+        else if ($this->request == 'edition') {
+            include (CONTROLLER.'backend.php');
+            sidejaco();
+           // listChapForModif();
+            //affichSign();
+        }
+        else if ($this->request == 'deco') {
+            include (CONTROLLER.'backend.php');
+            deco();
+        }
+        else if ($this->request == 'saveChapter') {
+            include (CONTROLLER.'backend.php');
+            creatChap();
+        }
+        else if ($this->request == 'modifier') {
+            include (CONTROLLER.'backend.php');
+            modifChap();
+        }
+        else if ($this->request == 'retablir') {
+            include (CONTROLLER.'backend.php');
+            unSignCom();
+        }
+        else if ($this->request == 'supprimer') {
+            include (CONTROLLER.'backend.php');
+            supCom();
+        }
+        else if ($this->request == 'majChapter') {
+            include (CONTROLLER.'backend.php');
+            updateChap($id);
+        }
+        else {
+            echo '<p class="erreur">OOOoooohh grosse erreur 404</p>';
         }
         
-        else if ($this->request == 'chapters') {
-            include (CONTROLER.'controlChapitre.php');
-        }
-        
+    }
+}
+        /*
         else if ($this->request == 'contact') {
             include (VIEW.'viewContact.php');
         }
@@ -65,10 +113,5 @@ Class Rooter {
         else if ($this->request == 'signal') {
             include (CONTROLER.'signaler.php');
         }
-        
-         else {
-            echo '<p class="erreur">OOOoooohh grosse erreur 404</p>';
-        }
-        
-    }
-}
+        */
+ 

@@ -1,4 +1,5 @@
 <?php
+
 namespace projet4;
 
 use PDO;
@@ -24,38 +25,22 @@ class DataBase {
         }
         return $this->pdo;
     }
-   
-    public function query($statement, $one = false) {
-        $db = $this->getPDO()->query($statement);
-      if($one){ 
-        $datas = $db->fetchAll(PDO::FETCH_OBJ);
-      }else {
-        $datas = $db->fetch(PDO::FETCH_OBJ);
-    }
-    return $datas;
-}
-    public function onlyquery($statement) {
+ 
+    public function query($statement) {
         $db = $this->getPDO()->query($statement);
         $datas = $db->execute();
         return $datas;
    
     }
 
-
-/*
-     // le query test
-        public function query($statement, $class_name, $one = false) { // instancier une classe ou pas
-        $db = $this->getPDO()->query($statement);
-        if($one) {
-            $datas = $db->fetchAll(PDO::FETCH_CLASS, $class_name);// la si je donne un nom de classe dans ma requete, ça me l'instancie en meme temps
-        } else {
-            $datas = $db->fetchAll(PDO::FETCH_OBJ);// la je ne donne pas de nom de classe ça me récupère un objet que je vais pouvoir parcourir
-        }
-        
-        return $datas;
+    public function prepare($statement, $attributes) {
+        $req = $this->getPDO()->prepare($statement);
+        $req->execute($attributes);
+        return $req;
+    
     }
-*/
-    public function prepare($statement, $attributes, $class_name, $one = false) {
+
+    public function bigprepare($statement, $attributes, $class_name, $one = false) {
         $req = $this->getPDO()->prepare($statement);
         $req->execute($attributes);
         
@@ -70,6 +55,4 @@ class DataBase {
         return $datas;
         
     }
-    
-    
 }
