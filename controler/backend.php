@@ -13,6 +13,16 @@ function sidejaco() {
         affichSign();
     }
 }
+
+
+// recuperer le numero du chapitre et pas son id
+function numb(){
+    $number = new \projet4\Crudchapters($_GET['id']);
+    $numero = $number->getNumber();
+    
+    
+}
+
 // Connexion a l'interface admin
 
 function admin() {
@@ -36,8 +46,8 @@ function deco() {
 
 function signal() { 
 
-    $alertComm = new \projet4\Crudcomments($_GET['id'], $chap_number);
-    $alert = $alertComm->signalCom($_GET['id']);
+    $alertComm = new \projet4\Crudcomments($_GET['number']);
+    $alert = $alertComm->signalCom($_GET['number']);
 
 }
 
@@ -45,9 +55,10 @@ function signal() {
 
 function creatChap() { 
 
-    $save = new \projet4\Crudchapters($_GET['id']);
+    $save = new \projet4\Crudchapters($_GET['number']);
     $save->createChapter('chapter_number', 'title', 'contents', 'date_parution');
-    require(VIEW.'backend/viewEdit.php');
+    
+    //header("location : edition");
     
 }
 
@@ -55,31 +66,35 @@ function creatChap() {
 
 function listChapForModif() {
 
-    $objetChapter = new \projet4\Crudchapters();
+    $objetChapter = new \projet4\Crudchapters($_GET['number']);
     $allChap = $objetChapter->affichTable();
-   require(VIEW.'backend/viewEdit.php');
+    require(VIEW.'backend/viewEdit.php');
 }
 
 // modifier un commentaire
 
-function modifChap() {
+function modifChap($chapter_number) {
     /* je recupere le chapitre demandé dans ma bdd , puis je l'affiche dans mon tynimce */
-    $modif = new \projet4\Crudchapters($_GET['id'], 'chapter_number');
+    $modif = new \projet4\Crudchapters($_GET['number']);
     $maj = $modif->showChapters();
     require('view/backend/editChap.php');
 
 }
 
-function updateChap($id) {
-    $updat = new \projet4\Crudchapters($_GET['id']);
-    $maj = $updat->updateChatper($id);
+// la je fais la mise à jour dans la bdd
+function updateChap($chapter_number) {
+    
+    $updat = new \projet4\Crudchapters($_GET['number']);
+    $maj = $updat->updateChatper();
+    var_dump($chapter_number);// renvoit null
+   
 }
 
 // affichage des commentaires signalés
 
 function affichSign() {
    
-    $signMess = new \projet4\Crudcomments($_GET['id'], 'chap_number');
+    $signMess = new \projet4\Crudcomments($_GET['number']);
     $signal = $signMess->getSignComments();
     require(VIEW.'backend/signalement.php');
     }
@@ -88,8 +103,8 @@ function affichSign() {
 
 function supCom() {
 
-        $modifCom = new \projet4\Crudcomments($_GET['id'], 'chap_number');
-        $modifCom->deleteComment($_GET['id']);
+        $modifCom = new \projet4\Crudcomments($_GET['number']);
+        $modifCom->deleteComment($_GET['number']);
   
     if($id_comment == null) {
         echo 'Le commentaire a bien été supprimé.';
@@ -102,9 +117,9 @@ function supCom() {
 
 function unSignCom() { 
 
-    $modifcom = new \projet4\Crudcomments($_GET['id'], 'chap_number');
+    $modifcom = new \projet4\Crudcomments($_GET['number']);
     // je remets le com a signalement = 0
-    $modifs = $modifcom->updateComment($_GET['id']);
+    $modifs = $modifcom->updateComment($_GET['inumber']);
     if($modifs->signalement == 0){
       echo 'Le commentaire a bien été rétabli';
       header("Refresh:3;url=edition");

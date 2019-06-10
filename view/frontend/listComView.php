@@ -8,7 +8,7 @@ ob_start();
               Ajouter un commentaire
             <hr />
          <div id="bloc_comments">
-			     <form action="commentaire?id=<?= $_GET['id'] ?>" method="post">
+			     <form action="commentaire?number=<?= $_GET['number'] ?>" method="post">
                 <?php
                     echo $commentForm->input('auth',"Votre nom/pseudo");
                     echo $commentForm->textarea('contenuComment',"Votre message");
@@ -39,7 +39,7 @@ ob_start();
             </p>
 
             <p>
-                <form action="signal?id=<?=$data['id_comment']?>" method="post">
+                <form action="signal?number=<?=$data['id_comment']?>" method="post">
                      <input type="submit" class="liens_rouges" value="Signaler" name="signaler"/>
                  </form><hr />
             </p>

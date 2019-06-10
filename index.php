@@ -1,5 +1,5 @@
 <?php
-include('model/Rooter.php');
+include('model/Router.php');
 //include('controller/home.php');
 //require_once('controller/frontend.php');
 include('config.php');
@@ -13,8 +13,8 @@ $request = $_GET['r'];
 
 
 // creation de l'objet routeur et appel de sa fonction renderControler()
-$rooter = new Rooter($request);
-$rooter->renderControler();
+$router = new Router($request);
+$router->renderControler();
 /*
 // test version openclassrooms
 try {

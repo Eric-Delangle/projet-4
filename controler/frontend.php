@@ -12,7 +12,8 @@ function showAllChap() {
 // affiche le chapitre demandé
 
 function showOneChap() {
-    $objetChapter = new \projet4\Crudchapters($_GET['id'], 'chapter_number');
+
+    $objetChapter = new \projet4\Crudchapters($_GET['number']);
     $readChapter = $objetChapter->showChapters(); 
     require(VIEW.'frontend/oneChapView.php');
 
@@ -22,25 +23,38 @@ function showOneChap() {
 
 if($_POST['Chapitre_suivant']) { 
 
-    $objetChapter->getNextId($id);   
+    $objetChapter->getNextId($_GET['number']);   
  }
 
 // aller au chapitre precedent
 
  if($_POST['Chapitre_precedent']) { 
     
-   $objetChapter->getLastId($id);
+   $objetChapter->getLastId($_GET['number']);
+        if($id == 0) {
+            ?>
+            <script language="javascript">
+              alert("Vous êtes au premier chapitre.");
+            </script>
+            <?php
+            
+        } else {
+            header("location: chapter?number=$id");
+        }
  }  
 
 // COMMENTAIRES 
 
 // affiche tous les commentaires sous le chapitre 
 function showCom() {
+    
 // pour générer mon formulaire de commentaire
     $commentForm = new \projet4\FormInscConnec ($data); 
+
 // puis appel de la méthode d'affichage
-    $objetComment = new \projet4\Crudcomments($_GET['id'], 'chapter_number');
-    $allCom = $objetComment->getComments($_GET['id']); 
+    $objetComment = new \projet4\Crudcomments($_GET['number']);
+    $allCom = $objetComment->getComments($_GET['number']); 
+    var_dump($_GET['number']);
     require(VIEW.'frontend/listComView.php');
    
 }

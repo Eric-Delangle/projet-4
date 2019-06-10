@@ -69,7 +69,7 @@ session_start();
             <?=$data['title']?>
          </p> 
           <p>
-             <form action="modifier?id=<?=$data['id_chapter']?>" method="post">
+             <form action="modifier?number=<?=$data['chapter_number']?>" method="post">
                <input type="submit" class="liens_h1" value="modifier" name="modifier">
             </form>
          </p>

@@ -8,23 +8,30 @@ class Crudchapters  {
     public $id_chap;
     protected $chap_number;
     
-    public function __construct(){
+    public function __construct($chapter_numb){
         $this->id_chap = $id_chap;
-        $this->chap_number = $chap_number;
+        $this->chap_number = $chap_numb;
        }
 
-// je récupère l'id du chapitre instancié
-public function geturl() {
+// je récupère le numero du chapitre instancié
+public function getNumber() {
 
-    return 'chapter?id='.$this->id_chap;     
+    $db = new \projet4\DataBase('chapters');
+    $num = $db->prepare("SELECT * FROM chapters WHERE chapter_number = '".$_GET['numb']."'",[]);
+    foreach($num as $numero) {
+      //  var_dump($numero['1']);
+        $num = "chapter?number= '".$numero['1']."'"; 
     }
+return $num;
+     
+}
 
 // la j'affiche la page chapters avec tous ses chapitres les uns sous les autres
 public function affichTable(){  
 
     $db = new \projet4\DataBase('chapters');
-    $allChapters = $db->prepare("SELECT *, DATE_FORMAT(date_parution, '%d/%m/%Y')AS date_parution_fr 
-    FROM chapters",[]);
+    $allChapters = $db->prepare("SELECT *, DATE_FORMAT(date_parution, '%d/%m/%Y')
+    AS date_parution_fr FROM chapters",[]);
     return $allChapters;
     }
     
@@ -33,7 +40,9 @@ public function showChapters() {
     
     $db = new \projet4\DataBase('chapters');
     $chap = $db->prepare("SELECT *, DATE_FORMAT(date_parution, '%d/%m/%Y')AS date_parution_fr 
-    FROM chapters WHERE id_chap = $_GET[id]", []); 
+    FROM chapters WHERE chapter_number = ".$_GET['number']." ", 
+    []); 
+   // var_dump($_GET['numb']);
     return $chap;
     }
 
@@ -41,25 +50,38 @@ public function showChapters() {
 public function createChapter ($chapter_number, $title, $contents, $date_parution) {
 
     $db = new \projet4\DataBase('chapters');
-    $req = $db->prepare('INSERT INTO chapters(chapter_number, title, contents, date_parution) VALUES(:chapter_number, :chapter_title, :contents, now())', (array('chapter_number' => $_POST['chapter_number'],'chapter_title' => $_POST['chapter_title'], 'contents' => $_POST['contents'])), []);
+    $req = $db->prepare('INSERT INTO chapters(chapter_number, title, contents, date_parution)
+    VALUES(:chapter_number, :chapter_title, :contents, now())', 
+    (array(
+        'chapter_number' => $_POST['chapter_number'],
+        'chapter_title' => $_POST['chapter_title'], 
+        'contents' => $_POST['contents'])),
+         []);
     }
 
 // je mets à jour le chapitre
-public function updateChatper($id) {
+public function updateChatper() {
 
-    $id = $_GET['id'];
+   // $chapter_number = $_GET['id'];
     $db = new \projet4\DataBase('chapters');
-    $req = $db->prepare("UPDATE chapters(title, contents) VALUES(:chapter_title, :contents) WHERE id_chap = '".$id."' ",(array('chapter_title' => $_POST['chapter_title'], 'contents' => $_POST['contents'])), []);
+    $req = $db->prepare("UPDATE chapters SET title = :chapter_title,
+                                            contents = :contents
+                                            
+    WHERE chapter_number = ".$_GET['number']." ",
+    (array(
+        'chapter_title' => $_POST['chapter_title'], 
+        'contents' => $_POST['contents'])),
+        
+         []);
     }
 
 // Aller au chapitre précèdent
 public function getLastId($id) {
       
-    $chapitre = $this->showChapters();
-    foreach($chapitre as $post) {
-    $post['chapter_number']--;
-    }
-        if($post['chapter_number'] == 0) {
+    $id = $_GET['number'];
+    $id--;
+
+        if($id == 0) {
             ?>
             <script language="javascript">
               alert("Vous êtes au premier chapitre.");
@@ -67,36 +89,28 @@ public function getLastId($id) {
             <?php
             
         } else {
-            $id = $post['chapter_number'];
-            header("location: chapter?id=$id");
+            header("location: chapter?number=$id");
         }
     }
 
-// Aller au chapitre précèdent
+// Aller au chapitre suivant
 public function getNextId($id) {
-    var_dump($this->$chap);
-    var_dump( $this->id_chap);
+   
+    $id = $_GET['number'];
+    $id++;
 
-    $chapitre = $this->showChapters();
-    foreach($chapitre as $post) {
-        
-        var_dump($post['chapter_number']);
-    }
-
-      /*
-    $chapitre = $this->showChapters();
-    foreach($chapitre as $post) {
-        
-        $post['chapter_number']++;
-    }
-        
-   if($post['chapter_number'] == '') {
-        echo 'La suite bientôt';
+        if($id == null) {
+            ?>
+            <script language="javascript">
+            alert("Vous êtes au dernier chapitre.");
+            </script>
+            <?php
+            
         } else {
-        $id = $post['chapter_number'];
-        header("location: chapter?id=$id");
+            
+            header("location: chapter?number=$id");
         }
-        */
+
     }
     
 }

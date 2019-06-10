@@ -1,11 +1,11 @@
 <?php
 
 /*
-* Class Rooter
+* Class Router
 *
 *create roads and find controler
 */
-Class Rooter {
+Class Router {
     
     public $request;
 
@@ -49,7 +49,7 @@ Class Rooter {
         }
         else if ($this->request == 'modifier') {
             include (CONTROLLER.'backend.php');
-            modifChap();
+            modifChap($chapter_number);
         }
         else if ($this->request == 'retablir') {
             include (CONTROLLER.'backend.php');
@@ -61,7 +61,7 @@ Class Rooter {
         }
         else if ($this->request == 'majChapter') {
             include (CONTROLLER.'backend.php');
-            updateChap($id);
+            updateChap($_GET['number']);
         }
         else {
             echo '<p class="erreur">OOOoooohh grosse erreur 404</p>';

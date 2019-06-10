@@ -15,7 +15,7 @@ while ($data = $allChap->fetch())
           ...
         </p>
         <p>
-        <a class="liens_h1" href="chapter?id=<?=$data['id_chap']?>">Lire le chapitre</a>
+        <a class="liens_h1" href="chapter?number=<?=$data['chapter_number']?>">Lire le chapitre</a>
         </p>
     </div>
 <?php

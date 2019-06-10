@@ -2,9 +2,9 @@
 ob_start(); 
 include(VIEW.'nav.php');
 
-
 while ($data = $readChapter->fetch())
 { 
+    
 ?>
     <div id="tableau">
         <h3>

@@ -10,20 +10,19 @@ class Crudcomments extends \projet4\Crudchapters
     public $id;
     protected $chap_number;
 
-public function __construct($id, $chap_number){
+public function __construct($chapter_number){
         $this->id = $id;  
-        $this->chap_number = $chap_number;  
+        $this->chapter_number = $chap_number;
       
 
     }
 
 // je récupère la liste de tous les commentaires
-public function getComments($id_chap) {
+public function getComments($chapter_number) {
 
-    $id_chap = $_GET['id'];
     $db = new \projet4\DataBase('comments');
     $com = $db->prepare("SELECT *,DATE_FORMAT(date_comment, '%d/%m/%Y à %Hh%i minutes')
-    AS date_comment_fr  FROM comments WHERE chapter_number = '".$id_chap."' ", []); 
+    AS date_comment_fr  FROM comments WHERE chapter_number = ".$_GET['number']." ", []); 
     return $com;
     }
  
@@ -39,10 +38,10 @@ public function getSignComments() {
 public function createComment ($id) { 
 
     $db = new \projet4\DataBase('comments');
-    $db->prepare('INSERT INTO comments (id_chap, auth, comment, date_comment)
-     VALUES (:id_chap, :auth, :comment, now())',
+    $db->prepare('INSERT INTO comments (chapter_number, auth, comment, date_comment)
+     VALUES (:chapter_number, :auth, :comment, now())',
         (array(
-            'id_chap' => $_GET['id'],
+            'id_chap' => $_GET['number'],
             'auth' => $_POST['auth'],
             'comment' => $_POST['contenuComment']
             )
@@ -80,7 +79,7 @@ public function signalCom($id) {
      
     <?php
     
-    header("Refresh:1;url=chapter?id=".$chap_number);
+    header("Refresh:1;url=chapter?number=".$_GET['number']."");
    
    // return $signal;
     }

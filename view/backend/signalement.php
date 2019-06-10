@@ -22,10 +22,10 @@
         <p> <strong>Posté le:</strong> 
            <?= $sign['date_comment'] ?>
         </p>
-           <form action="retablir?id=<?=$sign['id_comment']?>" method="post">
+           <form action="retablir?number=<?=$sign['id_comment']?>" method="post">
               <input type="submit" class="liens_h1" value="rétablir" name="retablir">
            </form>
-           <form action="supprimer?id=<?=$sign['id_comment']?>" method="post">
+           <form action="supprimer?number=<?=$sign['id_comment']?>" method="post">
               <input type="submit" class="liens_h1" value="Supprimer" name="supprimer">
            </form>
       </div>
