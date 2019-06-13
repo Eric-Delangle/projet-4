@@ -7,12 +7,12 @@ class CRUD for comments view and use all sql's comments commands
 class Crudcomments extends \projet4\Crudchapters
 {
     
-    public $id;
-    protected $chap_number;
+    public $id_chap;
+    public $chapter_number;
 
-public function __construct($chapter_number){
-        $this->id = $id;  
-        $this->chapter_number = $chap_number;
+public function __construct($id_chap, $chapter_number){
+        $this->id_chap = $id_chap;  
+        $this->chapter_number = $chapter_number;
       
 
     }
@@ -35,13 +35,13 @@ public function getSignComments() {
     }
 
 // je crée un commentaire
-public function createComment ($id) { 
+public function createComment ($chapter_number) { 
 
     $db = new \projet4\DataBase('comments');
     $db->prepare('INSERT INTO comments (chapter_number, auth, comment, date_comment)
      VALUES (:chapter_number, :auth, :comment, now())',
         (array(
-            'id_chap' => $_GET['number'],
+            'chapter_number' => $_GET['number'],
             'auth' => $_POST['auth'],
             'comment' => $_POST['contenuComment']
             )
@@ -51,37 +51,27 @@ public function createComment ($id) {
 }
     
 // je rétablis le commentaire signalé
-public function updateComment($id) {
-
+public function updateComment() {
+   // $id = $_GET['id'];
     $db = new \projet4\DataBase('comments');
-    $db->query("UPDATE comments SET signalement = 0 WHERE id_comment = '".$id."' ");
+    $db->prepare("UPDATE comments SET signalement = 0 WHERE id_comment = ".$_GET['number']." ", []);
     }
 
 // je supprime le commentaire signalé
-public function deleteComment($id) {
+public function deleteComment() {
 
-    $id = $_GET['id'];
     $db = new \projet4\DataBase('comments');
-    $db->query("DELETE  FROM comments WHERE id_comment = '".$id."' ");   
+    $db->prepare("DELETE FROM comments WHERE id_comment = ".$_GET['number']." ", []);   
     }
 
 // je signale un commentaire
-public function signalCom($id) {
-  
+public function signalCom() {
   
     $alert = new \projet4\DataBase('comments');
     $signal = $alert->prepare("UPDATE comments SET signalement = 1
-    WHERE id_comment = '".$_GET['id']."' ",[]);
-    ?>
-    <script language="javascript">
-         alert("Ce commentaire a bien été signalé.");
-    </script>
-     
-    <?php
-    
-    header("Refresh:1;url=chapter?number=".$_GET['number']."");
-   
-   // return $signal;
+    WHERE id_comment = ".$_GET['number']." ", []);
+    var_dump($signal);
+   // header("Refresh:3;url=chapter?number=$id");
     }
 
 }

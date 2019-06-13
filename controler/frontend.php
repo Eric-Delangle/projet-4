@@ -31,45 +31,68 @@ if($_POST['Chapitre_suivant']) {
  if($_POST['Chapitre_precedent']) { 
     
    $objetChapter->getLastId($_GET['number']);
-        if($id == 0) {
-            ?>
-            <script language="javascript">
-              alert("Vous êtes au premier chapitre.");
-            </script>
-            <?php
-            
-        } else {
-            header("location: chapter?number=$id");
-        }
+    
  }  
 
 // COMMENTAIRES 
 
 // affiche tous les commentaires sous le chapitre 
-function showCom() {
+function showCom($chapter_number) {
     
 // pour générer mon formulaire de commentaire
     $commentForm = new \projet4\FormInscConnec ($data); 
 
 // puis appel de la méthode d'affichage
-    $objetComment = new \projet4\Crudcomments($_GET['number']);
+    $objetComment = new \projet4\Crudcomments($_GET['id'], $_GET['number']);
     $allCom = $objetComment->getComments($_GET['number']); 
-    var_dump($_GET['number']);
     require(VIEW.'frontend/listComView.php');
    
 }
 
 // Créer un commentaire
-function creatCom($id) { 
-    $objetComment = new \projet4\Crudcomments($_GET['id'], 'chapter_number');
-    $com = $objetComment->createComment($_GET['id']);
-    $id = $_GET['id'];
-        echo 'Votre commentaire a bien été enregistré';
-
-        header("Refresh:3;url=chapter?id=".$id."");
-       
+function creatCom($chapter_number) { 
+    $id = $_GET['number'];
+    if(!empty($_POST['auth']) && !empty($_POST['contenuComment'])) {
+        $objetComment = new \projet4\Crudcomments($_GET['id'], $_GET['number']);
+        $com = $objetComment->createComment($_GET['number']);
+    ?>
+    <script language="javascript">
+        alert("Votre commentaire a bien été enregistré.");
+    </script>
+ <?php
+    header("Refresh:3;url=chapter?number=".$id."");
+}
+    else {
+        ?>
+        <script language="javascript">
+            alert("Tous les champs doivent être remplis.");
+        </script>
+     <?php
+        header("Refresh:3;url=chapter?number=".$id."");
     }
-        
-      //  header("location: ");
-   // require(VIEW.'frontend/listComView.php');
+           
+    }      
 
+// Captcha
+
+// Ma clé privée
+$secret = "6Ld5ZXAUAAAAAMBXzJ3sw3O4nygYe4QbTCZLHjWy";
+// Paramètre renvoyé par le recaptcha
+$response = $_POST['g-recaptcha-response'];
+// On récupère l'IP de l'utilisateur
+$remoteip = $_SERVER['REMOTE_ADDR'];
+
+$api_url = "https://www.google.com/recaptcha/api/siteverify?secret=" 
+    . $secret
+    . "&response=" . $response
+    . "&remoteip=" . $remoteip ;
+
+$decode = json_decode(file_get_contents($api_url), true);
+
+if ($decode['success'] == true) {
+    // C'est un humain
+}
+
+else {
+    // C'est un robot ou le code de vérification est incorrecte
+}

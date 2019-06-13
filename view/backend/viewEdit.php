@@ -31,7 +31,7 @@ session_start();
   <h1 class="messageDeBienvenue"><?php echo "Bienvenue  ".$_SESSION['pseudo']." dans l'interface d'administration de votre blog."?></h1>
 
 <div class="cadre_tyni">
-   
+   <!-- ici commence l'espace de création de chapitre -->
    <form action="saveChapter" method="POST" name="addarticle">
  
     <div>

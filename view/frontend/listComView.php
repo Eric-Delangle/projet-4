@@ -8,12 +8,22 @@ ob_start();
               Ajouter un commentaire
             <hr />
          <div id="bloc_comments">
-			     <form action="commentaire?number=<?= $_GET['number'] ?>" method="post">
+                 <form action="commentaire?number=<?= $_GET['number'] ?>" method="post">
+                
                 <?php
                     echo $commentForm->input('auth',"Votre nom/pseudo");
                     echo $commentForm->textarea('contenuComment',"Votre message");
                     echo $commentForm->submit();
                 ?>
+                 <!-- test captcha -->
+                    <!-- Notre boite de vérification -->
+                <div id="captcha">
+                    <div class="g-recaptcha"
+                        data-sitekey="6Ld5ZXAUAAAAABT0x_bOlMe6gCBYmOgUFOQuxXjL">
+                    </div>  
+                </div>
+                    
+                    <!-- fin test -->
             </form>
             
 		</div>

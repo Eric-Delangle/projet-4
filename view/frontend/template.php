@@ -6,7 +6,8 @@
         <title><?= $title ?></title>
         <link href="assets/css/style.css" rel="stylesheet" /> 
         <link rel="shortcut icon" href="../favicon.ico">
-		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+        <script src = "https://www.google.com/recaptcha/api.js" async defer ></script>
     </head>
         
     <body>

@@ -7,7 +7,7 @@ session_start();
 function sidejaco() { 
 
     if(empty($_SESSION['pseudo'])) {
-    admin();
+            admin();
     } else {
         listChapForModif();
         affichSign();
@@ -19,6 +19,7 @@ function sidejaco() {
 function numb(){
     $number = new \projet4\Crudchapters($_GET['id']);
     $numero = $number->getNumber();
+    return $num;
     
     
 }
@@ -29,8 +30,20 @@ function admin() {
       
     require_once(VIEW.'backend/viewConnecForm.php');
 
-      $logg = new \projet4\Connexion($_POST['pseudo'], $_POST['pass']);
-      $logg->connecMembre();          
+        if($_POST['valider']) { 
+
+            $logg = new \projet4\Connexion($_POST['pseudo'], $_POST['pass']);
+            $logg->connecMembre();  
+        }
+
+        else {
+            ?>
+            <script language="javascript">
+                alert("Tous les champs doivent être remplis.");
+            </script>
+        
+            <?php 
+        }        
 } 
         
 // Déconnexion de l'interface admin
@@ -44,11 +57,20 @@ function deco() {
 
 // Signalement d'un commentaire par l'utilisateur
 
-function signal() { 
+function signal($chapter_number) { 
 
-    $alertComm = new \projet4\Crudcomments($_GET['number']);
-    $alert = $alertComm->signalCom($_GET['number']);
+    $alertComm = new \projet4\Crudcomments($_GET['id'], $_GET['number']);
+    $alert = $alertComm->signalCom();
+    ?>
+    <script language="javascript">
+        alert("Ce commentaire a bien été signalé.");
+    </script>
 
+    <?php
+   
+   header("Refresh:3;url= home");
+    
+  
 }
 
 // Créer un chapitre
@@ -57,9 +79,14 @@ function creatChap() {
 
     $save = new \projet4\Crudchapters($_GET['number']);
     $save->createChapter('chapter_number', 'title', 'contents', 'date_parution');
-    
-    //header("location : edition");
-    
+
+    ?>
+    <script language="javascript">
+        alert("Ce chapitre a bien été créé.");
+    </script>
+
+    <?php
+   header("Refresh:3;url= edition");
 }
 
 // Afficher la liste des chapitres pour les modifier
@@ -71,7 +98,7 @@ function listChapForModif() {
     require(VIEW.'backend/viewEdit.php');
 }
 
-// modifier un commentaire
+// modifier un chapitre
 
 function modifChap($chapter_number) {
     /* je recupere le chapitre demandé dans ma bdd , puis je l'affiche dans mon tynimce */
@@ -83,10 +110,11 @@ function modifChap($chapter_number) {
 
 // la je fais la mise à jour dans la bdd
 function updateChap($chapter_number) {
-    
+   
     $updat = new \projet4\Crudchapters($_GET['number']);
-    $maj = $updat->updateChatper();
-    var_dump($chapter_number);// renvoit null
+    $maj = $updat->updateChatper($_POST['title'], $_POST['contents']);
+    echo 'Ce chapitre a bien été mit à jour';
+    header("Refresh:3;url=chapter?number=".$_GET['number']."");
    
 }
 
@@ -94,7 +122,7 @@ function updateChap($chapter_number) {
 
 function affichSign() {
    
-    $signMess = new \projet4\Crudcomments($_GET['number']);
+    $signMess = new \projet4\Crudcomments($_GET['id'], $_GET['number']);
     $signal = $signMess->getSignComments();
     require(VIEW.'backend/signalement.php');
     }
@@ -103,7 +131,7 @@ function affichSign() {
 
 function supCom() {
 
-        $modifCom = new \projet4\Crudcomments($_GET['number']);
+        $modifCom = new \projet4\Crudcomments($_GET['id'], $_GET['number']);
         $modifCom->deleteComment($_GET['number']);
   
     if($id_comment == null) {
@@ -117,9 +145,9 @@ function supCom() {
 
 function unSignCom() { 
 
-    $modifcom = new \projet4\Crudcomments($_GET['number']);
+    $modifcom = new \projet4\Crudcomments($_GET['id'], $_GET['number']);
     // je remets le com a signalement = 0
-    $modifs = $modifcom->updateComment($_GET['inumber']);
+    $modifs = $modifcom->updateComment();
     if($modifs->signalement == 0){
       echo 'Le commentaire a bien été rétabli';
       header("Refresh:3;url=edition");

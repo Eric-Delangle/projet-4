@@ -3,14 +3,15 @@ namespace projet4;
 /*
 class CRUD for use all sql's commands
 */
-class Crudchapters  {
+class Crudchapters 
+{
     
-    public $id_chap;
-    protected $chap_number;
+    protected $id_chap;
+    protected $chapter_number;
     
-    public function __construct($chapter_numb){
-        $this->id_chap = $id_chap;
-        $this->chap_number = $chap_numb;
+    public function __construct($chapter_number){
+      //  $this->id_chap = $id_chap;
+        $this->chapter_number = $chapter_number;
        }
 
 // je récupère le numero du chapitre instancié
@@ -31,7 +32,7 @@ public function affichTable(){
 
     $db = new \projet4\DataBase('chapters');
     $allChapters = $db->prepare("SELECT *, DATE_FORMAT(date_parution, '%d/%m/%Y')
-    AS date_parution_fr FROM chapters",[]);
+    AS date_parution_fr FROM chapters ORDER BY chapter_number ", []);
     return $allChapters;
     }
     
@@ -42,7 +43,6 @@ public function showChapters() {
     $chap = $db->prepare("SELECT *, DATE_FORMAT(date_parution, '%d/%m/%Y')AS date_parution_fr 
     FROM chapters WHERE chapter_number = ".$_GET['number']." ", 
     []); 
-   // var_dump($_GET['numb']);
     return $chap;
     }
 
@@ -60,19 +60,15 @@ public function createChapter ($chapter_number, $title, $contents, $date_parutio
     }
 
 // je mets à jour le chapitre
-public function updateChatper() {
+public function updateChatper($title, $contents) {
 
-   // $chapter_number = $_GET['id'];
     $db = new \projet4\DataBase('chapters');
-    $req = $db->prepare("UPDATE chapters SET title = :chapter_title,
-                                            contents = :contents
-                                            
+    $req = $db->prepare("UPDATE chapters SET title = :title,
+                                             contents = :contents 
     WHERE chapter_number = ".$_GET['number']." ",
-    (array(
-        'chapter_title' => $_POST['chapter_title'], 
-        'contents' => $_POST['contents'])),
-        
-         []);
+    (array('title' => $title, 'contents' => $contents)),
+     []);
+
     }
 
 // Aller au chapitre précèdent
@@ -100,6 +96,7 @@ public function getNextId($id) {
     $id++;
 
         if($id == null) {
+            var_dump($id);
             ?>
             <script language="javascript">
             alert("Vous êtes au dernier chapitre.");

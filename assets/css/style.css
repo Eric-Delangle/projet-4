@@ -373,3 +373,9 @@ line-height: 0;
   margin: 10px auto;
   padding: 10px;
 }
+
+/* captcha */
+
+#captcha {
+  transform: translateX(37%);
+}

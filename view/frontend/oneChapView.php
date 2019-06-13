@@ -31,7 +31,7 @@ while ($data = $readChapter->fetch())
   </div>
 <?php
 }
-showCom(); // j'appelle ma fonction pour afficher les commentaires
+showCom($_GET['number']); // j'appelle ma fonction pour afficher les commentaires
 $readChapter->closeCursor();
 ?>
 <?php $content = ob_get_clean(); ?>

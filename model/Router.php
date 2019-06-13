@@ -5,7 +5,8 @@
 *
 *create roads and find controler
 */
-Class Router {
+Class Router
+{
     
     public $request;
 
@@ -27,17 +28,15 @@ Class Router {
         }
         else if ($this->request == 'commentaire') {
             include (CONTROLLER.'frontend.php');
-            creatCom($_GET['id']);
+            creatCom($_GET['number']);
         }
         else if ($this->request == 'signal') {
             include (CONTROLLER.'backend.php');
-            signal();
+            signal($_GET['number']);
         }
         else if ($this->request == 'edition') {
             include (CONTROLLER.'backend.php');
             sidejaco();
-           // listChapForModif();
-            //affichSign();
         }
         else if ($this->request == 'deco') {
             include (CONTROLLER.'backend.php');
@@ -47,10 +46,6 @@ Class Router {
             include (CONTROLLER.'backend.php');
             creatChap();
         }
-        else if ($this->request == 'modifier') {
-            include (CONTROLLER.'backend.php');
-            modifChap($chapter_number);
-        }
         else if ($this->request == 'retablir') {
             include (CONTROLLER.'backend.php');
             unSignCom();
@@ -58,6 +53,10 @@ Class Router {
         else if ($this->request == 'supprimer') {
             include (CONTROLLER.'backend.php');
             supCom();
+        }
+        else if ($this->request == 'modifier') {
+            include (CONTROLLER.'backend.php');
+            modifChap($chapter_number);
         }
         else if ($this->request == 'majChapter') {
             include (CONTROLLER.'backend.php');
@@ -68,50 +67,5 @@ Class Router {
         }
         
     }
-}
-        /*
-        else if ($this->request == 'contact') {
-            include (VIEW.'viewContact.php');
-        }
-        
-         else if ($this->request == 'connection') {
-            include (CONTROLER.'controlConnec.php');
-        }
-
-        else if ($this->request == 'deconnexion') {
-            include (CONTROLER.'deconnexion.php');
-        }
-
-         else if ($this->request == 'edition') {
-             include (CONTROLER.'editChapitres.php');
-         }
-
-        else if ($this->request == 'saveChapter') {
-            include (CONTROLER.'saveChapter.php');
-        }
-
-        else if ($this->request == 'chapter') {
-            include (CONTROLER.'controlchapters.php');
-        }
-        
-        else if ($this->request == 'controlcomments') {
-            include (CONTROLER.'controlcomments.php');
-        }
-
-        else if ($this->request == 'majChapter') {
-            include (CONTROLER.'majChapter.php');
-        }
-
-        else if ($this->request == 'modifcom') {
-            include (CONTROLER.'modifcom.php');
-        }
-       
-        else if ($this->request == 'mail') {
-            include (CONTROLER.'controlMail.php');
-        }
-
-        else if ($this->request == 'signal') {
-            include (CONTROLER.'signaler.php');
-        }
-        */
+}       
  
