@@ -83,7 +83,7 @@ function creatCom($chapter_number) {
     
             // Captcha
             // Ma clé privée
-            $secret = "6Ld5ZXAUAAAAAMBXzJ3sw3O4nygYe4QbTCZLHjWy";
+            $secret = "";
             // Paramètre renvoyé par le recaptcha
             $response = $_POST['g-recaptcha-response'];
             // On récupère l'IP de l'utilisateur

@@ -18,7 +18,7 @@ ob_start();
                     <!-- Notre boite de vérification -->
                         <div id="captcha">
                             <div class="g-recaptcha"
-                                data-sitekey="6Ld5ZXAUAAAAABT0x_bOlMe6gCBYmOgUFOQuxXjL">
+                                data-sitekey="">
                             </div> 
                         </div>
                     
