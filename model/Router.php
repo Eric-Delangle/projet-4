@@ -15,10 +15,13 @@ Class Router
     }
     public function renderControler() {
 
-        if ($this->request == 'home') {
+        if ($this->request == '') {
             include (CONTROLLER.'home.php');
         }
-        if ($this->request == 'chapters') {
+        else if ($this->request == 'home') {
+            include (CONTROLLER.'home.php');
+        }
+        else if ($this->request == 'chapters') {
             include (CONTROLLER.'frontend.php');
             showAllChap();
         }
@@ -31,7 +34,7 @@ Class Router
             creatCom($_GET['number']);
         }
         else if ($this->request == 'signal') {
-            include (CONTROLLER.'backend.php');
+            include (CONTROLLER.'frontend.php');
             signal($_GET['number']);
         }
         else if ($this->request == 'edition') {

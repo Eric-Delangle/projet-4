@@ -7,18 +7,18 @@ class CRUD for comments view and use all sql's comments commands
 class Crudcomments extends \projet4\Crudchapters
 {
     
-    public $id_chap;
+    public $id_comment;
     public $chapter_number;
 
-public function __construct($id_chap, $chapter_number){
-        $this->id_chap = $id_chap;  
+public function __construct($id_comment, $chapter_number){
+        $this->id_comment = $id_comment;  
         $this->chapter_number = $chapter_number;
       
 
     }
 
 // je récupère la liste de tous les commentaires
-public function getComments($chapter_number) {
+public function getComments($chapter_number, $id_comment) {
 
     $db = new \projet4\DataBase('comments');
     $com = $db->prepare("SELECT *,DATE_FORMAT(date_comment, '%d/%m/%Y à %Hh%i minutes')
@@ -66,12 +66,11 @@ public function deleteComment() {
 
 // je signale un commentaire
 public function signalCom() {
-  
+    
     $alert = new \projet4\DataBase('comments');
     $signal = $alert->prepare("UPDATE comments SET signalement = 1
     WHERE id_comment = ".$_GET['number']." ", []);
-    var_dump($signal);
-   // header("Refresh:3;url=chapter?number=$id");
+    
     }
 
 }

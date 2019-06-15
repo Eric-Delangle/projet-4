@@ -13,17 +13,19 @@ ob_start();
                 <?php
                     echo $commentForm->input('auth',"Votre nom/pseudo");
                     echo $commentForm->textarea('contenuComment',"Votre message");
-                    echo $commentForm->submit();
-                ?>
-                 <!-- test captcha -->
+                    ?>
+                    <!-- test captcha -->
                     <!-- Notre boite de vérification -->
-                <div id="captcha">
-                    <div class="g-recaptcha"
-                        data-sitekey="6Ld5ZXAUAAAAABT0x_bOlMe6gCBYmOgUFOQuxXjL">
-                    </div>  
-                </div>
+                        <div id="captcha">
+                            <div class="g-recaptcha"
+                                data-sitekey="6Ld5ZXAUAAAAABT0x_bOlMe6gCBYmOgUFOQuxXjL">
+                            </div> 
+                        </div>
                     
                     <!-- fin test -->
+                    <?php
+                    echo $commentForm->submit();
+                ?>
             </form>
             
 		</div>
@@ -39,14 +41,22 @@ ob_start();
             </p>
             
             <p>
-                <?= $data['comment'] ?>
+                <?= htmlspecialchars($data['comment']) ?>
             
             </p>
 
             <p> Posté le: 
-                <?= $data['date_comment_fr'] ?>
+                <?= htmlspecialchars($data['date_comment_fr']) ?>
             
             </p>
+
+            <p> Id du commentaire et numéro du chapitre: 
+                <?= $data['id_comment'] ?>
+                <?= $data['chapter_number'] ?>
+            
+            </p>
+
+
 
             <p>
                 <form action="signal?number=<?=$data['id_comment']?>" method="post">

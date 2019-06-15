@@ -21,13 +21,28 @@ class Connexion {
         
            
             $isPasswordCorrect = password_verify($_POST['pass'], $admin['pass']);
-        
-                if ($isPasswordCorrect) {
+        if ($_POST['pseudo']!= $admin['pseudo']){ 
+            ?>
+            <script language="javascript">
+                alert("Vos informations sont incorrectes.");
+            </script>
+
+        <?php 
+        }
+               else if ($isPasswordCorrect) {
                     
                     session_start();
                     $_SESSION['pseudo']=$admin['pseudo'];
                     $_SESSION['pass']=$admin['pass'];
                     header('location: edition');
+                }
+                else {
+                    ?>
+                    <script language="javascript">
+                        alert("Vos informations sont incorrectes.");
+                    </script>
+        
+                <?php 
                 }
  
         }

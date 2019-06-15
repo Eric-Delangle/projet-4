@@ -5,6 +5,7 @@ body {
 /* Animation baleine */
 #cadre {
   border: 1px solid white;
+  margin: 20px auto;
 }
 
 #bloc {
@@ -55,10 +56,12 @@ body {
 
 .codeco {
   display: flex;
+  margin: 20px auto;
 }
 
 .page_menu {
   margin: 0 auto;
+  margin: 20px auto;
 }
 
 .bloc_form {
@@ -194,7 +197,7 @@ line-height: 0;
 
  .disposition {
    display: flex;
-   justify-content: space-between;
+   justify-content: space-around;
  }
 
  /* page de changement d'identifiants */
@@ -206,7 +209,7 @@ line-height: 0;
  /* page chapitre partie */
 
 #connecter {
-  font-size: 0.5em;
+  font-size: 1em;
 }
 
  .cadre_chapitres {

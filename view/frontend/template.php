@@ -7,7 +7,6 @@
         <link href="assets/css/style.css" rel="stylesheet" /> 
         <link rel="shortcut icon" href="../favicon.ico">
         <link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
-        <script src = "https://www.google.com/recaptcha/api.js" async defer ></script>
     </head>
         
     <body>
@@ -21,5 +20,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="assets/js/animChapitres.js"></script>
         <script src="assets/js/modernizr.custom.js"></script>
+        <script src = "https://www.google.com/recaptcha/api.js"></script>
     </body>
 </html>
