@@ -20,6 +20,7 @@ class Myautoload {
     }
 
     public static function autoload($class) {
+    try { 
         $class = str_replace('projet4\\', '', $class);
         if(file_exists(MODEL.$class.'.php')) {
             include_once(MODEL.$class.'.php');
@@ -31,10 +32,10 @@ class Myautoload {
         else if(file_exists(VIEW.$class.'.php')) {
             include_once(VIEW.$class.'.php');
         } 
-
-        else {
-            echo '<p class="erreur">OOOoohhh erreur 404 !</p>';
-        }
+    }
+    catch(Exception $e) {
+        require (CONTROLLER.'home.php');
+    }
         
     }
 }

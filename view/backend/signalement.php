@@ -6,11 +6,12 @@
 <!-- la va apparaitre la div de modification ou de suppression des commentaires -->
 <div class="cadre_interface">
    <?php
+ 
 
      while ($sign = $signal->fetch()) {
-     
-      if($sign['auth']) {
-         
+      
+      if(!empty($sign)) {
+
      ?>
      <div id="cadre_comSign">
         <p><strong>Auteur:</strong> 
@@ -22,20 +23,22 @@
         <p> <strong>Posté le:</strong> 
            <?= $sign['date_comment'] ?>
         </p>
-           <form action="retablir?number=<?=$sign['id_comment']?>" method="post">
+           <form action="retablir?id=<?=$sign['id']?>" method="post">
               <input type="submit" class="liens_h1" value="rétablir" name="retablir">
            </form>
-           <form action="supprimer?number=<?=$sign['id_comment']?>" method="post">
+           <form action="supprimer?id=<?=$sign['id']?>" method="post">
               <input type="submit" class="liens_h1" value="Supprimer" name="supprimer">
            </form>
       </div>
 
            <?php  
        
-         } if(empty($sign['auth'])) {  
-            echo 'Aucun commentaire n\a été signalé.';  
-      }
+         }    
+         else {  
+            echo "Aucun commentaire n'a été signalé.";  
+         } 
      }
+   
    ?>
 </div>
 <?php

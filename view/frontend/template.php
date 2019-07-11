@@ -15,7 +15,7 @@
        <p><?= $comments ?></p> 
 
         <script>document.getElementById('accueil').style.display = 'block';</script>
-        <script>document.getElementById('chapters').style.display = 'none';</script>
+        <script>document.getElementById('chapters').style.display = 'block';</script>
         <script>document.getElementById('connecter').style.display = 'none';</script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="assets/js/animChapitres.js"></script>

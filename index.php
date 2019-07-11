@@ -11,3 +11,4 @@ $request = $_GET['r'];
 // je créé une instance de la class routeur et j'appelle sa méthode renderControler()
 $router = new Router($request);
 $router->renderControler();
+

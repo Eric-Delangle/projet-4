@@ -19,15 +19,21 @@ session_start();
                 echo '<div id="cadre"><div id="bloc"><img src="assets/images/baleine2.png" id="baleine"/></div></div>';
             ?>
     
-    <!-- animation titre -->
-   <section id="title">
-        <h1 class="ml6">
-            <span class="text-wrapper">
-            <span class="letters">Billet simple pour l'<span id="ableu">A</span>laska</span>
-            </span>
-        </h1>
-    </section>
-    <!-- fin animation titre -->
+            <!-- animation titre -->
+            <section id="title">
+                <h1 class="ml6">
+                    <span class="text-wrapper">
+                    <span class="letters">Billet simple pour l'<span class="letter ableu">A</span>laska</span>
+                    </span>
+                </h1>
+            </section>
+            <!-- fin animation titre -->
+        </div>
+        <div id="si_responsive">
+            <h2>Bienvenue sur le blog de Jean Forteroche</h2>
+            <h1>Billet simple pour l'Alaska.</h1>
+        </div>
+            
     </div>
 <br/>
 <footer>
@@ -38,6 +44,6 @@ session_start();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="assets/js/animation.js"></script>
 <script src="assets/js/titre.js"></script>
-</body>
+    </body>
 
 </html>

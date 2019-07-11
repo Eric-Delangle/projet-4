@@ -20,18 +20,9 @@ while ($data = $readChapter->fetch())
             <?= $data['date_parution_fr'] ?>
         </p>
     </div>
-
-    <div id='precsuiv'>
-
-      <form id="divSuivPrec" method="post" action="">
-            <input type="submit" class="liens_h1" value="Précèdent" name="Chapitre_precedent" />
-            <input type="submit" class="liens_h1" value="Suivant" name= "Chapitre_suivant" />
-      </form>
-
-  </div>
 <?php
 }
-showCom($_GET['number']); // j'appelle ma fonction pour afficher les commentaires
+showCom($_GET['id']); // j'appelle ma fonction pour afficher les commentaires
 $readChapter->closeCursor();
 ?>
 <?php $content = ob_get_clean(); ?>

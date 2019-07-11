@@ -1,8 +1,8 @@
 <?php ob_start(); 
 include(VIEW.'nav.php');
 echo '<h1 id="chap" class="type typewriter">Ici commence notre histoire...</h1>';
-while ($data = $allChap->fetch())
-{
+
+while ($data = $allChap->fetch()) {
 ?>
     <div id="tableau">
         <h3>
@@ -26,3 +26,4 @@ $allChap->closeCursor();
 <?php $content = ob_get_clean(); ?>
 
 <?php require(VIEW.'frontend/template.php'); ?>
+<script>document.getElementById('chapters').style.display = 'none';</script>

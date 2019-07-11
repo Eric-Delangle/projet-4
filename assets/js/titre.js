@@ -1,5 +1,7 @@
-let lettreA = document.getElementById("ableu");
+/*
+let lettreA = document.getElementByClassName("ableu");
 lettreA.style.color =  "blue";
+*/
 let titre = document.getElementById('title');
 titre.style.display = 'bloc';
 titre.style.display = 'flex';

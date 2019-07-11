@@ -24,11 +24,11 @@ class FormInscConnec
     }
 // je crée maon premier input
     public function input($name,$placeholder) {
-        return $this->paragraph('<input type="text" name="'.$name.'" placeholder="'.$placeholder.'" style="text-align:center">');
+        return $this->paragraph('<input type="text" name="'.$name.'" placeholder="'.$placeholder.'" style="text-align:center" required>');
     }
 // je crée un textarea
     public function textarea($name) {
-      return $this->paragraph('<textarea name="'.$name.'"></textarea>');
+      return $this->paragraph('<textarea name="'.$name.'" required></textarea>');
     }
    
 // je mets un bouton submit

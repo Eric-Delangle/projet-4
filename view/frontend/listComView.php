@@ -18,7 +18,7 @@ ob_start();
                     <!-- Notre boite de vérification -->
                         <div id="captcha">
                             <div class="g-recaptcha"
-                                data-sitekey="">
+                                data-sitekey="6Ld5ZXAUAAAAABT0x_bOlMe6gCBYmOgUFOQuxXjL">
                             </div> 
                         </div>
                     
@@ -50,16 +50,8 @@ ob_start();
             
             </p>
 
-            <p> Id du commentaire et numéro du chapitre: 
-                <?= $data['id_comment'] ?>
-                <?= $data['chapter_number'] ?>
-            
-            </p>
-
-
-
             <p>
-                <form action="signal?number=<?=$data['id_comment']?>" method="post">
+                <form action="signal?id=<?=$data['id']?>" method="post">
                      <input type="submit" class="liens_rouges" value="Signaler" name="signaler"/>
                  </form><hr />
             </p>

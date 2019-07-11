@@ -2,6 +2,11 @@
 body {
   outline-style: none;
 }
+
+#si_responsive {
+  display: none;
+}
+
 /* Animation baleine */
 #cadre {
   border: 1px solid white;
@@ -13,19 +18,6 @@ body {
   height: 50%;
   position: relative; /* Permettra de décaler le bloc */
   left: 0px; /* Initialise la position gauche du bloc à déplacer */
-}
-/* fin animation */
-
-/* Animation kariB */
-#cadreContact {
-  border: 1px solid white;
-}
-
-#blocContact {
-  width: 50%;
-  height: 50%;
-  position: absolute; /* Permettra de décaler le bloc */
-   right: 0px;/* Initialise la position basse du bloc à déplacer */
 }
 /* fin animation */
 
@@ -48,6 +40,10 @@ body {
 .ml6 .letter {
   display: inline-block;
   line-height: 1em;
+}
+
+.ableu {
+  color: hsl(244, 100%, 59%);
 }
  
  /* fin animation titre */
@@ -80,6 +76,10 @@ body {
   display: flex;
   text-decoration: none;
   list-style: none ;
+}
+
+.menu i {
+  color: hsl(244, 100%, 59%);
 }
 
 .menu li {
@@ -172,7 +172,7 @@ line-height: 0;
 /* hauteur du titre */
 
 #title {
-  display: none;
+  
   margin-top: -200px;
   justify-content: center;
 }
@@ -269,6 +269,7 @@ line-height: 0;
    margin: 0 auto;
    border: 1px solid grey;
    border-radius: 15px 15px 15px 15px;
+   box-shadow: 10px 10px #55576426;
    width: 90%;
    display: flex;
    flex-direction: column;
@@ -298,9 +299,12 @@ line-height: 0;
   /* Section de commentaire */
 
   #commentaires {
-    text-align: center;
     margin: 0 auto;
-    width: 70%;
+    width: 50%;
+  }
+
+  .ajoutComment {
+    text-align: center;
   }
 
   #commentName {
@@ -377,8 +381,32 @@ line-height: 0;
   padding: 10px;
 }
 
-/* captcha */
-
 #captcha {
-  transform: translateX(37%);
+  position: relative;
+  left: 240px;
+}
+
+/* --  ==== MEDIAQUERIES ====  -- */
+
+
+@media all and (max-width: 1024px) {  /* ipad */
+ 
+  #captcha {
+      left: 95px;
+    }
+
+  .infos_sur_le_site {
+    display: none;
+  }
+
+  #si_responsive {
+    display: block;
+    text-align: center;
+  }
+}
+@media all and (max-width: 480px) {  /* smartphone */
+
+  #captcha {
+      left: 90px;
+    }
 }
