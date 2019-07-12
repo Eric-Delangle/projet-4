@@ -40,31 +40,31 @@ function deco() {
 
 // Créer un chapitre
 function creatChap() { 
-    $save = new \projet4\Crudchapters($_GET['number']);
+    $save = new \projet4\Crudchapters();
     $save->createChapter('chapter_number', 'title', 'contents', 'date_parution');
    
   // header("Refresh:3;url= edition");
 }
 // Afficher la liste des chapitres pour les modifier
 function listChapForModif() {
-    $objetChapter = new \projet4\Crudchapters($_GET['number']);
+    $objetChapter = new \projet4\Crudchapters();
     $allChap = $objetChapter->showChapters();
     require(VIEW.'backend/viewEdit.php');
 }
 // modifier un chapitre
 function modifChap($chapter_number) {
     /* je recupere le chapitre demandé dans ma bdd , puis je l'affiche dans mon tynimce */
-    $modif = new \projet4\Crudchapters($_GET['number']);
+    $modif = new \projet4\Crudchapters();
     $maj = $modif->showChapter($_GET['number']);
     require('view/backend/editChap.php');
 }
 
 // supprimer un chapitre
 function supChap() {
-    $suppr = new \projet4\Crudchapters($_GET['number']);
+    $suppr = new \projet4\Crudchapters();
     $suppr->deleteChapter($_GET['number']);
 
-        if($chapter_number == null) {
+        if($suppr->chapter_number == null) {
             echo 'Ce chapitre a bien été supprimé. Vous allez être redirigé.';
             header("Refresh:3;url=edition");
         }
@@ -73,23 +73,23 @@ function supChap() {
 // la je fais la mise à jour dans la bdd
 function updateChap($chapter_number) {
    
-    $updat = new \projet4\Crudchapters($_GET['number']);
+    $updat = new \projet4\Crudchapters();
     $maj = $updat->updateChatper($_POST['title'], $_POST['contents']);
    
 }
 // affichage des commentaires signalés
 function affichSign() {
-    $signMess = new \projet4\Crudcomments($_GET['number']);
+    $signMess = new \projet4\Crudcomments();
     $signal = $signMess->getSignComments();
     require(VIEW.'backend/signalement.php');
     }
  
 // supprimer le commentaire
 function supCom() {
-        $modifCom = new \projet4\Crudcomments($_GET['number']);
+        $modifCom = new \projet4\Crudcomments();
         $modifCom->deleteComment();
   
-    if($id == null) {
+    if($modifCom->id == null) {
         echo 'Le commentaire a bien été supprimé. Vous allez être redirigé.';
         header("Refresh:3;url=edition");
     }
@@ -97,7 +97,7 @@ function supCom() {
 }
 // rétablir un com
 function unSignCom() { 
-    $modifcom = new \projet4\Crudcomments($_GET['number']);
+    $modifcom = new \projet4\Crudcomments();
     // je remets le com a signalement = 0
     $modifs = $modifcom->updateComment();
     if($modifs->signalement == 0){

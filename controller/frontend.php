@@ -1,10 +1,10 @@
 <?php
 
-$objetChapter = new \projet4\Crudchapters($_GET['number']);
+$objetChapter = new \projet4\Crudchapters();
 
 // affiche tous les chapitres les uns sous les autres
 function showAllChap() {
-    $objetChapter = new \projet4\Crudchapters($_GET['number']);
+    $objetChapter = new \projet4\Crudchapters();
     $allChap = $objetChapter->showChapters();
     require(VIEW.'frontend/listChapView.php');
 }
@@ -12,7 +12,7 @@ function showAllChap() {
 // affiche le chapitre demandé
 function showOneChap() {
     
-        $viewOneChap = new \projet4\Crudchapters($_GET['number']);
+        $viewOneChap = new \projet4\Crudchapters();
         $readChapter = $viewOneChap->showChapter($_GET['number']); 
         foreach ($readChapter as $data) { 
             require(VIEW.'frontend/oneChapView.php');
@@ -32,7 +32,7 @@ function showOneChap() {
  // Signalement d'un commentaire par l'utilisateur
 function signal($id, $number) { 
   
-        $alertComm = new \projet4\Crudcomments($_GET['number']);
+        $alertComm = new \projet4\Crudcomments();
         $alert = $alertComm->signalCom($_GET['id'], $_GET['number']);
 }
   
@@ -45,7 +45,7 @@ function showCom() {
     $commentForm = new \projet4\FormInscConnec($data); 
 
 // puis appel de la méthode d'affichage
-    $objetComment = new \projet4\Crudcomments($_GET['number']);
+    $objetComment = new \projet4\Crudcomments();
     $allCom = $objetComment->getComments(); 
     require(VIEW.'frontend/listComView.php');
    
@@ -64,8 +64,18 @@ function creatCom($id) {
     }
 
     if(!empty(htmlspecialchars($_POST['auth'])) && !empty(htmlspecialchars($_POST['contenuComment']))) {
-        $objetComment = new \projet4\Crudcomments($_GET['number']);
+        $objetComment = new \projet4\Crudcomments();
         $com = $objetComment->createComment();
     }
 }
-    
+
+// aller au chapitre suivant
+function after() { 
+    $read = new \projet4\Crudchapters();
+    $read->getNextNumber();   
+}
+// aller au chapitre precedent
+function before() { 
+    $read = new \projet4\Crudchapters();
+    $read->getLastNumber(); 
+}
