@@ -20,23 +20,26 @@ class Myautoload {
     }
 
     public static function autoload($class) {
-    try { 
-        $class = str_replace('projet4\\', '', $class);
-        if(file_exists(MODEL.$class.'.php')) {
-            include_once(MODEL.$class.'.php');
-        } 
-        else if(file_exists(CONTROLLER.$class.'.php')) {
-            include_once(CONTROLLER.$class.'.php');
-        } 
-        
-        else if(file_exists(VIEW.$class.'.php')) {
-            include_once(VIEW.$class.'.php');
-        } 
-    }
-    catch(Exception $e) {
-        require (CONTROLLER.'home.php');
-    }
-        
+        try { 
+            $class = str_replace('projet4\\', '', $class);
+            if(file_exists(MODEL.$class.'.php')) {
+                include_once(MODEL.$class.'.php');
+            } 
+            else if(file_exists(CONTROLLER.$class.'.php')) {
+                include_once(CONTROLLER.$class.'.php');
+            } 
+            
+            else if(file_exists(VIEW.$class.'.php')) {
+                include_once(VIEW.$class.'.php');
+            } 
+            else {
+                throw new Exception('Une erreur a été retournée. Vous allez être redirigé(e).');
+            }
+        }
+        catch(Exception $e) { 
+            echo 'Erreur : ' . $e->getMessage();
+            header("Refresh:3;url=home");
+        }   
     }
 }
 

@@ -11,26 +11,38 @@ function showAllChap() {
 
 // affiche le chapitre demandé
 function showOneChap() {
-    $viewOneChap = new \projet4\Crudchapters($_GET['number']);
-    $readChapter = $viewOneChap->showChapter(); 
     
-    require(VIEW.'frontend/oneChapView.php');
+        $viewOneChap = new \projet4\Crudchapters($_GET['number']);
+        $readChapter = $viewOneChap->showChapter($_GET['number']); 
+        foreach ($readChapter as $data) { 
+            require(VIEW.'frontend/oneChapView.php');
+        }
+            if($data['title'] == null) {
+               
+                ?>
+                <script language="javascript">
+                    alert("Ce chapitre n'éxiste pas. Vous allez être redirigé(e).");
+                </script>
+            <?php
+            header("Refresh:3;url=chapters");
+            }
+           
 }
-
 
  // Signalement d'un commentaire par l'utilisateur
-function signal() { 
-    $alertComm = new \projet4\Crudcomments($_GET['number']);
-    $alert = $alertComm->signalCom();
+function signal($id, $number) { 
   
+        $alertComm = new \projet4\Crudcomments($_GET['number']);
+        $alert = $alertComm->signalCom($_GET['id'], $_GET['number']);
 }
+  
 // COMMENTAIRES 
 
 // affiche tous les commentaires sous le chapitre 
 function showCom() {
     
 // pour générer mon formulaire de commentaire
-    $commentForm = new \projet4\FormInscConnec ($data); 
+    $commentForm = new \projet4\FormInscConnec($data); 
 
 // puis appel de la méthode d'affichage
     $objetComment = new \projet4\Crudcomments($_GET['number']);

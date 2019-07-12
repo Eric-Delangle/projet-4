@@ -17,26 +17,31 @@ class Connexion extends DataBase
     }
 
     
-    public function connecMembre(){
+    public function connecMembre($pseudo){
      
-        $db = new DataBase('members');
-        $admin =  $db->adminPrepare("SELECT * FROM members WHERE pseudo = :pseudo", (array('pseudo' => $_POST['pseudo'])), 'members', true);
+        $db = $this->getPDO();
+        $admin = $db->prepare("SELECT pseudo, pass FROM members WHERE pseudo = :pseudo");
+        $admin->execute(array(
+            'pseudo' => $pseudo));
+        $resultat = $admin->fetch();
     
        
-        $isPasswordCorrect = password_verify($_POST['pass'], $admin['pass']);
-    if ($_POST['pseudo']!= $admin['pseudo']){ 
-        ?>
-        <script language="javascript">
-            alert("Vos informations sont incorrectes.");
-        </script>
+        $isPasswordCorrect = password_verify($_POST['pass'], $resultat['pass']);
+       
 
-    <?php 
-    }
-           else if ($isPasswordCorrect) {
-                
+        if (!$resultat){ 
+            ?>
+            <script language="javascript">
+                alert("Vos informations sont incorrectes.");
+            </script>
+
+        <?php 
+        }
+        else if ($isPasswordCorrect) {
+             
                 session_start();
-                $_SESSION['pseudo']=$admin['pseudo'];
-                $_SESSION['pass']=$admin['pass'];
+                $_SESSION['pseudo'] = $pseudo;
+                $_SESSION['pass'] = $resultat['pass'];
                 header('location: edition');
             }
             else {
@@ -47,8 +52,8 @@ class Connexion extends DataBase
     
             <?php 
             }
-
         }
     }
+
 
 

@@ -25,7 +25,7 @@ function admin() {
     }  
     else{ 
         $logg = new \projet4\Connexion($_POST['pseudo'], $_POST['pass']);
-        $logg->connecMembre();  
+        $logg->connecMembre($_POST['pseudo']);  
      }
     }
 }        
@@ -55,14 +55,14 @@ function listChapForModif() {
 function modifChap($chapter_number) {
     /* je recupere le chapitre demandé dans ma bdd , puis je l'affiche dans mon tynimce */
     $modif = new \projet4\Crudchapters($_GET['number']);
-    $maj = $modif->showChapter();
+    $maj = $modif->showChapter($_GET['number']);
     require('view/backend/editChap.php');
 }
 
 // supprimer un chapitre
 function supChap() {
     $suppr = new \projet4\Crudchapters($_GET['number']);
-    $suppr->deleteChapter($_GET['id']);
+    $suppr->deleteChapter($_GET['number']);
 
         if($chapter_number == null) {
             echo 'Ce chapitre a bien été supprimé. Vous allez être redirigé.';

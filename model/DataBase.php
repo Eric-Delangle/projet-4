@@ -15,34 +15,4 @@ class DataBase {
         }
         return $this->pdo;
     }
-
-    public function query($statement) {
-        $db = $this->getPDO()->query($statement);
-        $datas = $db->execute();
-        return $datas;
-
-    }
-
-    public function prepare($statement, $attributes) {
-        $req = $this->getPDO()->prepare($statement);
-        $req->execute($attributes);
-        return $req;
-    
-    }
-
-    public function adminPrepare($statement, $attributes, $one = false) {
-        $req = $this->getPDO()->prepare($statement);
-        $req->execute($attributes);
-        
-        $req->setFetchMode(PDO::FETCH_ASSOC);
-    
-        if($one) {
-            $datas = $req->fetch();
-        } else {
-            $datas = $req->fetchAll();
-        }
-        
-        return $datas;
-        
-    }
 }

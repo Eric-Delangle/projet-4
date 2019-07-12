@@ -51,7 +51,7 @@ ob_start();
             </p>
 
             <p>
-                <form action="signal?id=<?=$data['id']?>" method="post">
+                <form action="signal?id=<?=$data['id']?>&chapter_number=<?=$data['chapter_number']?>" onSubmit="return verif()" method="post" >
                      <input type="submit" class="liens_rouges" value="Signaler" name="signaler"/>
                  </form><hr />
             </p>
@@ -64,5 +64,14 @@ ob_start();
 $allCom->closeCursor();
 ?>
 <?php $comments = ob_get_clean(); ?>
-
+<script>
+    function verif(){
+        if (confirm("Voulez vous vraiment signaler ce commentaire ?")) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    </script>
 <?php require(VIEW.'frontend/template.php'); ?>

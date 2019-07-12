@@ -37,7 +37,7 @@ Class Router
             }
             else if ($this->request == 'signal') {
                 include (CONTROLLER.'frontend.php');
-                signal();
+                signal($id, $number);
             }
             else if ($this->request == 'edition') {
                 include (CONTROLLER.'backend.php');
@@ -71,10 +71,14 @@ Class Router
                 include (CONTROLLER.'backend.php');
                 updateChap($_GET['number']);
             }
+            else {
+                throw new Exception('Une erreur a été retournée. Vous allez être redirigé(e).');
+            }
         }
 
-        catch (Exception $e) {
-            echo $e;
+        catch(Exception $e) { 
+            echo 'Erreur : ' . $e->getMessage();
+            header("Refresh:3;url=home");
         }
     }
 }       
