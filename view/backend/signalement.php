@@ -7,12 +7,8 @@
 <div class="cadre_interface">
    <?php
  
-
      while ($sign = $signal->fetch()) {
-      
-      if(!empty($sign)) {
-
-     ?>
+   ?>
      <div id="cadre_comSign">
         <p><strong>Auteur:</strong> 
            <?= $sign['auth'] ?>
@@ -23,20 +19,14 @@
         <p> <strong>Posté le:</strong> 
            <?= $sign['date_comment'] ?>
         </p>
-           <form action="retablir?id=<?=$sign['id']?>" method="post">
+           <form onSubmit="return okRet()" action="retablir?id=<?=$sign['id']?>" method="post">
               <input type="submit" class="liens_h1" value="rétablir" name="retablir">
            </form>
-           <form action="supprimer?id=<?=$sign['id']?>" method="post">
+           <form onSubmit="return okSup()" action="supprimer?id=<?=$sign['id']?>" method="post">
               <input type="submit" class="liens_h1" value="Supprimer" name="supprimer">
            </form>
       </div>
-
-           <?php  
-       
-         }    
-         else {  
-            echo "Aucun commentaire n'a été signalé.";  
-         } 
+   <?php  
      }
    
    ?>
@@ -45,5 +35,24 @@
 $signal->closeCursor();
 ?>
 <?php $content = ob_get_clean(); ?>
-
+<script>
+    function okSup(){
+        if (confirm("Voulez vous vraiment supprimer ce commentaire ?")) {
+            return true;
+        }
+        else{
+            return false;
+        }
+      }
+    </script>
+    <script>
+    function okRet(){
+        if (confirm("Voulez vous vraiment rétablir ce commentaire ?")) {
+            return true;
+        }
+        else{
+            return false;
+        }
+      }
+    </script>
 <?php require(VIEW.'frontend/template.php'); ?>

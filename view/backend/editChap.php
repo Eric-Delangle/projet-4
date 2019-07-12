@@ -22,7 +22,7 @@ ob_start();
 
 <div class="cadre_tyni">
    <div>
-   <form action="majChapter?number=<?=$_GET['number']?>" method="POST" name="majarticle">
+   <form onSubmit="return okModif()" action="majChapter?number=<?=$_GET['number']?>" method="POST" name="majarticle">
       
    <div class="label_for">  Titre :</div>
          <input id="chapter_title" name="title" type="text"  placeholder="Titre du chapitre" value="" required>
@@ -49,3 +49,13 @@ $content = ob_get_clean();
 
 require(VIEW.'backend/template.php');
 ?>
+ <script>
+    function okModif(){
+        if (confirm("Voulez vous vraiment modifier ce chapitre ?")) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    </script>

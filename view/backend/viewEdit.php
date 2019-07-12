@@ -72,7 +72,7 @@ session_start();
              <form action="modifier?number=<?=$data['chapter_number']?>" method="post">
                <input type="submit" class="liens_h1" value="modifier" name="modifier">
             </form>
-            <form action="supChap?number=<?=$data['chapter_number']?>" method="post">
+            <form onSubmit="return okSupChap()" action="supChap?number=<?=$data['chapter_number']?>" method="post">
                <input type="submit" class="liens_h1" value="supprimer" name="supChap">
             </form>
          </p>
@@ -81,9 +81,15 @@ session_start();
        }
        ?>
 </div>
-       
-
-
 <?php $content = ob_get_clean(); ?>
-
+<script>
+    function okSupChap(){
+        if (confirm("Voulez vous vraiment supprimer ce chapitre ?")) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    </script>
 <?php require(VIEW.'backend/template.php'); ?>
