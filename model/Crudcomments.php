@@ -27,7 +27,7 @@ class Crudcomments extends Crudchapters
     public function createComment () { 
         // Captcha
         // Ma clé privée
-        $secret = "6Ld5ZXAUAAAAAMBXzJ3sw3O4nygYe4QbTCZLHjWy";
+        $secret = "secret";
         // Paramètre renvoyé par le recaptcha
         $response = $_POST['g-recaptcha-response'];
         // On récupère l'IP de l'utilisateur
