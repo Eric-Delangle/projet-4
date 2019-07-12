@@ -33,7 +33,7 @@ class Crudchapters extends DataBase
                             'chapter_number' => $_POST['chapter_number'],
                             'chapter_title' => $_POST['chapter_title'], 
                             'contents' => $_POST['contents']));
-        echo 'Ce chapitre a bien été créé.';
+        echo 'Ce chapitre a bien été créé. Vous allez être redirigé.';
         header("Refresh:3;url=edition");
     } 
     
@@ -55,5 +55,24 @@ class Crudchapters extends DataBase
         $req->execute(array($chapter_number));
         $del = $db->prepare("DELETE FROM comments WHERE chapter_number = ? "); 
         $del->execute(array($chapter_number));
-    }       
+    }  
+    
+    //test chapitre suivant ou précédent
+
+    
+    public function getLastNumber($chapter_number) { 
+        
+        if(!empty($chapter_number)) { 
+            $chapter_number--;
+            header("location: chapter?number=".$chapter_number."");
+        } 
+    }
+
+    public function getNextNumber($chapter_number) {
+        
+        if(!empty($chapter_number)) { 
+            $chapter_number++;
+            header("location: chapter?number=".$chapter_number."");
+          }
+    }
 }
