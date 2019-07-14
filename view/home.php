@@ -39,7 +39,7 @@ session_start();
                 <div id="title">
                     <h1 class="ml6">
                         <span class="text-wrapper">
-                        <span class="letters">Billet simple pour l'<span class="letter ableu">A</span>laska</span>
+                        <span class="letters">Billet simple pour l'Alaska</span>
                         </span>
                     </h1>
             </div>
