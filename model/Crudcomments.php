@@ -27,7 +27,7 @@ class Crudcomments extends Crudchapters
     public function createComment () { 
         // Captcha
         // Ma clé privée
-        $secret = "secret";
+        $secret = "6Ld5ZXAUAAAAAMBXzJ3sw3O4nygYe4QbTCZLHjWy";
         // Paramètre renvoyé par le recaptcha
         $response = $_POST['g-recaptcha-response'];
         // On récupère l'IP de l'utilisateur
@@ -46,7 +46,7 @@ class Crudcomments extends Crudchapters
             $req = $db->prepare('INSERT INTO comments (chapter_number, auth, comment, date_comment)VALUES (:chapter_number, :auth, :comment, now())');
             $req->execute(array('chapter_number' => htmlspecialchars($_GET['number']),'auth' => htmlspecialchars($_POST['auth']),'comment' => htmlspecialchars($_POST['contenuComment'])));
         ?>
-            <script language="javascript">
+            <script>
                 alert("Votre commentaire a bien été enregistré. Vous allez être redirigé(e).");
             </script>
         <?php
@@ -56,7 +56,7 @@ class Crudcomments extends Crudchapters
         else {
             // le code de vérification est incorrect
         ?>
-            <script language="javascript">
+            <script>
                 alert("Veuillez préciser que vous n'êtes pas un robot. Vous allez être redirigé(e).");
             </script>
         <?php
@@ -87,7 +87,7 @@ class Crudcomments extends Crudchapters
         $signal->execute(array($id));
        
        ?>
-        <script language="javascript">
+        <script>
             alert("Ce commentaire a bien été signalé. Vous allez être redirigé(e).");
         </script>
     <?php

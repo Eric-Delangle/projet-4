@@ -4,14 +4,14 @@ echo '<h1 id="chap" class="type typewriter">Ici commence notre histoire...</h1>'
 
 while ($data = $allChap->fetch()) {
 ?>
-    <div id="tableau">
+    <div  class="tableau">
         <h3>
             <?= htmlspecialchars($data['title']) ?>
            
         </h3>
         
         <p>
-            <?= substr($data['contents'], 219, 400) ?>
+            <?= htmlspecialchars(substr($data['contents'], 195, 204)) ?>
           ...
         </p>
         <p>
@@ -26,4 +26,4 @@ $allChap->closeCursor();
 <?php $content = ob_get_clean(); ?>
 
 <?php require(VIEW.'frontend/template.php'); ?>
-<script>document.getElementById('chapters').style.display = 'none';</script>
+

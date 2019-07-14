@@ -11,7 +11,7 @@ include(VIEW.'nav.php');
                      $inscForm = new \projet4\FormInscConnec ($data);
                         echo 'Bonjour Mr Forteroche, connectez vous afin de pouvoir administrer votre blog.';
                         echo $inscForm->input('pseudo',"Votre pseudo");
-                        echo $inscForm->input('pass',"Votre mot de passe");
+                        echo $inscForm->inputPass('pass',"Votre mot de passe");
                         echo $inscForm->submit();
                     ?>
             </form>

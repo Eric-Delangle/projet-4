@@ -3,19 +3,15 @@ ob_start();
 include(VIEW.'nav.php');
 
         ?>
-            <div id="tableau">
+            <div class="tableau">
                 <h3>
                     <?= $data['title'] ?>
                     
-                </h3>
-                    
-                <p>
+</h3>
                     <?= $data['contents'] ?>
-                    
-                </p>
-                <p> Paru le: 
+                 Paru le: 
                     <?= $data['date_parution_fr'] ?>
-                 </p>
+                 
             </div>
 <div id='precsuiv'>
     <form method="post" action="precedent?number=<?=$_GET['number']?>">

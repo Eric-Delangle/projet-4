@@ -12,7 +12,7 @@ class FormInscConnec
     public $paragraph = 'p';
 
     public function __construct($data = array()){
-        $this->$data = $data;
+        $this->$data = htmlspecialchars($data);
     }
 // pour englober mes inputs dans des paragraphes
     private function paragraph ($html) {
@@ -22,9 +22,13 @@ class FormInscConnec
     private function getValue($index) {
         return isset($this->data[$index]) ? $this->data[$index] : null;
     }
-// je crée maon premier input
-    public function input($name,$placeholder) {
+// je crée mon premier input
+    public function input($name, $placeholder) {
         return $this->paragraph('<input type="text" name="'.$name.'" placeholder="'.$placeholder.'" style="text-align:center" required>');
+    }
+// je crée input password
+    public function inputPass($pass, $placeholder) {
+        return $this->paragraph('<input type="password" name="'.$pass.'" placeholder="'.$placeholder.'" style="text-align:center" required>');
     }
 // je crée un textarea
     public function textarea($name) {

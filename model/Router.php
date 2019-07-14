@@ -71,6 +71,14 @@ Class Router
                 include (CONTROLLER.'backend.php');
                 updateChap($_GET['number']);
             }
+            else if ($this->request == 'precedent') {
+                include (CONTROLLER.'frontend.php');
+                before();
+            }
+            else if ($this->request == 'suivant') {
+                include (CONTROLLER.'frontend.php');
+                after();
+            }
             else {
                 throw new Exception('Une erreur a été retournée. Vous allez être redirigé(e).');
             }

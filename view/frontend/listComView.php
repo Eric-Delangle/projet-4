@@ -3,9 +3,10 @@ ob_start();
 
 ?>
 <div id="commentaires">
-			<section class="commentSection">
+			
           <h3 class="ajoutComment">
               Ajouter un commentaire
+        </h3>
             <hr />
          <div id="bloc_comments">
                  <form action="commentaire?number=<?= $_GET['number'] ?>" method="post">
@@ -18,7 +19,7 @@ ob_start();
                     <!-- Notre boite de vérification -->
                         <div id="captcha">
                             <div class="g-recaptcha"
-                                data-sitekey="secret">
+                                data-sitekey="6Ld5ZXAUAAAAABT0x_bOlMe6gCBYmOgUFOQuxXjL">
                             </div> 
                         </div>
                     
@@ -34,29 +35,20 @@ ob_start();
     while ($data = $allCom->fetch()) { 
  
     ?>
-        <div id="tableau">
-            <p> Pseudo:
+        <div class="tableau">
+             Pseudo:
                 <?= htmlspecialchars($data['auth']) ?>
-            
-            </p>
-            
-            <p>
+            <br>
                 <?= htmlspecialchars($data['comment']) ?>
-            
-            </p>
-
-            <p> Posté le: 
+            <br>
+             Posté le: 
                 <?= htmlspecialchars($data['date_comment_fr']) ?>
             
-            </p>
-
-            <p>
                 <form action="signal?id=<?=$data['id']?>&chapter_number=<?=$data['chapter_number']?>" onSubmit="return verif()" method="post" >
                      <input type="submit" class="liens_rouges" value="Signaler" name="signaler"/>
                  </form><hr />
-            </p>
-        
         </div>
+
     <?php
           
     }
@@ -74,4 +66,5 @@ $allCom->closeCursor();
         }
     }
     </script>
-<?php require(VIEW.'frontend/template.php'); ?>
+<?php require(VIEW.'frontend/templatecom.php'); ?>
+</div>
