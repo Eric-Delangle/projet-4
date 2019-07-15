@@ -6,17 +6,15 @@ use PDO;
 class Connexion extends DataBase
  {
 
-    public $identifiant;
-    public $pass;
+    private $identifiant;
+    private $pass;
     
-
     public function __construct($identifiant, $pass) {
        $this->identifiant = htmlspecialchars($identifiant);
        $this->pass = htmlspecialchars($pass);
 
     }
 
-    
     public function connecMembre($pseudo){
      
         $db = $this->getPDO();
